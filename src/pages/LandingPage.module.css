@@ -55,10 +55,11 @@
     color: #9966CC;
     border: 0;
   }
-  .button:hover{
-  background-color: #D1B3FF;
-  color: white;
-}
-  
+  .button:hover,
+  .button:focus {
+      background-color: #D1B3FF;
+      color: #FFFFFF;
+      outline: none; /* Remove a borda padrão do foco */
+  }
 
 }
