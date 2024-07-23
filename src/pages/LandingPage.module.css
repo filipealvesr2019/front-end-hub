@@ -1,0 +1,50 @@
+.nav {
+  display: none;
+}
+
+.img {
+  width: 10vw;
+}
+
+@media screen and (min-width: 700px) {
+  .nav {
+    display: block;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Adiciona alinhamento vertical ao centro */
+    background-color:#9966CC;
+  }
+
+  .navContainer nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    color: white;
+    padding: 2rem;
+  }
+
+  
+  .ul{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+  }
+  .img {
+    width: 5vw;
+  }
+  .button{
+    background-color: #FFFFFF;
+    padding: .5rem;
+    width: 10vw;
+    color: #9966CC;
+    border: 0;
+  }
+
+}
