@@ -5,7 +5,15 @@
 .img {
   width: 10vw;
 }
+.header {
+    display: flex;
 
+    background-color: #9966CC;
+    position: fixed;
+    top: 0; /* Garante que o cabeçalho fique no topo */
+    width: 100%; /* Garante que o cabeçalho ocupe toda a largura da página */
+    z-index: 1000; /* Garante que o cabeçalho fique acima do conteúdo */
+  }
 @media screen and (min-width: 700px) {
   .nav {
     display: block;
@@ -16,6 +24,7 @@
     justify-content: center;
     align-items: center; /* Adiciona alinhamento vertical ao centro */
     background-color:#9966CC;
+    
   }
 
   .navContainer nav {
@@ -46,5 +55,10 @@
     color: #9966CC;
     border: 0;
   }
+  .button:hover{
+  background-color: #D1B3FF;
+  color: white;
+}
+  
 
 }
