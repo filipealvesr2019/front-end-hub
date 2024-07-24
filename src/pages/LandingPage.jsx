@@ -44,7 +44,7 @@ const LandingPage = () => {
           <h2 className={styles.h2}>Transforme Seu Negócio de Moda com Nosso Sistema de Personalização e E-commerce
 
 </h2>
-          <p>
+          <p  className={styles.p}>
           Descubra uma nova forma de gerenciar e expandir sua loja de roupas com nosso serviço de assinatura completo. Oferecemos uma plataforma robusta que combina um ERP eficiente com uma solução de e-commerce flexível. Personalize sua loja, gerencie inventário, e ofereça uma experiência única para seus clientes – tudo isso sem complicações.
 </p>
         </section>

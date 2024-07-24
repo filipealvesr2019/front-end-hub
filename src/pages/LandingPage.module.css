@@ -8,7 +8,7 @@
 .header {
   display: flex;
 
-  background-color: #004080;
+  background-color: black;
   position: fixed;
   top: 0; /* Garante que o cabeçalho fique no topo */
   width: 100%; /* Garante que o cabeçalho ocupe toda a largura da página */
@@ -30,7 +30,7 @@ section {
   margin: 20px 0; /* Espaçamento entre seções */
 }
 .h2 {
-  color: black;
+  color: #333333;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-size: 2rem;
@@ -39,6 +39,7 @@ section {
 .p{
   margin-top: 1rem;
   margin-bottom: 1rem;
+  color: #333333;
 }
 .button {
   background-color: #004080;
@@ -58,7 +59,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center; /* Adiciona alinhamento vertical ao centro */
-    background-color: #004080;
+    background-color: black;
   }
 
   .navContainer nav {
