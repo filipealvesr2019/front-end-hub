@@ -40,6 +40,7 @@ section {
   margin-top: 1rem;
   margin-bottom: 1rem;
   color: #333333;
+  text-align: left;
 }
 .button {
   background-color: #004080;
@@ -49,6 +50,15 @@ section {
   border: 0;
   width: 80vw;
   border-radius: 8px;
+}
+.h3{
+  color: #333333;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  margin-top: 3rem;
+  text-align: left;
+  
 }
 @media screen and (min-width: 700px) {
   .nav {
@@ -90,14 +100,23 @@ section {
   }
   .button:hover,
   .button:focus {
-    background-color: #d1b3ff;
+    background-color:  #333333;
     color: #ffffff;
     outline: none; /* Remove a borda padrão do foco */
   }
   .h2 {
-    color: #9966cc;
+    color:  #333333;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-weight: 500;
     font-size: 2rem;
+  }
+  .contato  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .main{
+    margin-top: 5rem;
   }
 }
