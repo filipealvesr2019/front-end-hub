@@ -8,11 +8,21 @@ import {
   MenuList,
   MenuItem,
 } from '@chakra-ui/react';
-import { HamburgerIcon, EmailIcon, ExternalLinkIcon, RepeatIcon, CalendarIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, EmailIcon, ExternalLinkIcon, AtSignIcon, CalendarIcon } from '@chakra-ui/icons';
 
 const ExemploMenu = () => {
   return (
     <div className={styles.container}>
+         <a href="https://imgur.com/eIsbYKG">
+              <img
+                src="https://i.imgur.com/eIsbYKG.jpg"
+                title="source: imgur.com"
+                className={styles.img}
+              />
+            </a>
+
+            <div>
+
     <Menu>
       <MenuButton
         as={IconButton}
@@ -31,9 +41,15 @@ const ExemploMenu = () => {
         <MenuItem icon={<EmailIcon />} >
           Contato
         </MenuItem>
-       
+        <MenuItem icon={<AtSignIcon />} >
+          Login 
+        </MenuItem>
+        <MenuItem icon={<EmailIcon />} >
+        Cadastro
+        </MenuItem>
       </MenuList>
     </Menu>
+            </div>
 
     </div>
   );
