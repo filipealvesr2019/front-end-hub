@@ -28,7 +28,6 @@ const LandingPage = () => {
                 <a href="#contato">Contato</a>
               </li>
             </ul>
-
             <ul className={styles.ul}>
               <li className={styles.li}>
                 <button href="#Login" className={styles.button}>Login</button>
@@ -41,6 +40,18 @@ const LandingPage = () => {
         </div>
       </header>
       <main className={styles.main}>
+        <section id="sobre">
+          <h2>Sobre Nós</h2>
+          <p>Informações sobre a empresa ou produto.</p>
+        </section>
+        <section id="servicos">
+          <h2>Serviços</h2>
+          <p>Detalhes sobre os serviços oferecidos.</p>
+        </section>
+        <section id="contato">
+          <h2>Contato</h2>
+          <p>Formulário ou informações de contato.</p>
+        </section>
         <section id="sobre">
           <h2>Sobre Nós</h2>
           <p>Informações sobre a empresa ou produto.</p>

@@ -3,6 +3,10 @@
   margin: 1rem;
   
 }
+.menuButton{
+    background-color: white;
+    color: white;
+}
 @media screen and (min-width: 700px) {
   .container {
     display: none;

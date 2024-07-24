@@ -19,8 +19,9 @@ const ExemploMenu = () => {
         aria-label='Options'
         icon={<HamburgerIcon />}
         variant='outline'
+        className={styles.menuButton}
       />
-      <MenuList>
+      <MenuList className={styles.menuList}>
         <MenuItem icon={<CalendarIcon />} >
         Planos
         </MenuItem>
