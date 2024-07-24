@@ -8,7 +8,7 @@
 .header {
   display: flex;
 
-  background-color: #2C3E50;
+  background-color: #004080;
   position: fixed;
   top: 0; /* Garante que o cabeçalho fique no topo */
   width: 100%; /* Garante que o cabeçalho ocupe toda a largura da página */
@@ -41,7 +41,7 @@ section {
   margin-bottom: 1rem;
 }
 .button {
-  background-color: black;
+  background-color: #004080;
   padding: 0.5rem;
   width: 10vw;
   color: white;
@@ -58,7 +58,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center; /* Adiciona alinhamento vertical ao centro */
-    background-color: #2C3E50;
+    background-color: #004080;
   }
 
   .navContainer nav {
