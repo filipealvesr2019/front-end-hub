@@ -6,14 +6,49 @@
   width: 10vw;
 }
 .header {
-    display: flex;
+  display: flex;
 
-    background-color: #9966CC;
-    position: fixed;
-    top: 0; /* Garante que o cabeçalho fique no topo */
-    width: 100%; /* Garante que o cabeçalho ocupe toda a largura da página */
-    z-index: 1000; /* Garante que o cabeçalho fique acima do conteúdo */
-  }
+  background-color: #2C3E50;
+  position: fixed;
+  top: 0; /* Garante que o cabeçalho fique no topo */
+  width: 100%; /* Garante que o cabeçalho ocupe toda a largura da página */
+  z-index: 1000; /* Garante que o cabeçalho fique acima do conteúdo */
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center;
+  padding-top: 60px; /* Espaço para o cabeçalho fixo */
+
+}
+
+section {
+  width: 80%; /* Ajusta conforme necessário */
+  text-align: center; /* Centraliza o texto */
+  margin: 20px 0; /* Espaçamento entre seções */
+}
+.h2 {
+  color: black;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.p{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.button {
+  background-color: black;
+  padding: 0.5rem;
+  width: 10vw;
+  color: white;
+  border: 0;
+  width: 80vw;
+  border-radius: 8px;
+}
 @media screen and (min-width: 700px) {
   .nav {
     display: block;
@@ -23,8 +58,7 @@
     display: flex;
     justify-content: center;
     align-items: center; /* Adiciona alinhamento vertical ao centro */
-    background-color:#9966CC;
-    
+    background-color: #2C3E50;
   }
 
   .navContainer nav {
@@ -37,29 +71,32 @@
     padding: 2rem;
   }
 
-  
-  .ul{
+  .ul {
     list-style-type: none;
     display: flex;
     align-items: center;
     gap: 2rem;
-
   }
   .img {
     width: 5vw;
   }
-  .button{
-    background-color: #FFFFFF;
-    padding: .5rem;
+  .button {
+    background-color: #ffffff;
+    padding: 0.5rem;
     width: 10vw;
-    color: #9966CC;
+    color: #9966cc;
     border: 0;
   }
   .button:hover,
   .button:focus {
-      background-color: #D1B3FF;
-      color: #FFFFFF;
-      outline: none; /* Remove a borda padrão do foco */
+    background-color: #d1b3ff;
+    color: #ffffff;
+    outline: none; /* Remove a borda padrão do foco */
   }
-
+  .h2 {
+    color: #9966cc;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+  }
 }

@@ -32,21 +32,22 @@ const ExemploMenu = () => {
         className={styles.menuButton}
       />
       <MenuList className={styles.menuList}>
-        <MenuItem icon={<CalendarIcon />} >
+        <MenuItem  >
         Planos
         </MenuItem>
-        <MenuItem icon={<ExternalLinkIcon />} >
-          Sobre nos
-        </MenuItem>
-        <MenuItem icon={<EmailIcon />} >
-          Contato
-        </MenuItem>
-        <MenuItem icon={<AtSignIcon />} >
+        <MenuItem >
           Login 
         </MenuItem>
-        <MenuItem icon={<EmailIcon />} >
+        <MenuItem  >
         Cadastro
         </MenuItem>
+        <MenuItem  >
+          Sobre nos
+        </MenuItem>
+        <MenuItem  >
+          Contato
+        </MenuItem>
+     
       </MenuList>
     </Menu>
             </div>
