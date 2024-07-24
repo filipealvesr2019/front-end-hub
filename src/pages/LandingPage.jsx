@@ -18,13 +18,13 @@ const LandingPage = () => {
                 />
               </a>
               <li className={styles.li}>
-                <a href="#sobre">Sobre</a>
+                <a href="#sobre" className={styles.a}>Sobre</a>
               </li>
               <li className={styles.li}>
-                <a href="#servicos">Serviços</a>
+                <a href="#servicos" className={styles.a}>Serviços</a>
               </li>
               <li className={styles.li}>
-                <a href="#contato">Contato</a>
+                <a href="#contato" className={styles.a}>Contato</a>
               </li>
             </ul>
             <ul className={styles.ul}>
