@@ -40,7 +40,6 @@ export const AuthProvider = ({ children }) => {
       if (response.data.user.role === 'administrador') {
         setLoggedIn(true);
         setIsAdmin(true);
-        setIsManager(false);
       } else {
         alert('Credenciais inválidas');
       }
