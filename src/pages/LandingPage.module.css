@@ -119,5 +119,7 @@ section {
   .main{
     margin-top: 5rem;
   }
-  
+  .li a{
+color: white;
+  }
 }

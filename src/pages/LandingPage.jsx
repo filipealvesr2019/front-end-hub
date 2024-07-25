@@ -19,10 +19,10 @@ const LandingPage = () => {
                 />
               </a>
               <li className={styles.li}>
-                <a href="#sobre" className={styles.a}>Sobre</a>
+                <a href="#planos" className={styles.a}>Planos</a>
               </li>
               <li className={styles.li}>
-                <a href="#servicos" className={styles.a}>Serviços</a>
+                <a href="#sobre" className={styles.a}>Sobre</a>
               </li>
               <li className={styles.li}>
                 <a href="#contato" className={styles.a}>Contato</a>
@@ -109,7 +109,7 @@ const LandingPage = () => {
             ajudá-lo em cada etapa do caminho.
           </p>
         </section>
-<section>
+<section id="planos">
   <SubscriptionPlans />
 </section>
         <section id="contato" className={styles.contato}>
