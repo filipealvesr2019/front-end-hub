@@ -1,0 +1,27 @@
+/* PaymentToggle.module.css */
+.toggleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  padding: 5px;
+  width: 300px;
+  margin: 20px auto;
+}
+
+.toggleOption {
+  flex: 1;
+  text-align: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  color: black;
+}
+
+.active {
+  background-color: #000000;
+  color: white;
+}
+
+
+
