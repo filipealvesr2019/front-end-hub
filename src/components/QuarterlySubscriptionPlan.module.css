@@ -92,6 +92,8 @@
         flex-direction: column;
         justify-content: center;
         width: 80vw;
+        margin-top: -4rem;
+
       }
       .features{
         text-align: left;
