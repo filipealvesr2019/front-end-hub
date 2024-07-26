@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./MonthlySubscriptionPlan.module.css";
+import { Link, useParams } from "react-router-dom";
 
 const MonthlySubscriptionPlan = () => {
+  const [plan, setPlan] = useState('')
+
   return (
     <div>
       <div className={styles.container}>
@@ -9,6 +12,7 @@ const MonthlySubscriptionPlan = () => {
           <h2>gratuito</h2>
           <p className={styles.price}>R$0/mês</p>
           <p className={styles.bill}>sem cobrança</p>
+         
           <button className={styles.button}>Comece agora</button>
           <div className={styles.features}>
             <p>
@@ -27,7 +31,11 @@ const MonthlySubscriptionPlan = () => {
           <h2>Basico</h2>
           <p className={styles.price}>R$29/mês</p>
           <p className={styles.bill}>Cobrado mensalmente</p>
-          <button className={styles.button}>Comece agora</button>
+          <Link to={`/register/${plan}`}>
+          
+          <button className={styles.button} onClick={() => setPlan('monthly')}>Comece agora</button>
+          </Link>
+
           <div className={styles.features}>
             <p>
               {" "}
