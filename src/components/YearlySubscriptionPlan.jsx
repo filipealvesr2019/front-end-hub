@@ -16,7 +16,7 @@ const YearlySubscriptionPlan = () => {
               <b className={styles.b}>✓</b> 10 páginas por mês
             </p>
             <p>
-              <b className={styles.b}>✓</b> Edições ilimitadas
+              <b className={styles.b}>✓</b> Cadastro de ate 50 Produtos por mes
             </p>
             <p>
               <b className={styles.b}>✓</b> Suporte básico
@@ -34,7 +34,7 @@ const YearlySubscriptionPlan = () => {
               <b className={styles.b}>✓</b> 10 páginas por mês
             </p>
             <p>
-              <b className={styles.b}>✓</b> Edições ilimitadas
+              <b className={styles.b}>✓</b> Cadastro de Produtos ilimitados
             </p>
             <p>
               <b className={styles.b}>✓</b> Suporte básico
@@ -51,7 +51,7 @@ const YearlySubscriptionPlan = () => {
               <b className={styles.b}>✓</b> 50 páginas por trimestre
             </p>
             <p>
-              <b className={styles.b}>✓</b> Edições ilimitadas
+              <b className={styles.b}>✓</b> Cadastro de Produtos ilimitados
             </p>
             <p>
               <b className={styles.b}>✓</b> Suporte prioritário
@@ -68,7 +68,7 @@ const YearlySubscriptionPlan = () => {
               <b className={styles.b}>✓</b> Páginas ilimitadas
             </p>
             <p>
-              <b className={styles.b}>✓</b> Edições ilimitadas
+              <b className={styles.b}>✓</b> Cadastro de Produtos ilimitados
             </p>
             <p>
               <b className={styles.b}>✓</b> Suporte premium

@@ -123,4 +123,8 @@ section {
   .li a{
 color: white;
   }
+
+  .SubscriptionPlans{
+    margin-top: 35rem;
+  }
 }

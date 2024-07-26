@@ -109,7 +109,7 @@ const LandingPage = () => {
             ajudá-lo em cada etapa do caminho.
           </p>
         </section>
-<section id="planos">
+<section id="planos" className={styles.SubscriptionPlans}>
   <SubscriptionPlans />
 </section>
         <section id="contato" className={styles.contato}>
