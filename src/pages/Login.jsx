@@ -42,13 +42,7 @@ const Login = () => {
   if (loggedIn) {
     return (
       <div className="logout-container">
-        {isAdmin ? (
-          <AdminPage />
-        ) : isManager ? (
-          <ManagerPage />
-        ) : (
-          <EmployeePage />
-        )}
+        {isAdmin ? <AdminPage /> : ""}
         <div className="button" onClick={logout}>
           <LogoutIcon />
           <span>Sair</span>
@@ -122,18 +116,17 @@ const Login = () => {
               <span className="error-message">{formErrors.password}</span>
             )}
             <div className="loginStyle__links">
-            <Link to={"/register"}> 
-              <span className="span">
-                {" "}
-                Ainda nao tem uma conta{" "}
-                <b>Cadastre-se</b>
-              </span>
+              <Link to={"/register"}>
+                <span className="span">
+                  {" "}
+                  Ainda nao tem uma conta <b>Cadastre-se</b>
+                </span>
               </Link>
-              <Link to={"/forgotPassword"}> 
-              <span className="span">
-                {" "}
-                Esqueceu a senha <b>clique aqui</b>
-              </span>
+              <Link to={"/forgotPassword"}>
+                <span className="span">
+                  {" "}
+                  Esqueceu a senha <b>clique aqui</b>
+                </span>
               </Link>
             </div>
           </div>

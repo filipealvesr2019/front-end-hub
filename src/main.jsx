@@ -6,20 +6,14 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login.jsx";
 import { AuthProvider } from "../context/AuthContext.jsx";
-import PasswordResetRequest from "./pages/RegisterRegister.jsx";
-import ResetPasswordPage from "./pages/ResetPasswordPage.jsx";
-import RegisterLink from "./pages/RegisterLink.jsx";
-import Register from "./pages/Register.jsx";
+
 
 
 const Root = () => (
   <Routes>
     <Route path="/" element={<App />} />
     <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<RegisterLink/>} />
-    <Route path="/register/:token" element={<Register/>} />
-    <Route path="/forgotPassword" element={<PasswordResetRequest/>} />
-    <Route path="/reset-password/:token" element={<ResetPasswordPage/>} />
+   
   </Routes>
 );
 

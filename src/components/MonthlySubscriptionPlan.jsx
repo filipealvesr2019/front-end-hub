@@ -31,10 +31,10 @@ const MonthlySubscriptionPlan = () => {
           <h2>Basico</h2>
           <p className={styles.price}>R$29/mês</p>
           <p className={styles.bill}>Cobrado mensalmente</p>
-          <Link to={`/register/${plan}`}>
+      
           
           <button className={styles.button} onClick={() => setPlan('monthly')}>Comece agora</button>
-          </Link>
+
 
           <div className={styles.features}>
             <p>
