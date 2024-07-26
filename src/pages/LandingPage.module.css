@@ -70,6 +70,7 @@ section {
     justify-content: center;
     align-items: center; /* Adiciona alinhamento vertical ao centro */
     background-color: black;
+    height: 20vh;
   }
 
   .navContainer nav {

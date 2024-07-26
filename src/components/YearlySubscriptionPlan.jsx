@@ -25,7 +25,7 @@ const YearlySubscriptionPlan = () => {
         </div>
         <div className={styles.plan}>
           <h2>Basico</h2>
-          <p className={styles.price}>R$19/mês</p>
+          <p className={styles.price}>R$10/mês</p>
           <p className={styles.bill}>Cobrado mensalmente</p>
           <button className={styles.button}>Comece agora</button>
           <div className={styles.features}>
@@ -43,7 +43,7 @@ const YearlySubscriptionPlan = () => {
         </div>
         <div className={styles.plan}>
           <h2>Intermediario</h2>
-          <p className={styles.price}>R$69/mês</p>
+          <p className={styles.price}>R$59/mês</p>
           <p className={styles.bill}>Cobrado a cada 3 meses</p>
           <button className={styles.button}>Comece agora</button>
           <div className={styles.features}>

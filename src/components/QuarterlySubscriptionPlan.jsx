@@ -60,7 +60,7 @@ const QuarterlySubscriptionPlan = () => {
         </div>
         <div className={styles.plan}>
           <h2>Avançado</h2>
-          <p className={styles.price}>R$199/ano</p>
+          <p className={styles.price}>R$259/ano</p>
           <p className={styles.bill}>Cobrado anualmente</p>
           <button className={styles.button}>Comece agora</button>
           <div className={styles.features}>
