@@ -122,15 +122,19 @@ const Login = () => {
               <span className="error-message">{formErrors.password}</span>
             )}
             <div className="loginStyle__links">
+            <Link to={"/register"}> 
               <span className="span">
                 {" "}
                 Ainda nao tem uma conta{" "}
-                <Link to={"/register"}>Cadastre-se</Link>
+                <b>Cadastre-se</b>
               </span>
+              </Link>
+              <Link to={"/forgotPassword"}> 
               <span className="span">
                 {" "}
-                Esqueceu a senha <Link to={"/forgotPassword"}>clique aqui</Link>
+                Esqueceu a senha <b>clique aqui</b>
               </span>
+              </Link>
             </div>
           </div>
           {formErrors.password && (

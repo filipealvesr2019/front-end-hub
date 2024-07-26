@@ -122,3 +122,14 @@ input::placeholder{
   color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
 }
 
+@media screen and (min-width: 700px) {
+  .loginStyle__links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+  
+  .loginStyle__links span {
+    color: rgb(33, 33, 33);
+  }
+}
