@@ -16,7 +16,7 @@ const PasswordResetRequest = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/forgot-password', { email });
+      const response = await axios.post('http://localhost:3001/api/forgot-password', { email });
       toast.success("Email de recuperação enviado com sucesso cheque a sua caixa de email!");
 
     } catch (error) {

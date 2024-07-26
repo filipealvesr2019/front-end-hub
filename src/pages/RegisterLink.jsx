@@ -12,8 +12,8 @@ const RegisterLink = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newUser = { email, password, role: "customer" };
-      await axios.post("http://localhost:3001/register/request", newUser);
+      const newUser = { email, password, role: "administrador" };
+      await axios.post("http://localhost:3003/api/register/request", newUser);
       // Limpar o formulário após o envio bem-sucedido
       setEmail("");
       setPassword("");

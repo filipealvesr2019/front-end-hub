@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import AdminPage from '../pages/AdminPage';
-import EmployeePage from '../pages/EmployeePage';
-import LogoutIcon from '@mui/icons-material/Logout';
-import './Login.css';
-import ManagerPage from '../pages/ManagerPage';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { useAuth } from '../../context/AuthContext';
+import AdminPage from "../pages/AdminPage";
+import EmployeePage from "../pages/EmployeePage";
+import LogoutIcon from "@mui/icons-material/Logout";
+import "./Login.css";
+import ManagerPage from "../pages/ManagerPage";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 const Login = () => {
   const { loggedIn, isAdmin, isManager, login, logout, error } = useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false); // Estado para controlar a visibilidade da senha
 
@@ -26,11 +27,11 @@ const Login = () => {
     const errors = {};
 
     if (!email.trim()) {
-      errors.email = 'Campo obrigatório';
+      errors.email = "Campo obrigatório";
     }
 
     if (!password.trim()) {
-      errors.password = 'Campo obrigatório';
+      errors.password = "Campo obrigatório";
     }
 
     setFormErrors(errors);
@@ -40,9 +41,15 @@ const Login = () => {
 
   if (loggedIn) {
     return (
-      <div className='logout-container'>
-        {isAdmin ? <AdminPage /> : (isManager ? <ManagerPage /> : <EmployeePage />)}
-        <div className='button' onClick={logout}>
+      <div className="logout-container">
+        {isAdmin ? (
+          <AdminPage />
+        ) : isManager ? (
+          <ManagerPage />
+        ) : (
+          <EmployeePage />
+        )}
+        <div className="button" onClick={logout}>
           <LogoutIcon />
           <span>Sair</span>
         </div>
@@ -53,7 +60,7 @@ const Login = () => {
   return (
     <div className="body">
       <div className="container">
-        <div className='loginStyle'>
+        <div className="loginStyle">
           <h1>Login</h1>
           <label htmlFor="email">Email</label>
           <input
@@ -62,52 +69,73 @@ const Login = () => {
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-              setFormErrors((prevErrors) => ({ ...prevErrors, email: '' }));
+              setFormErrors((prevErrors) => ({ ...prevErrors, email: "" }));
             }}
-            className={formErrors.email ? 'error' : ''}
+            className={formErrors.email ? "error" : ""}
             style={{
-              border: error ? "2px solid red" : ""
+              border: error ? "2px solid red" : "",
             }}
-            
           />
-          {formErrors.email && <span className='error-message'>{formErrors.email}</span>}
+          {formErrors.email && (
+            <span className="error-message">{formErrors.email}</span>
+          )}
           <br />
           {error && <p>{error}</p>} {/* Exibe a mensagem de erro */}
-          <div style={{
-              position: "relative"
-            }}>
-          <label htmlFor="password">Senha</label>
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Digite a senha..."
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              setFormErrors((prevErrors) => ({ ...prevErrors, password: '' }));
-            }}
-            className={formErrors.password ? 'error' : ''}
+          <div
             style={{
-              border: error ? "2px solid red" : ""
+              position: "relative",
             }}
-            
-          />
+          >
+            <label htmlFor="password">Senha</label>
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Digite a senha..."
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setFormErrors((prevErrors) => ({
+                  ...prevErrors,
+                  password: "",
+                }));
+              }}
+              className={formErrors.password ? "error" : ""}
+              style={{
+                border: error ? "2px solid red" : "",
+              }}
+            />
 
-<div 
-                onClick={() => setShowPassword(!showPassword)}  // Alterna o estado de showPassword
-                style={{
-                  position: "absolute",
-                  right: "30px",
-                  top: "75%",
-                  transform: "translateY(-50%)",
-                  cursor: "pointer"
-                }}
-              >
-                {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-              </div>
-   
+            <div
+              onClick={() => setShowPassword(!showPassword)} // Alterna o estado de showPassword
+              style={{
+                position: "absolute",
+                right: "30px",
+                top: "75%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+              }}
+            >
+              {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </div>
           </div>
-         
-          {formErrors.password && <span className='error-message'>{formErrors.password}</span>}
+          <div className="loginStyle__button">
+            {formErrors.password && (
+              <span className="error-message">{formErrors.password}</span>
+            )}
+            <div className="loginStyle__links">
+              <span className="span">
+                {" "}
+                Ainda nao tem uma conta{" "}
+                <Link to={"/register"}>Cadastre-se</Link>
+              </span>
+              <span className="span">
+                {" "}
+                Esqueceu a senha <Link to={"/forgotPassword"}>clique aqui</Link>
+              </span>
+            </div>
+          </div>
+          {formErrors.password && (
+            <span className="error-message">{formErrors.password}</span>
+          )}
           <br />
           <button className="loginButton" onClick={handleLogin}>
             Login
