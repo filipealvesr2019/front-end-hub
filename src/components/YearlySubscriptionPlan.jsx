@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./SubscriptionPlan.module.css";
+import styles from "./YearlySubscriptionPlan.module.css";
 
-const SubscriptionPlans = () => {
+const YearlySubscriptionPlan = () => {
   return (
     <div>
       <div className={styles.container}>
@@ -25,7 +25,7 @@ const SubscriptionPlans = () => {
         </div>
         <div className={styles.plan}>
           <h2>Basico</h2>
-          <p className={styles.price}>R$29/mês</p>
+          <p className={styles.price}>R$19/mês</p>
           <p className={styles.bill}>Cobrado mensalmente</p>
           <button className={styles.button}>Comece agora</button>
           <div className={styles.features}>
@@ -43,7 +43,7 @@ const SubscriptionPlans = () => {
         </div>
         <div className={styles.plan}>
           <h2>Intermediario</h2>
-          <p className={styles.price}>R$79/mês</p>
+          <p className={styles.price}>R$69/mês</p>
           <p className={styles.bill}>Cobrado a cada 3 meses</p>
           <button className={styles.button}>Comece agora</button>
           <div className={styles.features}>
@@ -60,7 +60,7 @@ const SubscriptionPlans = () => {
         </div>
         <div className={styles.plan}>
           <h2>Avançado</h2>
-          <p className={styles.price}>R$299/ano</p>
+          <p className={styles.price}>R$199/ano</p>
           <p className={styles.bill}>Cobrado anualmente</p>
           <button className={styles.button}>Comece agora</button>
           <div className={styles.features}>
@@ -80,4 +80,4 @@ const SubscriptionPlans = () => {
   );
 };
 
-export default SubscriptionPlans;
+export default YearlySubscriptionPlan;

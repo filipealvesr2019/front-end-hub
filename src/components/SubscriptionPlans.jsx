@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './SubscriptionPlans.module.css';
-import SubscriptionPlan from './SubscriptionPlan';
+import MonthlySubscriptionPlan from './MonthlySubscriptionPlan';
+import YearlySubscriptionPlan from './YearlySubscriptionPlan';
 
 const PlanosDeAssinatura = () => {
     const [isMonthly, setIsMonthly] = useState(true);
@@ -22,8 +23,8 @@ const PlanosDeAssinatura = () => {
         Anual
       </div>
     </div>
-    {isMonthly &&   <SubscriptionPlan />}
-    {!isMonthly && 'conteudo Anual'}
+    {isMonthly &&   <MonthlySubscriptionPlan />}
+    {!isMonthly && <YearlySubscriptionPlan  />}
     
     </>
   );
