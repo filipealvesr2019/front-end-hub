@@ -1,22 +1,19 @@
 import React, { useState } from "react";
-
 import AdminPage from "../pages/AdminPage";
-import EmployeePage from "../pages/EmployeePage";
 import LogoutIcon from "@mui/icons-material/Logout";
 import "./Login.css";
-import ManagerPage from "../pages/ManagerPage";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext"; // Certifique-se de atualizar o caminho corretamente
 import { Link } from "react-router-dom";
+
 const Login = () => {
-  const { loggedIn, isAdmin, isManager, login, logout, error } = useAuth();
+  const { loggedIn, isAdmin, login, logout, error } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formErrors, setFormErrors] = useState({});
-  const [showPassword, setShowPassword] = useState(false); // Estado para controlar a visibilidade da senha
+  const [showPassword, setShowPassword] = useState(false);
 
-  const [messageErrorBorder, setMessageErrorBorder] = useState(null);
   const handleLogin = () => {
     if (validateForm()) {
       login(email, password);
@@ -35,7 +32,6 @@ const Login = () => {
     }
 
     setFormErrors(errors);
-
     return Object.keys(errors).length === 0;
   };
 
@@ -66,20 +62,14 @@ const Login = () => {
               setFormErrors((prevErrors) => ({ ...prevErrors, email: "" }));
             }}
             className={formErrors.email ? "error" : ""}
-            style={{
-              border: error ? "2px solid red" : "",
-            }}
+            style={{ border: error ? "2px solid red" : "" }}
           />
           {formErrors.email && (
             <span className="error-message">{formErrors.email}</span>
           )}
           <br />
-          {error && <p>{error}</p>} {/* Exibe a mensagem de erro */}
-          <div
-            style={{
-              position: "relative",
-            }}
-          >
+          {error && <p>{error}</p>}
+          <div style={{ position: "relative" }}>
             <label htmlFor="password">Senha</label>
             <input
               type={showPassword ? "text" : "password"}
@@ -87,19 +77,13 @@ const Login = () => {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
-                setFormErrors((prevErrors) => ({
-                  ...prevErrors,
-                  password: "",
-                }));
+                setFormErrors((prevErrors) => ({ ...prevErrors, password: "" }));
               }}
               className={formErrors.password ? "error" : ""}
-              style={{
-                border: error ? "2px solid red" : "",
-              }}
+              style={{ border: error ? "2px solid red" : "" }}
             />
-
             <div
-              onClick={() => setShowPassword(!showPassword)} // Alterna o estado de showPassword
+              onClick={() => setShowPassword(!showPassword)}
               style={{
                 position: "absolute",
                 right: "30px",
@@ -118,21 +102,16 @@ const Login = () => {
             <div className="loginStyle__links">
               <Link to={"/register"}>
                 <span className="span">
-                  {" "}
-                  Ainda nao tem uma conta <b>Cadastre-se</b>
+                  Ainda não tem uma conta? <b>Cadastre-se</b>
                 </span>
               </Link>
               <Link to={"/forgotPassword"}>
                 <span className="span">
-                  {" "}
-                  Esqueceu a senha <b>clique aqui</b>
+                  Esqueceu a senha? <b>Clique aqui</b>
                 </span>
               </Link>
             </div>
           </div>
-          {formErrors.password && (
-            <span className="error-message">{formErrors.password}</span>
-          )}
           <br />
           <button className="loginButton" onClick={handleLogin}>
             Login
