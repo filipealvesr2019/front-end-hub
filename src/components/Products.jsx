@@ -1,7 +1,7 @@
 export default function Products(){
     return (
         <>
-        Products
+        Produto mostrado
         </>
     )
 }
