@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 const Signup = () => {
+  const customerID = Cookies.get('customerID'); // Obtenha o ID do cliente do cookie
+
   const [formData, setFormData] = useState({
-    custumerId: '',
+    customerId: customerID, // Corrigido
     name: '',
     cpfCnpj: '',
     mobilePhone: '',
@@ -46,7 +49,7 @@ const Signup = () => {
     <div>
       <h2>Cadastro de Usuário</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="custumerId" placeholder="Customer ID" onChange={handleChange} value={formData.custumerId} required />
+        {/* Remova o campo de Customer ID do formulário */}
         <input type="text" name="name" placeholder="Nome" onChange={handleChange} value={formData.name} required />
         <input type="text" name="cpfCnpj" placeholder="CPF/CNPJ" onChange={handleChange} value={formData.cpfCnpj} required />
         <input type="text" name="mobilePhone" placeholder="Telefone" onChange={handleChange} value={formData.mobilePhone} required />
