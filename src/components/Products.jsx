@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Signup from '../pages/Signup'
+import styles from './Products.module.css'
 export default function Products(){
     const [showForm, setShowForm] = useState(false)
     const [customer, setCustomer] = useState(null);
@@ -8,9 +9,9 @@ export default function Products(){
     useEffect(() => {
       const fetchCustomer = async () => {
         try {
-          const response = await axios.get(`http://localhost:3002/api/customer/66a18fbeefe29016ebc5032d`);
+          const response = await axios.get(`http://localhost:3003/api/customer/66a18fbeefe29016ebc5032d`);
           setCustomer(response.data);
-          console.log()
+          console.log(response.data)
         } catch (err) {
           setError(err.response?.data?.message || 'Erro ao buscar cliente.');
         }

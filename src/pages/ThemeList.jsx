@@ -9,7 +9,7 @@ const ThemeList = () => {
   useEffect(() => {
     const fetchThemes = async () => {
       try {
-        const response = await axios.get('http://localhost:3002/api/themes');
+        const response = await axios.get('http://localhost:3003/api/themes');
         setThemes(response.data);
       } catch (err) {
         setError(err.message);

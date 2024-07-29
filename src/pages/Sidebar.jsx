@@ -5,6 +5,7 @@ import ThemeList from './ThemeList';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { Link, useParams } from 'react-router-dom';
 import HeaderSidebar from '../components/HeaderSidebar';
+import Products from '../components/Products';
 
 const HomeIcon = () => (
   <svg className={styles.icon} viewBox="0 0 20 20" fill="currentColor">
@@ -84,6 +85,7 @@ const Sidebar = () => {
     
       <div className={styles.content}>
         {content === 'temas' ? <ThemeList /> : content}
+        {content === 'Produtos' && <Products />}
       </div>
       <div className={styles.iconContainer}>
         <Link to={`/loja`} className={styles.icon}>

@@ -1,490 +1,68 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
-import Navbar from "./Navbar";
-import Header from "./Header";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
-import styles from "./SignUpForm.module.css"
+import React, { useState } from 'react';
+import axios from 'axios';
 
-
-
-
-
-
-
-
-
-
-
-const SignUpForm = () => {
-  const userId = Cookies.get("userId"); // Obtenha o token do cookie
-  const [showCEP, setShowCEP] = useState(false);
-  const [formComplete, setFormComplete] = useState(false);
-  const navigate = useNavigate(); // Inicialize o hook useNavigate
-  const [IsCepInvalid, setIsCepInvalid] = useState(false)
+const Signup = () => {
   const [formData, setFormData] = useState({
-    custumerId: userId, // Usando o userId do usuário logado
-    name: "",
-    cpfCnpj: "",
-    email: "",
-    mobilePhone: "",
-    postalCode: "",
-    address: "",
-    addressNumber: "",
-    complement: "",
-    province: "",
-    city: "",
-    state: "",
+    custumerId: '',
+    name: '',
+    cpfCnpj: '',
+    mobilePhone: '',
+    email: '',
+    postalCode: '',
+    address: '',
+    addressNumber: '',
+    complement: '',
+    province: '',
+    city: '',
+    state: '',
+    asaasCustomerId: ''
   });
-  useEffect(() => {
-    // Verifica se todos os campos obrigatórios estão preenchidos
-    const requiredFields = [
-      "name",
-      "cpfCnpj",
-      "email",
-      "mobilePhone",
-      "postalCode",
-      "address",
-      "addressNumber",
-      "province",
-      "city",
-      "state",
-    ];
-    const isComplete = requiredFields.every((field) => formData[field].trim() !== "");
-    setFormComplete(isComplete);
-  }, [formData]);
+
+  const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-
-    const numericValue = value.replace(/\D/g, "");
-
-    // Atualizar o estado com o valor numérico
-    setFormData({ ...formData, [name]: numericValue });
-    const formDataWithoutSymbols = {
+    setFormData({
       ...formData,
-      cpfCnpj: formData.cpfCnpj.replace(/\D/g, ""),
-      mobilePhone: formData.mobilePhone.replace(/\D/g, ""),
-    };
-    // Aplicar máscara para o CPF
-    if (name === "cpfCnpj") {
-      const maskedValue = value
-        .replace(/\D/g, "") // Remove caracteres não numéricos
-        .replace(/(\d{3})(\d)/, "$1.$2") // Coloca ponto entre o terceiro e o quarto dígitos
-        .replace(/(\d{3})(\d)/, "$1.$2") // Coloca ponto entre o sexto e o sétimo dígitos
-        .replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // Coloca hífen entre o nono e o décimo primeiro dígitos
-
-      setFormData({ ...formData, [name]: maskedValue });
-    }
-    // Aplicar máscara para o número de telefone
-    else if (name === "mobilePhone") {
-      const maskedValue = value
-        .replace(/\D/g, "") // Remove caracteres não numéricos
-        .replace(/(\d{2})(\d)/, "($1) $2") // Coloca parênteses em volta dos dois primeiros dígitos
-        .replace(/(\d{4,5})(\d{4})/, "$1-$2"); // Coloca hífen entre o quarto ou quinto e o nono dígitos
-
-      setFormData({ ...formData, [name]: maskedValue });
-    }
-    // Outros campos
-    else {
-      setFormData({ ...formData, [name]: value });
-    }
-    // Verifica se todos os campos obrigatórios estão preenchidos
-    const requiredFields = [
-      "name",
-      "cpfCnpj",
-      "email",
-      "mobilePhone",
-      "postalCode",
-      "address",
-      "addressNumber",
-      "province",
-      "city",
-      "state",
-    ];
-    const isComplete = requiredFields.every((field) => formData[field]);
-    setFormComplete(isComplete);
+      [name]: value
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Remover todos os caracteres não numéricos do CPF e do número de telefone
-
-    // Verifica se todos os campos obrigatórios estão preenchidos
-    const requiredFields = [
-      "name",
-      "cpfCnpj",
-      "email",
-      "mobilePhone",
-      "postalCode",
-      "address",
-      "addressNumber",
-      "province",
-      "city",
-      "state",
-    ];
-    const isComplete = requiredFields.every((field) => formData[field]);
-
-    if (!isComplete) {
-      toast.error("Por favor, preencha todos os campos obrigatórios.");
-      return;
-    }
-    toast.success("Usuario cadastrado com sucesso.");
-
     try {
-      const response = await axios.post(
-        "http://localhost:3002/api/signup",
-        formData
-      );
-      console.log("Dados enviados com sucesso:", response.data);
-
-      if (response.data) {
-
-        navigate("/home");
-      }
-
-      // Você pode redirecionar o usuário ou realizar outras ações após o envio bem-sucedido
+      const response = await axios.post('http://localhost:3003/api/signup', formData);
+      setMessage(response.data.message);
     } catch (error) {
-      console.error("Erro ao enviar informações do usuário:", error);
-      // Trate erros aqui, como exibir uma mensagem para o usuário
-    }
-  };
-
-  const handleCepChange = async (event) => {
-    const newCep = event.target.value.replace(/\D/g, ""); // Remove caracteres não numéricos
-    setFormData({ ...formData, postalCode: newCep });
-
-    if (newCep.length === 8) {
-      try {
-        const response = await axios.get(
-          `https://viacep.com.br/ws/${newCep}/json/`,
-          {}
-        );
-        const data = response.data;
-        if (data.erro) {
-          setIsCepInvalid(true)
-          setShowCEP(false)
-        } else {
-          setFormData((prevFormData) => ({
-            ...prevFormData,
-            address: data.logradouro,
-            complement: data.complemento,
-            province: data.bairro,
-            city: data.localidade,
-            state: data.uf,
-          }));
-          setShowCEP(true);
-          setIsCepInvalid(false)
-
-        }
-
-
-      } catch (error) {
-        setIsCepInvalid(true)
-        setShowCEP(false)
-        console.error("Erro ao buscar endereço:", error);
-        // Trate erros aqui, como exibir uma mensagem para o usuário
+      if (error.response) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('Erro ao criar usuário.');
       }
     }
   };
 
-  const formatCep = (cep) => {
-    // Remove todos os caracteres não numéricos
-    const numericCep = cep.replace(/\D/g, "");
-
-    // Aplica a máscara
-    if (numericCep.length > 5) {
-      return `${numericCep.slice(0, 5)}-${numericCep.slice(5, 8)}`;
-    } else {
-      return numericCep;
-    }
-  };
-
-  const inputStyle = {
-    border: Object.values(formData).some((val) => val !== "")
-      ? "1px solid #ccc"
-      : "1px solid red",
-  };
   return (
-    <>
-      <Header />
-      <Navbar />
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        style={{ marginTop: "8rem" }}
-      />
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", marginTop: "15rem" }}
-        className={styles.formContainer}
-      >
-        <h1 className={styles.dados}>DADOS PESSOAIS</h1>
-
-        <div className={styles.childContainerA}>
-
-
-          <div className={styles.child}>
-            <label className={styles.label}>
-              Nome Completo:
-
-            </label>
-            <input
-              type="text"
-              name="name"
-              onChange={handleChange}
-              value={formData.name}
-              style={inputStyle}
-              className={styles.input}
-              placeholder="digite o nome completo..."
-            />
-          </div>
-
-          <div className={styles.child}>
-            <label className={styles.label}>
-              CPF:
-
-            </label>
-            <input
-              type="text"
-              name="cpfCnpj"
-              onChange={handleChange}
-              value={formData.cpfCnpj}
-              style={inputStyle}
-              className={styles.input}
-              placeholder="123.456.789-09"
-            />
-          </div>
-
-          <div className={styles.child}>
-            <label className={styles.label}>
-              Email:
-
-            </label >
-            <input
-              type="email"
-              name="email"
-              onChange={handleChange}
-              value={formData.email}
-              style={inputStyle}
-              className={styles.input}
-              placeholder="digite o email..."
-            />
-          </div>
-
-
-
-
-          <div className={styles.child}>
-
-            <label className={styles.label}>
-              Telefone:
-
-            </label>
-            <input
-              type="text"
-              name="mobilePhone"
-              onChange={handleChange}
-              value={formData.mobilePhone}
-              style={inputStyle}
-              className={styles.input}
-              placeholder="77 88888-8888"
-
-            />
-          </div>
-
-
-
-
-
-        </div>
-
-
-        <h1 className={styles.endereco}>ENDEREÇO</h1>
-
-
-        <div className={styles.childContainerB}>
-
-
-          <div className={styles.child}>
-
-            <label className={styles.label}>
-              CEP:
-
-            </label>
-            <input
-              type="text"
-              name="postalCode"
-              onChange={handleCepChange}
-              value={formatCep(formData.postalCode)}
-              placeholder="77777-777"
-              style={inputStyle}
-              className={styles.input}
-
-            />
-            {IsCepInvalid && (
-              <>
-                <span className={styles.errorCEP}>Cep invalido tente novamente.</span></>
-
-            )}
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-          {showCEP && (
-            <>
-
-              <div className={styles.child}>
-                <label className={styles.label}>
-                  Address:
-
-                </label>
-
-                <input
-                  type="text"
-                  name="address"
-                  onChange={handleChange}
-                  value={formData.address}
-                  style={inputStyle}
-                  className={styles.input}
-
-                />
-              </div>
-
-              <div className={styles.child}>
-                <label className={styles.label}>
-                  Número do endereço:
-
-                </label>
-
-
-                <input
-                  type="text"
-                  name="addressNumber"
-                  onChange={handleChange}
-                  value={formData.addressNumber}
-                  style={inputStyle}
-                  className={styles.input}
-
-                />
-              </div>
-
-
-
-
-
-
-
-              <div className={styles.child}>
-                <label className={styles.label}>
-                  Complemento:
-
-                </label>
-                <input
-                  type="text"
-                  name="complement"
-                  onChange={handleChange}
-                  value={formData.complement}
-                  className={styles.input}
-
-                />
-
-              </div>
-
-
-
-              <div className={styles.child}>
-
-                <label className={styles.label}>
-                  Bairro:
-
-                </label>
-                <input
-                  type="text"
-                  name="province"
-                  onChange={handleChange}
-                  value={formData.province}
-                  style={inputStyle}
-                  className={styles.input}
-
-                />
-
-              </div>
-
-
-
-              <div className={styles.child}>
-
-                <label className={styles.label}>
-                  Cidade:
-
-                </label>
-                <input
-                  type="text"
-                  name="city"
-                  onChange={handleChange}
-                  value={formData.city}
-                  style={inputStyle}
-                  className={styles.input}
-
-                />
-
-
-              </div>
-
-
-
-
-
-
-              <div className={styles.child}>
-                <label className={styles.label}>
-                  Estado:
-
-                </label>
-                <input
-                  type="text"
-                  name="state"
-                  onChange={handleChange}
-                  value={formData.state}
-                  style={inputStyle}
-                  className={styles.input}
-
-                />
-
-              </div>
-
-            </>
-          )}
-        </div>
-
-
-        <button type="submit" disabled={!formComplete} style={{ backgroundColor: formComplete ? "#05070A" : "#ccc" }} className={styles.ButtonDataCustomer}>
-          Salvar
-        </button>
+    <div>
+      <h2>Cadastro de Usuário</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="custumerId" placeholder="Customer ID" onChange={handleChange} value={formData.custumerId} required />
+        <input type="text" name="name" placeholder="Nome" onChange={handleChange} value={formData.name} required />
+        <input type="text" name="cpfCnpj" placeholder="CPF/CNPJ" onChange={handleChange} value={formData.cpfCnpj} required />
+        <input type="text" name="mobilePhone" placeholder="Telefone" onChange={handleChange} value={formData.mobilePhone} required />
+        <input type="email" name="email" placeholder="Email" onChange={handleChange} value={formData.email} required />
+        <input type="text" name="postalCode" placeholder="CEP" onChange={handleChange} value={formData.postalCode} required />
+        <input type="text" name="address" placeholder="Endereço" onChange={handleChange} value={formData.address} required />
+        <input type="text" name="addressNumber" placeholder="Número" onChange={handleChange} value={formData.addressNumber} required />
+        <input type="text" name="complement" placeholder="Complemento" onChange={handleChange} value={formData.complement} />
+        <input type="text" name="province" placeholder="Bairro" onChange={handleChange} value={formData.province} required />
+        <input type="text" name="city" placeholder="Cidade" onChange={handleChange} value={formData.city} required />
+        <input type="text" name="state" placeholder="Estado" onChange={handleChange} value={formData.state} required />
+        <button type="submit">Cadastrar</button>
       </form>
-    </>
+      {message && <p>{message}</p>}
+    </div>
   );
 };
 
-export default SignUpForm;
+export default Signup;
