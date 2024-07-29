@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
 import styles from './Sidebar.module.css';
-import ThemeList from './ThemeList';
+import ThemeList from '../ecommerce/ThemeList';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { Link, useParams } from 'react-router-dom';
 import HeaderSidebar from '../components/HeaderSidebar';
@@ -9,15 +9,18 @@ import Products from '../components/Products';
 import NavBarFromSidebar from '../components/NavBarFromSidebar'
 
 import {
+  ChakraProvider,
+
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
   MenuGroup,
-  MenuOptionGroup,
   MenuDivider,
-} from '@chakra-ui/react'
+  IconButton,
+ 
+} from '@chakra-ui/react';
+import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 const HomeIcon = () => (
   <svg className={styles.icon} viewBox="0 0 20 20" fill="currentColor">
     <path d="M10 20V14H14V20H19V10H16L10 3.5L4 10H1V20H6V14H10V20Z" />
@@ -83,6 +86,7 @@ const Sidebar = () => {
         <Flex className={styles.sidebarItem} onClick={() => setContent('Produtos')}>
           <StarIcon />
           <Text className={styles.itemText}>Produtos</Text>
+          
         </Flex>
         <Flex className={styles.sidebarItem} onClick={() => setContent('temas')}>
           <SettingsIcon />

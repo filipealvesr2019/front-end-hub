@@ -11,9 +11,9 @@
     display: flex;
     justify-content: right;
 }
-.icon{
+.iconContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 5vw;
+    width: 10vw;
 }

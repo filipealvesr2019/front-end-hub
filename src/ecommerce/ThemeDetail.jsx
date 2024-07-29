@@ -11,7 +11,7 @@ const ThemeDetail = () => {
   useEffect(() => {
     const fetchTheme = async () => {
       try {
-        const response = await axios.get(`http://localhost:3002/api/theme/${id}`);
+        const response = await axios.get(`http://localhost:3003/api/theme/${id}`);
         setTheme(response.data);
       } catch (err) {
         setError(err.message);

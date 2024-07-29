@@ -35,6 +35,7 @@
   
   .sidebarItem {
     display: flex;
+    flex-direction: row;
     align-items: center;
     color: gray;
     cursor: pointer;

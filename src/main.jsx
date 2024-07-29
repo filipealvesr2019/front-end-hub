@@ -11,7 +11,9 @@ import Register from "./pages/Register.jsx";
 
 import PasswordResetRequest from "./pages/PasswordResetRequest.jsx";
 import ResetPasswordPage from "./pages/ResetPasswordPage.jsx";
+import ThemeDetail from "./ecommerce/ThemeDetail.jsx";
 
+import LojaPage from "./ecommerce/LojaPage.jsx";
 
 const Root = () => (
   <Routes>
@@ -22,6 +24,8 @@ const Root = () => (
     <Route path="/register/:token" element={<Register/>} />
     <Route path="/forgotPassword" element={<PasswordResetRequest/>} />
     <Route path="/reset-password/:token" element={<ResetPasswordPage/>} />
+    <Route path="/loja" element={<LojaPage />} />
+    <Route path="/theme/:id" element={<ThemeDetail />} />
   </Routes>
 );
 
