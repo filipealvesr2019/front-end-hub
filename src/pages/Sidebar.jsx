@@ -39,72 +39,55 @@ const SettingsIcon = () => (
 );
 
 const Sidebar = () => {
-  const [content, setContent] = useState("home");
+  const [content, setContent] = useState("");
 
   return (
     <div className={styles.SidebarContainer}>
-      <HeaderSidebar />
-      <Box className={styles.sidebar}>
-        <Flex className={styles.sidebarItem} onClick={() => setContent("home")}>
-          <HomeIcon />
-          <Text className={styles.itemText}>Home</Text>
-        </Flex>
-        <Flex
-          className={styles.sidebarItem}
-          onClick={() => setContent("Produtos")}
-        >
-          <StarIcon />
-          <span className={styles.itemText}>Produtos</span>
-        </Flex>
+    <HeaderSidebar />
+    <Box className={styles.sidebar}>
+      <Flex className={`${styles.sidebarItem} ${content === "home" ? styles.active : ""}`} onClick={() => setContent("home")}>
+        <HomeIcon />
+        <Text className={styles.itemText}>Home</Text>
+      </Flex>
+      <Flex className={`${styles.sidebarItem} ${content === "Produtos" ? styles.active : ""}`} onClick={() => setContent("Produtos")}>
+        <StarIcon />
+        <span className={styles.itemText}>Produtos</span>
+      </Flex>
+      <Flex className={`${styles.sidebarItem} ${content === "temas" ? styles.active : ""}`} onClick={() => setContent("temas")}>
+        <SettingsIcon />
+        <Text className={styles.itemText}>temas</Text>
+      </Flex>
+      <Flex className={`${styles.sidebarItem} ${content === "Pedidos" ? styles.active : ""}`} onClick={() => setContent("Pedidos")}>
+        <ShoppingCartIcon />
+        <Text className={styles.itemText}>Pedidos</Text>
+      </Flex>
+      <Flex className={`${styles.sidebarItem} ${content === "Clientes" ? styles.active : ""}`} onClick={() => setContent("Clientes")}>
+        <UserIcon />
+        <Text className={styles.itemText}>Clientes</Text>
+      </Flex>
+      <Flex className={`${styles.sidebarItem} ${content === "Configurações" ? styles.active : ""}`} onClick={() => setContent("Configurações")}>
+        <SettingsIcon />
+        <Text className={styles.itemText}>Configurações</Text>
+      </Flex>
+    </Box>
 
-        <Flex
-          className={styles.sidebarItem}
-          onClick={() => setContent("temas")}
-        >
-          <SettingsIcon />
-          <Text className={styles.itemText}>temas</Text>
-        </Flex>
-        <Flex
-          className={styles.sidebarItem}
-          onClick={() => setContent("Pedidos")}
-        >
-          <ShoppingCartIcon />
-          <Text className={styles.itemText}>Pedidos</Text>
-        </Flex>
-        <Flex
-          className={styles.sidebarItem}
-          onClick={() => setContent("Clientes")}
-        >
-          <UserIcon />
-          <Text className={styles.itemText}>Clientes</Text>
-        </Flex>
-        <Flex
-          className={styles.sidebarItem}
-          onClick={() => setContent("Configurações")}
-        >
-          <SettingsIcon />
-          <Text className={styles.itemText}>Configurações</Text>
-        </Flex>
-      </Box>
-
-      <div className={styles.content}>
-        {content === "home" && "home"}
-        {content === "temas" && <ThemeList />}
-        {content === "Pedidos" && "Pedidos"}
-        {content === "Clientes" && "Clientes"}
-        {content === "Produtos" && <Products />}
-
-        {content === "Configurações" && "Configurações"}
-      </div>
-
-      <div className={styles.iconContainer}>
-        <Link to={`/loja`} className={styles.icon}>
-          <div>
-            <LocalMallOutlinedIcon />
-          </div>
-        </Link>
-      </div>
+    <div className={styles.content}>
+      {content === "home" && "home"}
+      {content === "temas" && <ThemeList />}
+      {content === "Pedidos" && "Pedidos"}
+      {content === "Clientes" && "Clientes"}
+      {content === "Produtos" && <Products />}
+      {content === "Configurações" && "Configurações"}
     </div>
+
+    <div className={styles.iconContainer}>
+      <Link to={`/loja`} className={styles.icon}>
+        <div>
+          <LocalMallOutlinedIcon />
+        </div>
+      </Link>
+    </div>
+  </div>
   );
 };
 
