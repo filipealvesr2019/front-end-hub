@@ -1,37 +1,49 @@
 import { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
+
 import Signup from '../pages/Signup'
+import axios from "axios";
 export default function Products(){
 
-    // const [customer, setCustomer] = useState(null);
-    // const [error, setError] = useState(null);
-  
-    // useEffect(() => {
-    //   const fetchCustomer = async () => {
-    //     try {
-    //       const response = await axios.get(`http://localhost:3003/api/customer/cus_000006132423`);
-    //       setCustomer(response.data);
-    //     } catch (err) {
-    //       setError(err.response?.data?.message || 'Erro ao buscar cliente.');
-    //     }
-    //   };
-  
-    //   fetchCustomer();
-    // }, []);
-  
-    // if (error) {
-    //   return <div >{error}</div>;
-    // }
-  
-    // if (!customer) {
-    //   return <div >Carregando...</div>;
-    // }
+  const customerID = Cookies.get('customerID'); // Obtenha o ID do cliente do cookie
+  const [customerDetails, setCustomerDetails] = useState(null);
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  useEffect(() => {
+    if (customerID) {
+      const fetchCustomerDetails = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3003/api/customer/${customerID}`);
+          setCustomerDetails(response.data);
+          if(isRegistered === true){
+            setIsRegistered(response.data.isRegistered)
+
+          } else {
+            setIsRegistered(false)
+          }
+        } catch (error) {
+          console.error('Erro ao buscar detalhes do cliente:', error);
+        }
+      };
+
+      fetchCustomerDetails();
+    }
+  }, [customerID]);
+
+  if (!customerID) {
+    return <div>Cliente não está logado.</div>;
+  }
+
+  if (!customerDetails) {
+    return <div>Carregando detalhes do cliente...</div>;
+  }
     return (
         <>
-        Products
- 
-        <Signup />
+        
+        <p>{isRegistered ? <>Produtos</> :  <Signup />}</p>
+       
         </>
     )
 }
