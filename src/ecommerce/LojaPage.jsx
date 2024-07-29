@@ -6,6 +6,7 @@ const LojaPage = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false);
+  const [editingSection, setEditingSection] = useState(null);
   const [headerBackgroundColor, setHeaderBackgroundColor] = useState('');
   const [headerColor, setHeaderColor] = useState('');
   const [mainBackgroundColor, setMainBackgroundColor] = useState('');
@@ -42,9 +43,85 @@ const LojaPage = () => {
         },
       });
       setIsEditMode(false);
+      setEditingSection(null);
       alert('Tema atualizado com sucesso!');
     } catch (error) {
       console.error('Erro ao atualizar o tema:', error);
+    }
+  };
+
+  const renderEditControls = () => {
+    if (!isEditMode) return null;
+
+    switch (editingSection) {
+      case 'headerBackground':
+        return (
+          <div>
+            <label>
+              Cor de Fundo do Header:
+              <input
+                type="color"
+                value={headerBackgroundColor}
+                onChange={(e) => setHeaderBackgroundColor(e.target.value)}
+              />
+            </label>
+          </div>
+        );
+      case 'headerText':
+        return (
+          <div>
+            <label>
+              Cor do Texto do Header:
+              <input type="color" value={headerColor} onChange={(e) => setHeaderColor(e.target.value)} />
+            </label>
+          </div>
+        );
+      case 'mainBackground':
+        return (
+          <div>
+            <label>
+              Cor de Fundo do Main:
+              <input
+                type="color"
+                value={mainBackgroundColor}
+                onChange={(e) => setMainBackgroundColor(e.target.value)}
+              />
+            </label>
+          </div>
+        );
+      case 'mainText':
+        return (
+          <div>
+            <label>
+              Cor do Texto do Main:
+              <input type="color" value={mainColor} onChange={(e) => setMainColor(e.target.value)} />
+            </label>
+          </div>
+        );
+      case 'footerBackground':
+        return (
+          <div>
+            <label>
+              Cor de Fundo do Footer:
+              <input
+                type="color"
+                value={footerBackgroundColor}
+                onChange={(e) => setFooterBackgroundColor(e.target.value)}
+              />
+            </label>
+          </div>
+        );
+      case 'footerText':
+        return (
+          <div>
+            <label>
+              Cor do Texto do Footer:
+              <input type="color" value={footerColor} onChange={(e) => setFooterColor(e.target.value)} />
+            </label>
+          </div>
+        );
+      default:
+        return null;
     }
   };
 
@@ -57,59 +134,46 @@ const LojaPage = () => {
       <button onClick={() => setIsEditMode(!isEditMode)}>
         {isEditMode ? 'Salvar' : 'Editar Tema'}
       </button>
-      {isEditMode && (
-        <div>
-          <div>
-            <label>
-              Cor de Fundo do Header:
-              <input
-                type="color"
-                value={headerBackgroundColor}
-                onChange={(e) => setHeaderBackgroundColor(e.target.value)}
-              />
-            </label>
-            <label>
-              Cor do Texto do Header:
-              <input type="color" value={headerColor} onChange={(e) => setHeaderColor(e.target.value)} />
-            </label>
-          </div>
-          <div>
-            <label>
-              Cor de Fundo do Main:
-              <input
-                type="color"
-                value={mainBackgroundColor}
-                onChange={(e) => setMainBackgroundColor(e.target.value)}
-              />
-            </label>
-            <label>
-              Cor do Texto do Main:
-              <input type="color" value={mainColor} onChange={(e) => setMainColor(e.target.value)} />
-            </label>
-          </div>
-          <div>
-            <label>
-              Cor de Fundo do Footer:
-              <input
-                type="color"
-                value={footerBackgroundColor}
-                onChange={(e) => setFooterBackgroundColor(e.target.value)}
-              />
-            </label>
-            <label>
-              Cor do Texto do Footer:
-              <input type="color" value={footerColor} onChange={(e) => setFooterColor(e.target.value)} />
-            </label>
-          </div>
-        </div>
-      )}
-      <div style={{ backgroundColor: mainBackgroundColor, color: mainColor }}>
-        <header style={{ backgroundColor: headerBackgroundColor, color: headerColor }}>
-          Header da Loja
+      {isEditMode && renderEditControls()}
+      <div
+        style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
+        onClick={() => isEditMode && setEditingSection('mainBackground')}
+      >
+        <header
+          style={{ backgroundColor: headerBackgroundColor, color: headerColor }}
+          onClick={(e) => {
+            e.stopPropagation();
+            if (isEditMode) setEditingSection('headerBackground');
+          }}
+        >
+          <span onClick={(e) => {
+            e.stopPropagation();
+            if (isEditMode) setEditingSection('headerText');
+          }}>
+            Header da Loja
+          </span>
         </header>
-        <main>Conteúdo Principal da Loja</main>
-        <footer style={{ backgroundColor: footerBackgroundColor, color: footerColor }}>
-          Footer da Loja
+        <main>
+          <span onClick={(e) => {
+            e.stopPropagation();
+            if (isEditMode) setEditingSection('mainText');
+          }}>
+            Conteúdo Principal da Loja
+          </span>
+        </main>
+        <footer
+          style={{ backgroundColor: footerBackgroundColor, color: footerColor }}
+          onClick={(e) => {
+            e.stopPropagation();
+            if (isEditMode) setEditingSection('footerBackground');
+          }}
+        >
+          <span onClick={(e) => {
+            e.stopPropagation();
+            if (isEditMode) setEditingSection('footerText');
+          }}>
+            Footer da Loja
+          </span>
         </footer>
       </div>
     </div>
