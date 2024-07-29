@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import { Box, Flex, Text } from "@chakra-ui/react";
-import styles from "./Sidebar.module.css";
-import ThemeList from "./ThemeList";
-import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-import { Link, useParams } from "react-router-dom";
-import Products from "../components/Products";
-import HeaderSidebar from "../components/HeaderSidebar";
-
+import React, { useState } from 'react';
+import { Box, Flex, Text } from '@chakra-ui/react';
+import styles from './Sidebar.module.css';
+import ThemeList from './ThemeList';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import { Link, useParams } from 'react-router-dom';
+import HeaderSidebar from '../components/HeaderSidebar';
 
 const HomeIcon = () => (
   <svg className={styles.icon} viewBox="0 0 20 20" fill="currentColor">
@@ -38,56 +36,63 @@ const SettingsIcon = () => (
   </svg>
 );
 
+
+
+
+
+
+
+
+
 const Sidebar = () => {
-  const [content, setContent] = useState("");
+
+  const [content, setContent] = useState('home');
+
 
   return (
     <div className={styles.SidebarContainer}>
-    <HeaderSidebar />
-    <Box className={styles.sidebar}>
-      <Flex className={`${styles.sidebarItem} ${content === "home" ? styles.active : ""}`} onClick={() => setContent("home")}>
-        <HomeIcon />
-        <Text className={styles.itemText}>Home</Text>
-      </Flex>
-      <Flex className={`${styles.sidebarItem} ${content === "Produtos" ? styles.active : ""}`} onClick={() => setContent("Produtos")}>
-        <StarIcon />
-        <span className={styles.itemText}>Produtos</span>
-      </Flex>
-      <Flex className={`${styles.sidebarItem} ${content === "temas" ? styles.active : ""}`} onClick={() => setContent("temas")}>
-        <SettingsIcon />
-        <Text className={styles.itemText}>temas</Text>
-      </Flex>
-      <Flex className={`${styles.sidebarItem} ${content === "Pedidos" ? styles.active : ""}`} onClick={() => setContent("Pedidos")}>
-        <ShoppingCartIcon />
-        <Text className={styles.itemText}>Pedidos</Text>
-      </Flex>
-      <Flex className={`${styles.sidebarItem} ${content === "Clientes" ? styles.active : ""}`} onClick={() => setContent("Clientes")}>
-        <UserIcon />
-        <Text className={styles.itemText}>Clientes</Text>
-      </Flex>
-      <Flex className={`${styles.sidebarItem} ${content === "Configurações" ? styles.active : ""}`} onClick={() => setContent("Configurações")}>
-        <SettingsIcon />
-        <Text className={styles.itemText}>Configurações</Text>
-      </Flex>
-    </Box>
+   
+      <Box className={styles.sidebar}>
+        <Flex className={styles.sidebarItem} onClick={() => setContent('home')}>
+          <div className={styles.HomeIcon}>
 
-    <div className={styles.content}>
-      {content === "home" && "home"}
-      {content === "temas" && <ThemeList />}
-      {content === "Pedidos" && "Pedidos"}
-      {content === "Clientes" && "Clientes"}
-      {content === "Produtos" && <Products />}
-      {content === "Configurações" && "Configurações"}
+          <HomeIcon />
+          </div>
+          <Text className={styles.itemText} >Home</Text>
+        </Flex>
+        <Flex className={styles.sidebarItem} onClick={() => setContent('Produtos')}>
+          <StarIcon />
+          <Text className={styles.itemText}>Produtos</Text>
+        </Flex>
+        <Flex className={styles.sidebarItem} onClick={() => setContent('temas')}>
+          <SettingsIcon />
+          <Text className={styles.itemText}>temas</Text>
+        </Flex>
+        <Flex className={styles.sidebarItem} onClick={() => setContent('Pedidos')}>
+          <ShoppingCartIcon />
+          <Text className={styles.itemText}>Pedidos</Text>
+        </Flex>
+        <Flex className={styles.sidebarItem} onClick={() => setContent('Clientes')}>
+          <UserIcon />
+          <Text className={styles.itemText}>Clientes</Text>
+        </Flex>
+        <Flex className={styles.sidebarItem} onClick={() => setContent('Configurações')}>
+          <SettingsIcon />
+          <Text className={styles.itemText}>Configurações</Text>
+        </Flex>
+      </Box>
+    
+      <div className={styles.content}>
+        {content === 'temas' ? <ThemeList /> : content}
+      </div>
+      <div className={styles.iconContainer}>
+        <Link to={`/loja`} className={styles.icon}>
+          <div>
+            <LocalMallOutlinedIcon />
+          </div>
+        </Link>
+      </div>
     </div>
-
-    <div className={styles.iconContainer}>
-      <Link to={`/loja`} className={styles.icon}>
-        <div>
-          <LocalMallOutlinedIcon />
-        </div>
-      </Link>
-    </div>
-  </div>
   );
 };
 
