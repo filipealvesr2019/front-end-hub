@@ -11,6 +11,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { useAuth } from '../../context/AuthContext';
+import UpdateTheme from '../ecommerce/UpdateTheme'
 const HomeIcon = () => (
   <svg className={styles.icon} viewBox="0 0 20 20" fill="currentColor">
     <path d="M10 20V14H14V20H19V10H16L10 3.5L4 10H1V20H6V14H10V20Z" />
@@ -95,6 +96,10 @@ const Sidebar = () => {
     <HeaderSidebar />
   </div>
       <Box className={styles.sidebar}>
+        <div className={styles.logo}>
+        <span >LOGO</span>
+
+        </div>
         <Flex className={styles.sidebarItem} onClick={() => setContent('home')}>
           <div className={styles.HomeIcon}>
 
@@ -116,9 +121,9 @@ const Sidebar = () => {
           <Text className={styles.itemText}>Pedidos</Text>
         </Flex>
         <Flex className={styles.sidebarItem} onClick={() => setContent('Clientes')}>
-          <UserIcon />
+        <UserIcon />
           <div  className={styles.itemIcons}  onClick={handleClickOpenModal}>
-
+       
           <Text className={styles.itemText}>Configurar Loja</Text>
           {openCartModal ? <KeyboardArrowUpIcon /> : <ExpandMoreIcon /> }
           </div>
@@ -129,8 +134,11 @@ const Sidebar = () => {
               <div className={styles.cartModal}>
                 <div ref={modalRef} className={styles.cartModalContent}>
               
-              
-                  <span className={styles.span}>option 1</span>
+              <Link to={'/looks'}>
+
+                  <span className={styles.span}>Aparência da Loja
+</span>
+              </Link>
                   <span className={styles.span}>option 2</span>
                   <span className={styles.span}>option 2</span>
 
@@ -153,6 +161,9 @@ const Sidebar = () => {
       </Box>
     
       <div className={styles.content}>
+      
+
+
         {content === 'temas' && <ThemeList />}
         {content === 'Produtos' && <Products />}
       </div>

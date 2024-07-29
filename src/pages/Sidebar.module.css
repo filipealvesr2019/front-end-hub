@@ -23,7 +23,7 @@
   }
   
   .sidebar {
-    width: 250px;
+    width: 24vw;
     height: 100vh;
     background-color: white;
     display: flex;
@@ -65,8 +65,12 @@
   }
   
   .itemText {
-    font-size: 16px;
+    font-size: 1.2rem;
     color: gray; /* Cor padrão do texto */
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+
   }
   
   .content {
@@ -83,6 +87,10 @@
   }
   .itemIcons{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 15vw;
+
   }
   
   .cartModalContent{
@@ -98,5 +106,9 @@
   }
   .span:hover{
     background-color: #EFEFEF;
+  }
+  .logo{
+    margin-bottom: 2rem;
+    padding: 1rem;
   }
 }
