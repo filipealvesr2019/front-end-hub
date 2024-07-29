@@ -6,7 +6,14 @@ import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 export default function HeaderSidebar(){
     return (
         <>
-       
+       <div className={styles.iconContainer}>
+        
+        <Link to={`/loja`} className={styles.icon}>
+          <div>
+            <LocalMallOutlinedIcon />
+          </div>
+        </Link>
+      </div>
         
         </>
     )

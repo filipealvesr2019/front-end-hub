@@ -4,7 +4,6 @@ import styles from './Sidebar.module.css';
 import ThemeList from './ThemeList';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { Link, useParams } from 'react-router-dom';
-import HeaderSidebar from '../components/HeaderSidebar';
 import Products from '../components/Products';
 
 const HomeIcon = () => (
@@ -51,8 +50,20 @@ const Sidebar = () => {
 
 
   return (
+    <>
+    <div className={styles.HeaderSidebar}>
+    
+  
+        
+        <Link to={`/loja`} className={styles.icon}>
+          <div>
+            <LocalMallOutlinedIcon />
+          </div>
+        </Link>
+      </div>
+
     <div className={styles.SidebarContainer}>
-   
+
       <Box className={styles.sidebar}>
         <Flex className={styles.sidebarItem} onClick={() => setContent('home')}>
           <div className={styles.HomeIcon}>
@@ -87,14 +98,10 @@ const Sidebar = () => {
         {content === 'temas' && <ThemeList />}
         {content === 'Produtos' && <Products />}
       </div>
-      <div className={styles.iconContainer}>
-        <Link to={`/loja`} className={styles.icon}>
-          <div>
-            <LocalMallOutlinedIcon />
-          </div>
-        </Link>
-      </div>
+      
     </div>
+    
+    </>
   );
 };
 

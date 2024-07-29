@@ -32,13 +32,13 @@ export default function Products(){
     }
   }, [customerID]);
 
-  if (!customerID) {
-    return <div>Cliente não está logado.</div>;
-  }
+  // if (!customerID) {
+  //   return <div>Cliente não está logado.</div>;
+  // }
 
-  if (!customerDetails) {
-    return <div>Carregando detalhes do cliente...</div>;
-  }
+  // if (!customerDetails) {
+  //   return <div>Carregando detalhes do cliente...</div>;
+  // }
     return (
         <>
         
