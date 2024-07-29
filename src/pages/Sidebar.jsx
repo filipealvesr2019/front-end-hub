@@ -115,11 +115,11 @@ const Sidebar = () => {
           <ShoppingCartIcon />
           <Text className={styles.itemText}>Pedidos</Text>
         </Flex>
-        <Flex className={styles.sidebarItem} onClick={() => {setContent('Clientes', handleClickOpenModal )}}>
+        <Flex className={styles.sidebarItem} onClick={() => setContent('Clientes')}>
           <UserIcon />
-          <div  className={styles.itemIcons} onClick={handleClickOpenModal}>
+          <div  className={styles.itemIcons}  onClick={handleClickOpenModal}>
 
-          <Text className={styles.itemText}     onClick={handleClickOpenModal}>Configurar Loja</Text>
+          <Text className={styles.itemText}>Configurar Loja</Text>
           {openCartModal ? <KeyboardArrowUpIcon /> : <ExpandMoreIcon /> }
           </div>
     
