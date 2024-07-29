@@ -17,8 +17,10 @@ export default function Products(){
         try {
           const response = await axios.get(`http://localhost:3003/api/customer/${customerID}`);
           setCustomerDetails(response.data);
-          if(isRegistered === true){
-            setIsRegistered(response.data.isRegistered)
+          setIsRegistered(response.data.isRegistered)
+
+          if(isRegistered){
+            setIsRegistered(true)
 
           } else {
             setIsRegistered(false)
@@ -42,7 +44,7 @@ export default function Products(){
     return (
         <>
         
-        <p>{isRegistered ? <>Produtos</> :  <Signup />}</p>
+        <p>{!isRegistered ? <p style={{marginTop:"15rem"}}>Produtos</p> :  <Signup />}</p>
        
         </>
     )

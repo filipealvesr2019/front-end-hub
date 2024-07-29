@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import styles from './Sidebar.module.css';
 import ThemeList from '../ecommerce/ThemeList';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
@@ -21,6 +21,7 @@ import {
  
 } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { useAuth } from '../../context/AuthContext';
 const HomeIcon = () => (
   <svg className={styles.icon} viewBox="0 0 20 20" fill="currentColor">
     <path d="M10 20V14H14V20H19V10H16L10 3.5L4 10H1V20H6V14H10V20Z" />
@@ -62,6 +63,7 @@ const SettingsIcon = () => (
 const Sidebar = () => {
 
   const [content, setContent] = useState('home');
+  const { logout } = useAuth(); // Obtenha a função de logout
 
 
   return (
@@ -104,6 +106,15 @@ const Sidebar = () => {
           <SettingsIcon />
           <Text className={styles.itemText}>Configurações</Text>
         </Flex>
+        <Button 
+            className={styles.sidebarItem} 
+            onClick={logout} 
+            variant="outline" 
+            colorScheme="teal"
+            mt="auto" // Move o botão para o final da barra lateral
+          >
+            Logout
+          </Button>
       </Box>
     
       <div className={styles.content}>
