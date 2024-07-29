@@ -5,6 +5,8 @@ import ThemeList from "./ThemeList";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import { Link, useParams } from "react-router-dom";
 import Products from "../components/Products";
+import HeaderSidebar from "../components/HeaderSidebar";
+
 
 const HomeIcon = () => (
   <svg className={styles.icon} viewBox="0 0 20 20" fill="currentColor">
@@ -41,6 +43,7 @@ const Sidebar = () => {
 
   return (
     <div className={styles.SidebarContainer}>
+      <HeaderSidebar />
       <Box className={styles.sidebar}>
         <Flex className={styles.sidebarItem} onClick={() => setContent("home")}>
           <HomeIcon />
@@ -51,7 +54,7 @@ const Sidebar = () => {
           onClick={() => setContent("Produtos")}
         >
           <StarIcon />
-          <Text className={styles.itemText}>Produtos</Text>
+          <span className={styles.itemText}>Produtos</span>
         </Flex>
 
         <Flex
@@ -90,6 +93,7 @@ const Sidebar = () => {
         {content === "Pedidos" && "Pedidos"}
         {content === "Clientes" && "Clientes"}
         {content === "Produtos" && <Products />}
+
         {content === "Configurações" && "Configurações"}
       </div>
 
