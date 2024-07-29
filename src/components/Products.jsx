@@ -34,16 +34,11 @@ export default function Products(){
     }
   }, [customerID]);
 
-  // if (!customerID) {
-  //   return <div>Cliente não está logado.</div>;
-  // }
 
-  // if (!customerDetails) {
-  //   return <div>Carregando detalhes do cliente...</div>;
-  // }
+ 
     return (
         <>
-        
+    
         <p>{!isRegistered ? <p style={{marginTop:"15rem"}}>Produtos</p> :  <Signup />}</p>
        
         </>
