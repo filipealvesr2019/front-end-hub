@@ -84,7 +84,7 @@ const Sidebar = () => {
       </Box>
     
       <div className={styles.content}>
-        {content === 'temas' ? <ThemeList /> : content}
+        {content === 'temas' && <ThemeList />}
         {content === 'Produtos' && <Products />}
       </div>
       <div className={styles.iconContainer}>
