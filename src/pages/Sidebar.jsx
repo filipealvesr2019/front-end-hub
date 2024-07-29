@@ -4,8 +4,20 @@ import styles from './Sidebar.module.css';
 import ThemeList from './ThemeList';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { Link, useParams } from 'react-router-dom';
+import HeaderSidebar from '../components/HeaderSidebar';
 import Products from '../components/Products';
+import NavBarFromSidebar from '../components/NavBarFromSidebar'
 
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+} from '@chakra-ui/react'
 const HomeIcon = () => (
   <svg className={styles.icon} viewBox="0 0 20 20" fill="currentColor">
     <path d="M10 20V14H14V20H19V10H16L10 3.5L4 10H1V20H6V14H10V20Z" />
@@ -51,19 +63,15 @@ const Sidebar = () => {
 
   return (
     <>
+ <NavBarFromSidebar />
+
+    <div className={styles.SidebarContainer}>
     <div className={styles.HeaderSidebar}>
     
   
         
-        <Link to={`/loja`} className={styles.icon}>
-          <div>
-            <LocalMallOutlinedIcon />
-          </div>
-        </Link>
-      </div>
-
-    <div className={styles.SidebarContainer}>
-
+    <HeaderSidebar />
+  </div>
       <Box className={styles.sidebar}>
         <Flex className={styles.sidebarItem} onClick={() => setContent('home')}>
           <div className={styles.HomeIcon}>
