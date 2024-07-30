@@ -1,0 +1,45 @@
+.header{
+    padding: 2rem;
+}
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.button{
+    display: flex;
+   justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    background-color: #2a2d34;
+    color: #FFFFFF;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.stylesHeader{
+    background-color: white;
+    position: absolute;
+    z-index: 5;
+    border: 1px solid #eaeaea;
+    margin-top: 5rem;
+    margin-left: 10rem;
+}
+.main{
+    height: 100vw;
+}
+.footer{
+    height: 100vw;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.div{
+    background-color: aqua;
+    width: 25vw;
+    height: 100vh;
+}
+.screenContainer{
+    width: 75vw;
+}

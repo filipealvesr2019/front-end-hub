@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import ColorCircle from './colors/ColorCircle'; // Import the ColorCircle component
+import styles from './LojaPage.module.css';
+import EditIcon from '@mui/icons-material/Edit';
+import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
+import DesktopMacOutlinedIcon from '@mui/icons-material/DesktopMacOutlined';
 const LojaPage = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
@@ -56,68 +60,44 @@ const LojaPage = () => {
     switch (editingSection) {
       case 'headerBackground':
         return (
-          <div>
-            <label>
-              Cor de Fundo do Header:
-              <input
-                type="color"
-                value={headerBackgroundColor}
-                onChange={(e) => setHeaderBackgroundColor(e.target.value)}
-              />
-            </label>
+          <div className={styles.stylesHeader}>
+            <label>Cor de Fundo do Header:</label>
+            <ColorCircle color={headerBackgroundColor} onChange={setHeaderBackgroundColor} />
           </div>
         );
       case 'headerText':
         return (
           <div>
-            <label>
-              Cor do Texto do Header:
-              <input type="color" value={headerColor} onChange={(e) => setHeaderColor(e.target.value)} />
-            </label>
+            <label>Cor do Texto do Header:</label>
+            <ColorCircle color={headerColor} onChange={setHeaderColor} />
           </div>
         );
       case 'mainBackground':
         return (
           <div>
-            <label>
-              Cor de Fundo do Main:
-              <input
-                type="color"
-                value={mainBackgroundColor}
-                onChange={(e) => setMainBackgroundColor(e.target.value)}
-              />
-            </label>
+            <label>Cor de Fundo do Main:</label>
+            <ColorCircle color={mainBackgroundColor} onChange={setMainBackgroundColor} />
           </div>
         );
       case 'mainText':
         return (
           <div>
-            <label>
-              Cor do Texto do Main:
-              <input type="color" value={mainColor} onChange={(e) => setMainColor(e.target.value)} />
-            </label>
+            <label>Cor do Texto do Main:</label>
+            <ColorCircle color={mainColor} onChange={setMainColor} />
           </div>
         );
       case 'footerBackground':
         return (
           <div>
-            <label>
-              Cor de Fundo do Footer:
-              <input
-                type="color"
-                value={footerBackgroundColor}
-                onChange={(e) => setFooterBackgroundColor(e.target.value)}
-              />
-            </label>
+            <label>Cor de Fundo do Footer:</label>
+            <ColorCircle color={footerBackgroundColor} onChange={setFooterBackgroundColor} />
           </div>
         );
       case 'footerText':
         return (
           <div>
-            <label>
-              Cor do Texto do Footer:
-              <input type="color" value={footerColor} onChange={(e) => setFooterColor(e.target.value)} />
-            </label>
+            <label>Cor do Texto do Footer:</label>
+            <ColorCircle color={footerColor} onChange={setFooterColor} />
           </div>
         );
       default:
@@ -130,53 +110,86 @@ const LojaPage = () => {
   }
 
   return (
-    <div>
-      <button onClick={() => setIsEditMode(!isEditMode)}>
-        {isEditMode ? 'Salvar' : 'Editar Tema'}
-      </button>
-      {isEditMode && renderEditControls()}
-      <div
-        style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
-        onClick={() => isEditMode && setEditingSection('mainBackground')}
-      >
-        <header
-          style={{ backgroundColor: headerBackgroundColor, color: headerColor }}
-          onClick={(e) => {
-            e.stopPropagation();
-            if (isEditMode) setEditingSection('headerBackground');
-          }}
-        >
-          <span onClick={(e) => {
-            e.stopPropagation();
-            if (isEditMode) setEditingSection('headerText');
-          }}>
-            Header da Loja
-          </span>
-        </header>
-        <main>
-          <span onClick={(e) => {
-            e.stopPropagation();
-            if (isEditMode) setEditingSection('mainText');
-          }}>
-            Conteúdo Principal da Loja
-          </span>
-        </main>
-        <footer
-          style={{ backgroundColor: footerBackgroundColor, color: footerColor }}
-          onClick={(e) => {
-            e.stopPropagation();
-            if (isEditMode) setEditingSection('footerBackground');
-          }}
-        >
-          <span onClick={(e) => {
-            e.stopPropagation();
-            if (isEditMode) setEditingSection('footerText');
-          }}>
-            Footer da Loja
-          </span>
-        </footer>
+    <>
+       <section  className={styles.section}>
+
+<PhoneIphoneOutlinedIcon  sx={{
+  fontSize: "3vw"
+}}/>
+<DesktopMacOutlinedIcon  sx={{
+  fontSize: "3vw"
+}}/>
+<button onClick={() => setIsEditMode(!isEditMode)} className={styles.button}>
+  {isEditMode ? 'Salvar Tema' : 'Editar Tema'} <EditIcon />
+</button>
+</section>
+
+    <div className={styles.container}>
+
+      <div className={styles.div}>
+        
       </div>
+
+      <div className={styles.screenContainer}>
+   
+
+{isEditMode && renderEditControls()}
+<div
+style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
+onClick={() => isEditMode && setEditingSection('mainBackground')}
+>
+<header
+  style={{ backgroundColor: headerBackgroundColor, color: headerColor , cursor: headerBackgroundColor || headerColor ? "pointer" : ""  }}
+  onClick={(e) => {
+    e.stopPropagation();
+    if (isEditMode) setEditingSection('headerBackground');
+  }}
+  className={styles.header}
+>
+  <span
+    onClick={(e) => {
+      e.stopPropagation();
+      if (isEditMode) setEditingSection('headerText');
+    }}
+  >
+    Header da Loja
+  </span>
+</header>
+<main  className={styles.main}>
+  <span
+    onClick={(e) => {
+      e.stopPropagation();
+      if (isEditMode) setEditingSection('mainText');
+    }}
+  >
+    Conteúdo Principal da Loja
+  </span>
+</main>
+<footer
+  style={{ backgroundColor: footerBackgroundColor, color: footerColor }}
+  onClick={(e) => {
+    e.stopPropagation();
+    if (isEditMode) setEditingSection('footerBackground');
+  }}
+  className={styles.footer}
+>
+  <span
+    onClick={(e) => {
+      e.stopPropagation();
+      if (isEditMode) setEditingSection('footerText');
+    }}
+  >
+    Footer da Loja
+  </span>
+</footer>
+</div>
+
+
+      </div>
+     
     </div>
+
+    </>
   );
 };
 

@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
-import styles from './Sidebar.module.css';
-import ThemeList from '../ecommerce/ThemeList';
-import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
-import { Link, useParams } from 'react-router-dom';
-import HeaderSidebar from '../components/HeaderSidebar';
-import Products from '../components/Products';
-import NavBarFromSidebar from '../components/NavBarFromSidebar'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { useAuth } from '../../context/AuthContext';
-import UpdateTheme from '../ecommerce/UpdateTheme'
+import React, { useEffect, useRef, useState } from "react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import styles from "./Sidebar.module.css";
+import ThemeList from "../ecommerce/ThemeList";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import { Link, useParams } from "react-router-dom";
+import HeaderSidebar from "../components/HeaderSidebar";
+import Products from "../components/Products";
+import NavBarFromSidebar from "../components/NavBarFromSidebar";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { useAuth } from "../../context/AuthContext";
+import UpdateTheme from "../ecommerce/UpdateTheme";
 const HomeIcon = () => (
   <svg className={styles.icon} viewBox="0 0 20 20" fill="currentColor">
     <path d="M10 20V14H14V20H19V10H16L10 3.5L4 10H1V20H6V14H10V20Z" />
@@ -42,20 +42,11 @@ const SettingsIcon = () => (
   </svg>
 );
 
-
-
-
-
-
-
-
-
 const Sidebar = () => {
   const [openCartModal, setOpenCartModal] = useState(false);
   const modalRef = useRef(null);
-  const [content, setContent] = useState('home');
+  const [content, setContent] = useState("home");
   const { logout } = useAuth(); // Obtenha a função de logout
-
 
   const handleClickOpenModal = () => {
     setOpenCartModal(!openCartModal);
@@ -70,10 +61,9 @@ const Sidebar = () => {
       if (
         modalRef.current &&
         !modalRef.current.contains(event.target) &&
-        (openCartModal )
+        openCartModal
       ) {
         setOpenCartModal(false);
-      
       }
     };
 
@@ -82,94 +72,94 @@ const Sidebar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [openCartModal, ]);
+  }, [openCartModal]);
 
   return (
     <>
- <NavBarFromSidebar />
+      <NavBarFromSidebar />
 
-    <div className={styles.SidebarContainer}>
-    <div className={styles.HeaderSidebar}>
-    
-  
-        
-    <HeaderSidebar />
-  </div>
-      <Box className={styles.sidebar}>
-        <div className={styles.logo}>
-        <span >LOGO</span>
-
+      <div className={styles.SidebarContainer}>
+        <div className={styles.HeaderSidebar}>
+          <HeaderSidebar />
         </div>
-        <Flex className={styles.sidebarItem} onClick={() => setContent('home')}>
-          <div className={styles.HomeIcon}>
-
-          <HomeIcon />
+        <Box className={styles.sidebar}>
+          <div className={styles.logo}>
+            <span>LOGO</span>
           </div>
-          <Text className={styles.itemText} >Home</Text>
-        </Flex>
-        <Flex className={styles.sidebarItem} onClick={() => setContent('Produtos')}>
-          <StarIcon />
-          <Text className={styles.itemText}>Produtos</Text>
-          
-        </Flex>
-        <Flex className={styles.sidebarItem} onClick={() => setContent('temas')}>
-          <SettingsIcon />
-          <Text className={styles.itemText}>temas</Text>
-        </Flex>
-        <Flex className={styles.sidebarItem} onClick={() => setContent('Pedidos')}>
-          <ShoppingCartIcon />
-          <Text className={styles.itemText}>Pedidos</Text>
-        </Flex>
-        <Flex className={styles.sidebarItem} onClick={() => setContent('Clientes')}>
-        <UserIcon />
-          <div  className={styles.itemIcons}  onClick={handleClickOpenModal}>
-       
-          <Text className={styles.itemText}>Configurar Loja</Text>
-          {openCartModal ? <KeyboardArrowUpIcon /> : <ExpandMoreIcon /> }
-          </div>
-    
-       
-        </Flex>
-        {openCartModal && (
-              <div className={styles.cartModal}>
-                <div ref={modalRef} className={styles.cartModalContent}>
-              
-              <Link to={'/looks'}>
-
-                  <span className={styles.span}>Aparência da Loja
-</span>
-              </Link>
-                  <span className={styles.span}>option 2</span>
-                  <span className={styles.span}>option 2</span>
-
-                </div>
+          <Flex
+            className={styles.sidebarItem}
+            onClick={() => setContent("home")}
+          >
+            <div className={styles.HomeIcon}>
+              <HomeIcon />
+            </div>
+            <Text className={styles.itemText}>Home</Text>
+          </Flex>
+          <Flex
+            className={styles.sidebarItem}
+            onClick={() => setContent("Produtos")}
+          >
+            <StarIcon />
+            <Text className={styles.itemText}>Produtos</Text>
+          </Flex>
+          <Flex
+            className={styles.sidebarItem}
+            onClick={() => setContent("temas")}
+          >
+            <SettingsIcon />
+            <Text className={styles.itemText}>temas</Text>
+          </Flex>
+          <Flex
+            className={styles.sidebarItem}
+            onClick={() => setContent("Pedidos")}
+          >
+            <ShoppingCartIcon />
+            <Text className={styles.itemText}>Pedidos</Text>
+          </Flex>
+          <Flex
+            className={styles.sidebarItem}
+            onClick={() => setContent("Clientes")}
+          >
+            <UserIcon />
+            <div className={styles.itemIcons} onClick={handleClickOpenModal}>
+              <Text className={styles.itemText}>Configurar Loja</Text>
+              {openCartModal ? <KeyboardArrowUpIcon /> : <ExpandMoreIcon />}
+            </div>
+          </Flex>
+          {openCartModal && (
+            <div className={styles.cartModal}>
+              <div ref={modalRef} className={styles.cartModalContent}>
+                <Link to={"/looks"}>
+                  <span className={styles.span}>Aparência da Loja</span>
+                </Link>
+                <span className={styles.span}>option 2</span>
+                <span className={styles.span}>option 2</span>
               </div>
-            )}
-        <Flex className={styles.sidebarItem} onClick={() => setContent('Configurações')}>
-          <SettingsIcon />
-          <Text className={styles.itemText}>Configurações</Text>
-        </Flex>
-        <Button 
-            className={styles.sidebarItem} 
-            onClick={logout} 
-            variant="outline" 
+            </div>
+          )}
+          <Flex
+            className={styles.sidebarItem}
+            onClick={() => setContent("Configurações")}
+          >
+            <SettingsIcon />
+            <Text className={styles.itemText}>Configurações</Text>
+          </Flex>
+          <Button
+            className={styles.sidebarItem}
+            onClick={logout}
+            variant="outline"
             colorScheme="teal"
             mt="auto" // Move o botão para o final da barra lateral
           >
             Logout
           </Button>
-      </Box>
-    
-      <div className={styles.content}>
-      
+        </Box>
 
-
-        {content === 'temas' && <ThemeList />}
-        {content === 'Produtos' && <Products />}
+        <div className={styles.content}>
+          {content === "temas" && <ThemeList />}
+          {content === "Produtos" && <Products />}
+        </div>
       </div>
-      
-    </div>
-    
     </>
   );
 };
