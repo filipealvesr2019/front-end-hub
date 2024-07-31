@@ -70,7 +70,7 @@ const UpdateTheme = () => {
   }
 
   const handleClickSwitchIcon = () => {
-    setSwitchIcon(prev => !prev); // Alterna o valor booleano
+    setSwitchIcon((prev) => !prev); // Alterna o valor booleano
   };
 
   const handleSwitchPage = (page) => {
@@ -79,33 +79,50 @@ const UpdateTheme = () => {
 
   const renderSwitchPage = () => {
     switch (editingSection) {
-      case 'header':
+      case "header":
         return (
           <div className={styles.stylesHeader}>
-            <KeyboardArrowLeftOutlinedIcon onClick={() => setEditingSection(null)} /> <span>Sair</span>
+            <KeyboardArrowLeftOutlinedIcon
+              onClick={() => setEditingSection(null)}
+            />{" "}
+            <span>Sair</span>
             <label>Cor de Fundo do Header:</label>
-            <ColorCircle color={headerBackgroundColor} onChange={setHeaderBackgroundColor} />
+            <ColorCircle
+              color={headerBackgroundColor}
+              onChange={setHeaderBackgroundColor}
+            />
             <label>Cor do Texto do Header:</label>
             <ColorCircle color={headerColor} onChange={setHeaderColor} />
           </div>
         );
-      case 'pagina inicial':
+      case "pagina inicial":
         return (
           <div>
-               <KeyboardArrowLeftOutlinedIcon onClick={() => setEditingSection(null)} /><span>Sair</span>
+            <KeyboardArrowLeftOutlinedIcon
+              onClick={() => setEditingSection(null)}
+            />
+            <span>Sair</span>
             <label>Cor de Fundo do Main:</label>
-            <ColorCircle color={mainBackgroundColor} onChange={setMainBackgroundColor} />
+            <ColorCircle
+              color={mainBackgroundColor}
+              onChange={setMainBackgroundColor}
+            />
             <label>Cor do Texto do Main:</label>
             <ColorCircle color={mainColor} onChange={setMainColor} />
           </div>
         );
-      case 'detalhes do produto':
+      case "detalhes do produto":
         return (
           <div>
-
-               <KeyboardArrowLeftOutlinedIcon onClick={() => setEditingSection(null)} /> <span>Sair</span>
+            <KeyboardArrowLeftOutlinedIcon
+              onClick={() => setEditingSection(null)}
+            />{" "}
+            <span>Sair</span>
             <label>Cor de Fundo do Footer:</label>
-            <ColorCircle color={footerBackgroundColor} onChange={setFooterBackgroundColor} />
+            <ColorCircle
+              color={footerBackgroundColor}
+              onChange={setFooterBackgroundColor}
+            />
             <label>Cor do Texto do Footer:</label>
             <ColorCircle color={footerColor} onChange={setFooterColor} />
           </div>
@@ -113,13 +130,23 @@ const UpdateTheme = () => {
       default:
         return (
           <div className={styles.div}>
-          <span onClick={() => handleSwitchPage('header')}>Cabeçalho</span>
-          <span onClick={() => handleSwitchPage('pagina inicial')}>Página Inicial</span>
-          <span onClick={() => handleSwitchPage('detalhes do produto')}>Detalhes do Produto</span>
-          <span onClick={() => handleSwitchPage('mainText')}>Texto do Main</span>
-          <span onClick={() => handleSwitchPage('footerBackground')}>Fundo do Footer</span>
-          <span onClick={() => handleSwitchPage('footerText')}>Texto do Footer</span>
-        </div>
+            <span onClick={() => handleSwitchPage("header")}>Cabeçalho</span>
+            <span onClick={() => handleSwitchPage("pagina inicial")}>
+              Página Inicial
+            </span>
+            <span onClick={() => handleSwitchPage("detalhes do produto")}>
+              Detalhes do Produto
+            </span>
+            <span onClick={() => handleSwitchPage("mainText")}>
+              Texto do Main
+            </span>
+            <span onClick={() => handleSwitchPage("footerBackground")}>
+              Fundo do Footer
+            </span>
+            <span onClick={() => handleSwitchPage("footerText")}>
+              Texto do Footer
+            </span>
+          </div>
         );
     }
   };
@@ -136,18 +163,18 @@ const UpdateTheme = () => {
         </span>
         <a onClick={handleClickSwitchIcon}>
           <img
-            src={switchIcon ? "https://i.imgur.com/A2cWRwb.png" : "https://i.imgur.com/9TngDuX.png"}
+            src={
+              switchIcon
+                ? "https://i.imgur.com/A2cWRwb.png"
+                : "https://i.imgur.com/9TngDuX.png"
+            }
             title="source: imgur.com"
           />
         </a>
       </div>
 
       <div className={styles.container}>
-        <div className={styles.div}>
-         
-    
-          {renderSwitchPage()}
-        </div>
+        <div className={styles.div}>{renderSwitchPage()}</div>
 
         <div className={styles.screenContainer}>
           {switchIcon ? (
