@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from './Navbar.module.css'
+import SearchBarMobile from "../SearchBar/SearchBarMobile";
 export default function Navbar(){
     const [openCartModal, setOpenCartModal] = useState(false);
     const modalRef = useRef(null);
@@ -41,9 +42,9 @@ export default function Navbar(){
                   <span>option 1</span>
                   <span>option 2</span>
                   <span>option 2</span>
-
+                  <SearchBarMobile />        
                 </div>
-              </div>
+                  </div>
             )}
         </div>
     )

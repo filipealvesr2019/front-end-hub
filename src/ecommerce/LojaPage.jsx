@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import ColorCircle from "./colors/ColorCircle"; // Import the ColorCircle component
 import styles from "./LojaPage.module.css";
-import EditIcon from "@mui/icons-material/Edit";
-import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
-import DesktopMacOutlinedIcon from "@mui/icons-material/DesktopMacOutlined";
+
 import Navbar from "./Navbar/Navbar";
+import  Tabs  from "./tabs/Tabs";
+import SearchBar from "./SearchBar/SearchBar";
+
+
 const LojaPage = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
@@ -60,10 +61,11 @@ const LojaPage = () => {
               className={styles.header}
             >
               <Navbar />
-             
-
-              <div className={styles.header__icons}>
+              
               <span style={{color:"white"}}>LOGO</span>
+<SearchBar />
+              <div className={styles.header__icons}>
+             
               
               <a><img src="https://i.imgur.com/ItjKDhc.png" title="source: imgur.com" style={{width:"2.5rem"}} /></a>              
               
