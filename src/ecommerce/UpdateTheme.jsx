@@ -151,6 +151,92 @@ const UpdateTheme = () => {
     }
   };
 
+
+
+
+
+
+
+
+
+  
+  const renderSwitchContent = () => {
+    switch (editingSection) {
+     
+      case "pagina inicial":
+        return (
+          <div>
+         pagina inicial
+          </div>
+        );
+      case "detalhes do produto":
+        return (
+          <div>
+          detalhes do produto
+          </div>
+        );
+      default:
+        return (
+          <div
+          style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
+          onClick={() => isEditMode && setEditingSection("mainBackground")}
+        >
+          <header
+            style={{
+              backgroundColor: headerBackgroundColor,
+              color: headerColor,
+              cursor: headerBackgroundColor || headerColor ? "pointer" : "",
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (isEditMode) setEditingSection("header");
+            }}
+            className={styles.header}
+          >
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isEditMode) setEditingSection("header");
+              }}
+            >
+              Header da Loja
+            </span>
+          </header>
+          <main className={styles.main}>
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isEditMode) setEditingSection("pagina inicial");
+              }}
+            >
+              Conteúdo Principal da Loja
+            </span>
+          </main>
+          <footer
+            style={{
+              backgroundColor: footerBackgroundColor,
+              color: footerColor,
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (isEditMode) setEditingSection("footerBackground");
+            }}
+            className={styles.footer}
+          >
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isEditMode) setEditingSection("footerText");
+              }}
+            >
+              Footer da Loja
+            </span>
+          </footer>
+        </div>
+        );
+    }
+  };
+
   return (
     <>
       <div className={styles.section}>
@@ -178,62 +264,18 @@ const UpdateTheme = () => {
 
         <div className={styles.screenContainer}>
           {switchIcon ? (
-            <div
-              style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
-              onClick={() => isEditMode && setEditingSection("mainBackground")}
-            >
-              <header
-                style={{
-                  backgroundColor: headerBackgroundColor,
-                  color: headerColor,
-                  cursor: headerBackgroundColor || headerColor ? "pointer" : "",
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (isEditMode) setEditingSection("header");
-                }}
-                className={styles.header}
-              >
-                <span
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (isEditMode) setEditingSection("header");
-                  }}
-                >
-                  Header da Loja
-                </span>
-              </header>
-              <main className={styles.main}>
-                <span
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (isEditMode) setEditingSection("pagina inicial");
-                  }}
-                >
-                  Conteúdo Principal da Loja
-                </span>
-              </main>
-              <footer
-                style={{
-                  backgroundColor: footerBackgroundColor,
-                  color: footerColor,
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (isEditMode) setEditingSection("footerBackground");
-                }}
-                className={styles.footer}
-              >
-                <span
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (isEditMode) setEditingSection("footerText");
-                  }}
-                >
-                  Footer da Loja
-                </span>
-              </footer>
-            </div>
+
+
+
+
+
+
+
+
+<>
+{renderSwitchContent()}
+</>
+          
           ) : (
             "teste"
           )}
