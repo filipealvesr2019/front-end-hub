@@ -237,13 +237,100 @@ const UpdateTheme = () => {
     }
   };
 
+
+
+
+
+
+
+  
+  const renderSwitchToMobileContent = () => {
+    switch (editingSection) {
+     
+      case "pagina inicial":
+        return (
+          <div>
+         pagina inicial mobile
+          </div>
+        );
+      case "detalhes do produto":
+        return (
+          <div>
+          detalhes do produto mobile
+          </div>
+        );
+      default:
+        return (
+          <div
+          style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
+          onClick={() => isEditMode && setEditingSection("mainBackground")}
+        >
+          <header
+            style={{
+              backgroundColor: headerBackgroundColor,
+              color: headerColor,
+              cursor: headerBackgroundColor || headerColor ? "pointer" : "",
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (isEditMode) setEditingSection("header");
+            }}
+            className={styles.header}
+          >
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isEditMode) setEditingSection("header");
+              }}
+            > 
+              Header da Loja mobile
+            </span>
+          </header>
+          <main className={styles.main}>
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isEditMode) setEditingSection("pagina inicial");
+              }}
+            >
+              Conteúdo Principal da Loja mobile
+            </span>
+          </main>
+          <footer
+            style={{
+              backgroundColor: footerBackgroundColor,
+              color: footerColor,
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (isEditMode) setEditingSection("footerBackground");
+            }}
+            className={styles.footer}
+          >
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isEditMode) setEditingSection("footerText");
+              }}
+            >
+              Footer da Loja mobile
+            </span>
+          </footer>
+        </div>
+        );
+    }
+  };
+
+
   return (
     <>
       <div className={styles.section}>
         <span
           style={{
             color: "white",
+            cursor:"pointer"
           }}
+          onClick={handleClickSwitchIcon}
         >
           {switchIcon ? "modo celular" : "modo desktop"}
         </span>
@@ -277,7 +364,9 @@ const UpdateTheme = () => {
 </>
           
           ) : (
-            "teste"
+            <>
+            {renderSwitchToMobileContent()}
+            </>
           )}
         </div>
       </div>
