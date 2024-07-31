@@ -1,5 +1,8 @@
 .header{
     padding: 2rem;
+    display: flex;
+       align-items: center;
+       justify-content: space-between;
 }
 .section{
     display: flex;
@@ -34,8 +37,19 @@
 .container{
     display: flex;
     flex-direction: row;
+ 
 }
 
 .screenContainer{
     width: 100vw;
+}
+
+.header__img{
+    width: 10vw;
+}
+
+.header__icons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }

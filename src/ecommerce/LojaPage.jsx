@@ -6,6 +6,7 @@ import styles from "./LojaPage.module.css";
 import EditIcon from "@mui/icons-material/Edit";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
 import DesktopMacOutlinedIcon from "@mui/icons-material/DesktopMacOutlined";
+import Navbar from "./Navbar/Navbar";
 const LojaPage = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
@@ -39,21 +40,14 @@ const LojaPage = () => {
     fetchEcommerce();
   }, [dominio]);
 
-
-
   if (!ecommerce) {
     return <div>Carregando...</div>;
   }
 
   return (
     <>
-      
-
       <div className={styles.container}>
-    
-
         <div className={styles.screenContainer}>
-      
           <div
             style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
           >
@@ -63,35 +57,30 @@ const LojaPage = () => {
                 color: headerColor,
                 cursor: headerBackgroundColor || headerColor ? "pointer" : "",
               }}
-            
               className={styles.header}
             >
-              <span
-               
-              >
-                Header da Loja
-              </span>
+              <Navbar />
+             
+
+              <div className={styles.header__icons}>
+              <span style={{color:"white"}}>LOGO</span>
+              
+              <a><img src="https://i.imgur.com/ItjKDhc.png" title="source: imgur.com" style={{width:"2.5rem"}} /></a>              
+              
+              <a><img src="https://i.imgur.com/1XrvJJL.png" title="source: imgur.com" style={{width:"2.5rem"}}/></a>
+              </div>
             </header>
             <main className={styles.main}>
-              <span
-               
-              >
-                Conteúdo Principal da Loja
-              </span>
+              <span>Conteúdo Principal da Loja</span>
             </main>
             <footer
               style={{
                 backgroundColor: footerBackgroundColor,
                 color: footerColor,
               }}
-          
               className={styles.footer}
             >
-              <span
-              
-              >
-                Footer da Loja
-              </span>
+              <span>Footer da Loja</span>
             </footer>
           </div>
         </div>
