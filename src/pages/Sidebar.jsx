@@ -106,7 +106,7 @@ const Sidebar = () => {
             onClick={() => setContent("temas")}
           >
             <SettingsIcon />
-            <Text className={styles.itemText}>temas</Text>
+            <Text className={styles.itemText}>option</Text>
           </Flex>
           <Flex
             className={styles.sidebarItem}
@@ -131,7 +131,11 @@ const Sidebar = () => {
                 <Link to={"/looks"}>
                   <span className={styles.span}>Aparência da Loja</span>
                 </Link>
-                <span className={styles.span}>option 2</span>
+                <Link to={"/temas"}>
+
+                <span className={styles.span}>Temas</span>
+                </Link>
+                
                 <span className={styles.span}>option 2</span>
               </div>
             </div>
@@ -155,7 +159,7 @@ const Sidebar = () => {
         </Box>
 
         <div className={styles.content}>
-          {content === "temas" && <ThemeList />}
+      
           {content === "Produtos" && <Products />}
           
           <div style={{marginTop:"10rem"}}>

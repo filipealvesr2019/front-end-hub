@@ -15,6 +15,7 @@ import LojaPage from "./ecommerce/LojaPage.jsx";
 import UpdateTheme from "./ecommerce/UpdateTheme.jsx";
 
 import Sidebar from "./pages/Sidebar.jsx";
+import ThemeList from "./ecommerce/ThemeList.jsx";
 
 const Root = () => (
   <Routes>
@@ -28,6 +29,8 @@ const Root = () => (
     <Route path="/theme/:id" element={<ThemeDetail />} />
     <Route path="/looks" element={<UpdateTheme />} />~
     <Route path="/sidebar" element={<Sidebar />} />
+    <Route path="/temas" element={<ThemeList />} />
+
     
   </Routes>
 );
