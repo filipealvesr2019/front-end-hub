@@ -72,8 +72,7 @@
     flex-direction: column;
     justify-content: center;
     margin-top: 2rem;
-
-    width: 78vw;
+    margin: 0 auto;
 }
 
   .containerDesktop{
@@ -85,10 +84,10 @@
   .HomeContainerMobile{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     margin-top: 2rem;
+margin: 0 auto;
 
-    width: 78vw;
  
 
   }
