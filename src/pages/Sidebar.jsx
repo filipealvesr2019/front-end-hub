@@ -158,6 +158,8 @@ const Sidebar = () => {
         <div className={styles.content}>
           {content === "temas" && <ThemeList />}
           {content === "Produtos" && <Products />}
+
+
         </div>
       </div>
     </>
