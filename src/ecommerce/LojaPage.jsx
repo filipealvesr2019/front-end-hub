@@ -5,7 +5,7 @@ import axios from "axios";
 import Navbar from "./Navbar/Navbar";
 import Tabs from "./tabs/Tabs";
 import SearchBar from "./SearchBar/SearchBar";
-import Layout1 from "../ecommerce/layout/Layout2.module.css";
+import Layout1 from "../ecommerce/layout/Layout1.module.css";
 import Layout2 from "../ecommerce/layout/Layout2.module.css";
 const LojaPage = () => {
   const { dominio } = useParams();
