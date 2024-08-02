@@ -211,7 +211,7 @@ const UpdateTheme = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <div className={styles.menu}>
+                {editingSection != 'header' &&  <div className={styles.menu}>
                   <span onClick={() => handleSwitchPage("header")}>
                     Cabeçalho
                   </span>
@@ -230,7 +230,8 @@ const UpdateTheme = () => {
                   <span onClick={() => handleSwitchPage("footerText")}>
                     Texto do Footer
                   </span>
-                </div>
+                </div>}
+               
 
                 <div className={styles.HomeContainer}>
                   <div className="desktop-view-container">
@@ -261,7 +262,7 @@ const UpdateTheme = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <div className={styles.menu}>
+                {editingSection != 'header' &&   <div className={styles.menu}>
                   <span onClick={() => handleSwitchPage("header")}>
                     Cabeçalho
                   </span>
@@ -280,7 +281,8 @@ const UpdateTheme = () => {
                   <span onClick={() => handleSwitchPage("footerText")}>
                     Texto do Footer
                   </span>
-                </div>
+                </div>}
+               
                 <div
                   style={{
                     backgroundColor: mainBackgroundColor,
