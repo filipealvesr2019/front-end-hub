@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import ColorCircle from "./colors/ColorCircle"; // Import the ColorCircle component
-import styles from "./UpdateTheme.module.css";
+import ColorCircle from "../ecommerce/colors/ColorCircle"; // Import the ColorCircle component
+
 import KeyboardArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardArrowLeftOutlined";
-import SearchBar from "./SearchBar/SearchBar";
-import NavbarMockup  from "./Navbar/NavbarMockup";
+import SearchBar from "../ecommerce/SearchBar/SearchBar";
+import NavbarMockup from "../ecommerce/Navbar/NavbarMockup";
+import Layout1 from "./mockups/Layout1.module.css";
+import Layout2 from "./mockups/Layout2.module.css";
 
 const UpdateTheme = () => {
   const { dominio } = useParams();
@@ -21,6 +23,7 @@ const UpdateTheme = () => {
   const [footerColor, setFooterColor] = useState("");
   const [switchIcon, setSwitchIcon] = useState(true); // Alterei para booleano
   const [logo, setLogo] = useState("");
+  const [layout, setLayout] = useState("");
   useEffect(() => {
     const fetchEcommerce = async () => {
       try {
@@ -37,6 +40,7 @@ const UpdateTheme = () => {
         setMainColor(response.data.theme.main.color);
         setFooterBackgroundColor(response.data.theme.footer.backgroundColor);
         setFooterColor(response.data.theme.footer.color);
+        setLayout(response.data.layout);
       } catch (error) {
         console.error("Erro ao buscar o e-commerce:", error);
       }
@@ -169,6 +173,18 @@ const UpdateTheme = () => {
         return <></>;
     }
   };
+  const layoutStyles = () => {
+    switch (layout) {
+      case "layout1":
+        return Layout1;
+      case "layout2":
+        return Layout2;
+      default:
+        return {}; // Retorna um objeto vazio se nenhum layout for encontrado
+    }
+  };
+
+  const styles = layoutStyles(); // Chame a função para obter o estilo correto
 
   return (
     <>
@@ -356,9 +372,9 @@ const UpdateTheme = () => {
                     }}
                     className={styles.headerMobile}
                   >
-                       <NavbarMockup />
+                    <NavbarMockup />
                     <img style={{ color: "white", width: "5vw" }} src={logo} />
-                 
+
                     <div className={styles.header__icons}>
                       <a>
                         <img

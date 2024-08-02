@@ -6,6 +6,8 @@ import header from "./styles/layout/header.module.css";
 import Navbar from "./Navbar/Navbar";
 import Tabs from "./tabs/Tabs";
 import SearchBar from "./SearchBar/SearchBar";
+import Layout1 from "./layouts/Layout1.module.css";
+import Layout2 from "./layouts/Layout2.module.css";
 
 const LojaPage = () => {
   const { dominio } = useParams();
@@ -45,6 +47,7 @@ const LojaPage = () => {
   if (!ecommerce) {
     return <div>Carregando...</div>;
   }
+  
 
   return (
     <>
