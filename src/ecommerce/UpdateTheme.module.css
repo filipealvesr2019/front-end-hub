@@ -3,8 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-
 }
 .section {
   display: flex;
@@ -57,63 +55,53 @@
   gap: 1rem;
 }
 
+.header {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 
-  .header {
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  .HomeContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 2rem;
-    margin: 0 auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.HomeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+  margin: 0 auto;
+  width: 70vw;
 }
 
-  .containerDesktop{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex: 1;
-  }
-  .HomeContainerMobile{
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    margin-top: 2rem;
-margin: 0 auto;
-
- 
-
-  }
-  .headerMobile {
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 40vw;
-    
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-.menu{
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    width:  20vw;
+.containerDesktop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
 }
+.HomeContainerMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-top: 2rem;
+  margin: 0 auto;
+  width: 25vw;
+}
+.headerMobile {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-
-
-
-
-
-
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.menu {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+}
 
 .section {
   display: flex;
@@ -138,5 +126,4 @@ margin: 0 auto;
 .screenContainer {
   flex: 1;
   overflow: auto;
-
 }

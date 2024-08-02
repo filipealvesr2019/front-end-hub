@@ -153,6 +153,9 @@ const UpdateTheme = () => {
                 width: "100vw",
               }}
             >
+
+
+                
               <div
                 onClick={() =>
                   isEditMode && setEditingSection("mainBackground")
@@ -219,6 +222,15 @@ const UpdateTheme = () => {
                   </span>
                 </footer>
               </div>
+
+
+
+
+
+
+
+
+
             </div>
           </>
         );

@@ -14,6 +14,8 @@ import ThemeDetail from "./ecommerce/ThemeDetail.jsx";
 import LojaPage from "./ecommerce/LojaPage.jsx";
 import UpdateTheme from "./ecommerce/UpdateTheme.jsx";
 
+import Sidebar from "./pages/Sidebar.jsx";
+
 const Root = () => (
   <Routes>
     <Route path="/" element={<App />} />
@@ -24,7 +26,9 @@ const Root = () => (
     <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
     <Route path="/loja" element={<LojaPage />} />
     <Route path="/theme/:id" element={<ThemeDetail />} />
-    <Route path="/looks" element={<UpdateTheme />} />
+    <Route path="/looks" element={<UpdateTheme />} />~
+    <Route path="/sidebar" element={<Sidebar />} />
+    
   </Routes>
 );
 
