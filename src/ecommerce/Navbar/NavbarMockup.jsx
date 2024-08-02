@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./Navbar.module.css";
+import styles from "./NavbarMockup.module.css";
 import SearchBarMobile from "../SearchBar/SearchBarMobile";
 export default function Navbar() {
   const [openCartModal, setOpenCartModal] = useState(false);
