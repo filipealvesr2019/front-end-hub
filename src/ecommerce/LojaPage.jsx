@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import header from "./styles/layout/header.module.css";
 
 import Navbar from "./Navbar/Navbar";
 import Tabs from "./tabs/Tabs";
@@ -20,7 +19,7 @@ const LojaPage = () => {
   const [footerBackgroundColor, setFooterBackgroundColor] = useState("");
   const [footerColor, setFooterColor] = useState("");
   const [logo, setLogo] = useState("");
-
+  const [layout, setLayout] = useState("");
   useEffect(() => {
     const fetchEcommerce = async () => {
       try {
@@ -34,6 +33,7 @@ const LojaPage = () => {
         setMainBackgroundColor(response.data.theme.main.backgroundColor);
         setMainColor(response.data.theme.main.color);
         setFooterBackgroundColor(response.data.theme.footer.backgroundColor);
+        setLayout(response.data.layout);
         setFooterColor(response.data.theme.footer.color);
       } catch (error) {
         console.error("Erro ao buscar o e-commerce:", error);
