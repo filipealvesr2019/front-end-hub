@@ -6,9 +6,8 @@ import header from "./styles/layout/header.module.css";
 import Navbar from "./Navbar/Navbar";
 import Tabs from "./tabs/Tabs";
 import SearchBar from "./SearchBar/SearchBar";
-import Layout1 from "./layouts/Layout1.module.css";
-import Layout2 from "./layouts/Layout2.module.css";
-
+import Layout1 from "./mockups/Layout1.module.css";
+import Layout2 from "./mockups/Layout2.module.css";
 const LojaPage = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
@@ -44,15 +43,30 @@ const LojaPage = () => {
     fetchEcommerce();
   }, [dominio]);
 
+  const layoutStyles = () => {
+    switch (layout) {
+      case "layout1":
+        return Layout1;
+      case "layout2":
+        return Layout2;
+      default:
+        return {}; // Retorna um objeto vazio se nenhum layout for encontrado
+    }
+  };
+  
+  const styles = layoutStyles(); // Chame a função para obter o estilo correto
+  
+
+
+
   if (!ecommerce) {
     return <div>Carregando...</div>;
   }
-  
 
   return (
     <>
-      <div className={header.container}>
-        <div className={header.screenContainer}>
+      <div className={styles .container}>
+        <div className={styles .screenContainer}>
           <div
             style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
           >
@@ -62,13 +76,13 @@ const LojaPage = () => {
                 color: headerColor,
                 cursor: headerBackgroundColor || headerColor ? "pointer" : "",
               }}
-              className={header.header}
+              className={styles.header}
             >
               <Navbar />
 
               <img style={{ color: "white", width:"5vw" }} src={logo} />
               <SearchBar />
-              <div className={header.header__icons}>
+              <div className={styles.header__icons}>
                 <a>
                   <img
                     src="https://i.imgur.com/ItjKDhc.png"
@@ -87,7 +101,7 @@ const LojaPage = () => {
               </div>
             </header>
             <Tabs />
-            <main className={header.main}>
+            <main className={styles.main}>
               <span>Conteúdo Principal da Loja</span>
        
             </main>
@@ -96,7 +110,7 @@ const LojaPage = () => {
                 backgroundColor: footerBackgroundColor,
                 color: footerColor,
               }}
-              className={header.footer}
+              className={styles.footer}
             >
               <span>Footer da Loja</span>
             </footer>
