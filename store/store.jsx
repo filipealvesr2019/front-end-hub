@@ -9,9 +9,11 @@ export const authErrorAtom = atom(null); // Novo átomo para armazenar erros de 
 
 
 
-export const headerBackgroundColorAtom = atom('#ffffff'); // cor inicial
-export const headerColorAtom = atom('#000000'); // cor inicial
-export const mainBackgroundColorAtom = atom('#f0f0f0'); // cor inicial
-export const mainColorAtom = atom('#000000'); // cor inicial
-export const footerBackgroundColorAtom = atom('#ffffff'); // cor inicial
-export const footerColorAtom = atom('#000000'); // cor inicial
+
+// Defina átomos para cada cor do tema
+export const headerBackgroundColorAtom = atom('#ffffff');
+export const headerColorAtom = atom('#000000');
+export const mainBackgroundColorAtom = atom('#ffffff');
+export const mainColorAtom = atom('#000000');
+export const footerBackgroundColorAtom = atom('#ffffff');
+export const footerColorAtom = atom('#000000');

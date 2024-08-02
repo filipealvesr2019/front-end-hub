@@ -1,28 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import ColorCircle from "./colors/ColorCircle"; // Import the ColorCircle component
-import styles from "./UpdateTheme.module.css";
-import KeyboardArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardArrowLeftOutlined";
+// UpdateTheme.js
+import React, { useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
+import {
+  headerBackgroundColorAtom,
+  headerColorAtom,
+  mainBackgroundColorAtom,
+  mainColorAtom,
+  footerBackgroundColorAtom,
+  footerColorAtom
+} from '../../store/store';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import ColorCircle from './colors/ColorCircle'; // Import the ColorCircle component
+import styles from './UpdateTheme.module.css';
+import KeyboardArrowLeftOutlinedIcon from '@mui/icons-material/KeyboardArrowLeftOutlined';
 
 const UpdateTheme = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
-  const [editingSection, setEditingSection] = useState(null);
-  const [headerBackgroundColor, setHeaderBackgroundColor] = useState("");
-  const [headerColor, setHeaderColor] = useState("");
-  const [mainBackgroundColor, setMainBackgroundColor] = useState("");
-  const [mainColor, setMainColor] = useState("");
-  const [footerBackgroundColor, setFooterBackgroundColor] = useState("");
-  const [footerColor, setFooterColor] = useState("");
+  const [headerBackgroundColor, setHeaderBackgroundColor] = useAtom(headerBackgroundColorAtom);
+  const [headerColor, setHeaderColor] = useAtom(headerColorAtom);
+  const [mainBackgroundColor, setMainBackgroundColor] = useAtom(mainBackgroundColorAtom);
+  const [mainColor, setMainColor] = useAtom(mainColorAtom);
+  const [footerBackgroundColor, setFooterBackgroundColor] = useAtom(footerBackgroundColorAtom);
+  const [footerColor, setFooterColor] = useAtom(footerColorAtom);
   const [switchIcon, setSwitchIcon] = useState(true); 
-  const [logo, setLogo] = useState("");
+  const [logo, setLogo] = useState('');
+  const [editingSection, setEditingSection] = useState(null);
 
   useEffect(() => {
     const fetchEcommerce = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3003/api/ecommerce/user/66a6e6e84e3a81ac32025fa0"
+          'http://localhost:3003/api/ecommerce/user/66a6e6e84e3a81ac32025fa0'
         );
         setEcommerce(response.data);
         setLogo(response.data.theme.header.Logo);
@@ -33,7 +43,7 @@ const UpdateTheme = () => {
         setFooterBackgroundColor(response.data.theme.footer.backgroundColor);
         setFooterColor(response.data.theme.footer.color);
       } catch (error) {
-        console.error("Erro ao buscar o e-commerce:", error);
+        console.error('Erro ao buscar o e-commerce:', error);
       }
     };
 
@@ -43,7 +53,7 @@ const UpdateTheme = () => {
   const handleSave = async () => {
     try {
       await axios.post(
-        "http://localhost:3003/api/ecommerce/66a7992463ef55fe9b702bb0/update-theme",
+        'http://localhost:3003/api/ecommerce/66a7992463ef55fe9b702bb0/update-theme',
         {
           theme: {
             header: {
@@ -58,9 +68,9 @@ const UpdateTheme = () => {
           },
         }
       );
-      alert("Tema atualizado com sucesso!");
+      alert('Tema atualizado com sucesso!');
     } catch (error) {
-      console.error("Erro ao atualizar o tema:", error);
+      console.error('Erro ao atualizar o tema:', error);
     }
   };
 
@@ -74,9 +84,9 @@ const UpdateTheme = () => {
 
   const renderSwitchPage = () => {
     switch (editingSection) {
-      case "header":
+      case 'header':
         return (
-          <div style={{ backgroundColor: "white" }}>
+          <div style={{ backgroundColor: 'white' }}>
             <KeyboardArrowLeftOutlinedIcon
               onClick={() => setEditingSection(null)}
             />
@@ -91,7 +101,7 @@ const UpdateTheme = () => {
             <button onClick={handleSave}>Salvar Alterações</button>
           </div>
         );
-      case "pagina inicial":
+      case 'pagina inicial':
         return (
           <div>
             <KeyboardArrowLeftOutlinedIcon
@@ -108,7 +118,7 @@ const UpdateTheme = () => {
             <button onClick={handleSave}>Salvar Alterações</button>
           </div>
         );
-      case "detalhes do produto":
+      case 'detalhes do produto':
         return (
           <div>
             <KeyboardArrowLeftOutlinedIcon
@@ -135,12 +145,12 @@ const UpdateTheme = () => {
       <div className={styles.section}>
         <span
           style={{
-            color: "white",
-            cursor: "pointer",
+            color: 'white',
+            cursor: 'pointer',
           }}
           onClick={() => setSwitchIcon(!switchIcon)}
         >
-          {switchIcon ? "modo desktop" : "modo celular"}
+          {switchIcon ? 'modo desktop' : 'modo celular'}
         </span>
       </div>
 
@@ -152,20 +162,20 @@ const UpdateTheme = () => {
             <>
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
+                  display: 'flex',
+                  justifyContent: 'space-between',
                 }}
               >
-                {editingSection !== "header" && (
+                {editingSection !== 'header' && (
                   <div className={styles.menu}>
-                    <span onClick={() => handleSwitchPage("header")}>
+                    <span onClick={() => handleSwitchPage('header')}>
                       Cabeçalho
                     </span>
-                    <span onClick={() => handleSwitchPage("pagina inicial")}>
+                    <span onClick={() => handleSwitchPage('pagina inicial')}>
                       Página Inicial
                     </span>
                     <span
-                      onClick={() => handleSwitchPage("detalhes do produto")}
+                      onClick={() => handleSwitchPage('detalhes do produto')}
                     >
                       Detalhes do Produto
                     </span>
@@ -179,9 +189,9 @@ const UpdateTheme = () => {
                         src="http://localhost:3004/loja"
                         title="Desktop View"
                         style={{
-                          width: "1180px",
-                          height: "800px",
-                          border: "none",
+                          width: '1180px',
+                          height: '800px',
+                          border: 'none',
                         }}
                       />
                     </div>
@@ -193,20 +203,20 @@ const UpdateTheme = () => {
             <>
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
+                  display: 'flex',
+                  justifyContent: 'space-between',
                 }}
               >
-                {editingSection !== "header" && (
+                {editingSection !== 'header' && (
                   <div className={styles.menu}>
-                    <span onClick={() => handleSwitchPage("header")}>
+                    <span onClick={() => handleSwitchPage('header')}>
                       Cabeçalho
                     </span>
-                    <span onClick={() => handleSwitchPage("pagina inicial")}>
+                    <span onClick={() => handleSwitchPage('pagina inicial')}>
                       Página Inicial
                     </span>
                     <span
-                      onClick={() => handleSwitchPage("detalhes do produto")}
+                      onClick={() => handleSwitchPage('detalhes do produto')}
                     >
                       Detalhes do Produto
                     </span>
@@ -225,9 +235,9 @@ const UpdateTheme = () => {
                         src="http://localhost:3004/loja"
                         title="Mobile View"
                         style={{
-                          width: "360px",
-                          height: "640px",
-                          border: "none",
+                          width: '360px',
+                          height: '640px',
+                          border: 'none',
                         }}
                       />
                     </div>
