@@ -63,7 +63,7 @@ const LojaPage = () => {
             >
               <Navbar />
 
-              <img style={{ color: "white", width:"5vw",display:"" }} src={logo} />
+              <img style={{ color: "white", width:"5vw" }} src={logo} />
               <SearchBar />
               <div className={header.header__icons}>
                 <a>

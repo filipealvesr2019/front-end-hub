@@ -15,6 +15,7 @@ import ThemeDetail from "./ecommerce/ThemeDetail.jsx";
 
 import LojaPage from "./ecommerce/LojaPage.jsx";
 import UpdateTheme from "./ecommerce/UpdateTheme.jsx";
+import { Provider } from 'jotai';
 
 const Root = () => (
   <Routes>
@@ -33,7 +34,9 @@ const Root = () => (
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider>
   <React.StrictMode>
+
     <AuthProvider>
       <ChakraProvider>
         <Router>
@@ -41,5 +44,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </Router>
       </ChakraProvider>
     </AuthProvider>
-  </React.StrictMode>
+ 
+</React.StrictMode>
+</Provider>
 );
