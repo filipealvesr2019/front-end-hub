@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import styles from './ThemeDetail.module.css';
-
+import Layout1 from "./mockups/Layout1.module.css";
+import Layout2 from "./mockups/Layout2.module.css";
 const ThemeDetail = () => {
   const { id } = useParams();
   const [theme, setTheme] = useState(null);
   const [error, setError] = useState(null);
+  const [layout, setLayout] = useState("");
 
   useEffect(() => {
     const fetchTheme = async () => {
       try {
         const response = await axios.get(`http://localhost:3003/api/theme/${id}`);
         setTheme(response.data);
+        setLayout(response.data.layout);
+
       } catch (err) {
         setError(err.message);
       }
@@ -28,7 +31,18 @@ const ThemeDetail = () => {
   if (!theme) {
     return <div>Loading...</div>;
   }
-
+  const layoutStyles = () => {
+    switch (layout) {
+      case "layout1":
+        return Layout1;
+      case "layout2":
+        return Layout2;
+      default:
+        return {}; // Retorna um objeto vazio se nenhum layout for encontrado
+    }
+  };
+  
+  const styles = layoutStyles(); // Chame a função para obter o estilo correto
   return (
     <div className={styles.themeDetailContainer}>
       <h1>{theme.name}</h1>
