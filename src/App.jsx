@@ -6,7 +6,7 @@ function App() {
     <>
       <LandingPage />
       {/* <Register /> */}
-      
+
     </>
   );
 }

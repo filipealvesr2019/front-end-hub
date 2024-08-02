@@ -8,43 +8,36 @@ import Login from "./pages/Login.jsx";
 import AuthProvider from "../context/AuthContext.jsx";
 import RegisterLink from "./pages/RegisterLink.jsx";
 import Register from "./pages/Register.jsx";
-
 import PasswordResetRequest from "./pages/PasswordResetRequest.jsx";
 import ResetPasswordPage from "./pages/ResetPasswordPage.jsx";
 import ThemeDetail from "./ecommerce/ThemeDetail.jsx";
-
 import LojaPage from "./ecommerce/LojaPage.jsx";
 import UpdateTheme from "./ecommerce/UpdateTheme.jsx";
-import { Provider } from 'jotai';
 
 const Root = () => (
   <Routes>
     <Route path="/" element={<App />} />
     <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<RegisterLink/>} />
-    
-    <Route path="/register/:token" element={<Register/>} />
-    <Route path="/forgotPassword" element={<PasswordResetRequest/>} />
-    <Route path="/reset-password/:token" element={<ResetPasswordPage/>} />
+    <Route path="/register" element={<RegisterLink />} />
+    <Route path="/register/:token" element={<Register />} />
+    <Route path="/forgotPassword" element={<PasswordResetRequest />} />
+    <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
     <Route path="/loja" element={<LojaPage />} />
     <Route path="/theme/:id" element={<ThemeDetail />} />
     <Route path="/looks" element={<UpdateTheme />} />
-    
   </Routes>
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider>
   <React.StrictMode>
 
-    <AuthProvider>
-      <ChakraProvider>
-        <Router>
-          <Root />
-        </Router>
-      </ChakraProvider>
-    </AuthProvider>
- 
-</React.StrictMode>
-</Provider>
+      <AuthProvider>
+        <ChakraProvider>
+          <Router>
+            <Root />
+          </Router>
+        </ChakraProvider>
+      </AuthProvider>
+
+  </React.StrictMode>
 );
