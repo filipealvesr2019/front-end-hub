@@ -356,8 +356,9 @@ const UpdateTheme = () => {
                     }}
                     className={styles.headerMobile}
                   >
+                       <NavbarMockup />
                     <img style={{ color: "white", width: "5vw" }} src={logo} />
-                    <NavbarMockup />
+                 
                     <div className={styles.header__icons}>
                       <a>
                         <img
