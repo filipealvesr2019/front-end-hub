@@ -5,6 +5,7 @@ import ColorCircle from "./colors/ColorCircle"; // Import the ColorCircle compon
 import styles from "./UpdateTheme.module.css";
 import KeyboardArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardArrowLeftOutlined";
 import SearchBar from "./SearchBar/SearchBar";
+import Navbar from "./Navbar/Navbar";
 
 const UpdateTheme = () => {
   const { dominio } = useParams();
@@ -356,7 +357,7 @@ const UpdateTheme = () => {
                     className={styles.headerMobile}
                   >
                     <img style={{ color: "white", width: "5vw" }} src={logo} />
-                    <SearchBar />
+                    <Navbar />
                     <div className={styles.header__icons}>
                       <a>
                         <img
