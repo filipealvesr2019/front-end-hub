@@ -1,34 +1,141 @@
-.header{
-    padding: 2rem;
+.header {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
 }
-.section{
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #2a2d34;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.stylesHeader {
+  background-color: white;
+  position: absolute;
+  z-index: 5;
+  border: 1px solid #eaeaea;
+  margin-top: 5rem;
+  margin-left: 10rem;
+}
+.main {
+  display: flex;
+
+  align-items: center;
+}
+.footer {
+  height: 100vw;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.screenContainer {
+  width: 100vw;
+}
+
+.header__img {
+  width: 10vw;
+}
+
+.header__icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+  .header {
+    padding: 2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    border:  0.5px solid #eaeaea;
-    width: 100vw;
-    padding: 1.2rem;
-    gap: 1rem;
-    z-index: 1;
-    background-color: #2a2d34;
-}
-
-
-
-.container{
-    display: flex;
-    flex-direction: row;
-}
-.div{
-background-color: #FEFEFE;
-    width: 25vw;
-    height: 100vh;
-    z-index: 7;
+    justify-content: space-around;
+    width: 80vw;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .HomeContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+
+    width: 80vw;
+    margin-top: 2rem;
   
- 
+  }
+
+  .containerDesktop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+.headerMobile {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40vw;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+
+.HomeContainerMobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 40vw;
+    margin-top: 2rem;
+    margin-left: 2rem;
+  }
+.menu{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
 }
-.screenContainer{
-    width: 75vw;
+
+
+
+
+
+
+
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid #eaeaea;
+  width: 100vw;
+  padding: 1.2rem;
+  gap: 1rem;
+  z-index: 1;
+  background-color: #2a2d34;
+  /* position: fixed;
+    top: 0; */
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: #f4f4f4;
+}
+
+.screenContainer {
+  width: 75vw;
 }

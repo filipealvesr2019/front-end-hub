@@ -1,0 +1,14 @@
+.header.layout1 .header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .header.layout1 .logo {
+    order: 2;
+  }
+  
+  .header.layout1 .search-input {
+    order: 1;
+  }
+  

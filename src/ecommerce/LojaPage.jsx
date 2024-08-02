@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import styles from "./LojaPage.module.css";
+import header from "./styles/layout/header.module.css";
 
 import Navbar from "./Navbar/Navbar";
 import Tabs from "./tabs/Tabs";
@@ -18,6 +18,7 @@ const LojaPage = () => {
   const [mainColor, setMainColor] = useState("");
   const [footerBackgroundColor, setFooterBackgroundColor] = useState("");
   const [footerColor, setFooterColor] = useState("");
+  const [logo, setLogo] = useState("");
 
   useEffect(() => {
     const fetchEcommerce = async () => {
@@ -26,6 +27,7 @@ const LojaPage = () => {
           `http://localhost:3003/api/ecommerce/user/66a6e6e84e3a81ac32025fa0`
         );
         setEcommerce(response.data);
+        setLogo(response.data.theme.header.Logo)
         setHeaderBackgroundColor(response.data.theme.header.backgroundColor);
         setHeaderColor(response.data.theme.header.color);
         setMainBackgroundColor(response.data.theme.main.backgroundColor);
@@ -46,8 +48,8 @@ const LojaPage = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.screenContainer}>
+      <div className={header.container}>
+        <div className={header.screenContainer}>
           <div
             style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
           >
@@ -57,13 +59,13 @@ const LojaPage = () => {
                 color: headerColor,
                 cursor: headerBackgroundColor || headerColor ? "pointer" : "",
               }}
-              className={styles.header}
+              className={header.header}
             >
               <Navbar />
 
-              <span style={{ color: "white" }}>LOGO</span>
+              <img style={{ color: "white", width:"5vw" }} src={logo} />
               <SearchBar />
-              <div className={styles.header__icons}>
+              <div className={header.header__icons}>
                 <a>
                   <img
                     src="https://i.imgur.com/ItjKDhc.png"
@@ -82,7 +84,7 @@ const LojaPage = () => {
               </div>
             </header>
             <Tabs />
-            <main className={styles.main}>
+            <main className={header.main}>
               <span>Conteúdo Principal da Loja</span>
        
             </main>
@@ -91,7 +93,7 @@ const LojaPage = () => {
                 backgroundColor: footerBackgroundColor,
                 color: footerColor,
               }}
-              className={styles.footer}
+              className={header.footer}
             >
               <span>Footer da Loja</span>
             </footer>

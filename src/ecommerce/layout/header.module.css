@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  .headerContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .logo {
+    order: 2;
+  }
+  
+  .searchInput {
+    order: 1;
+  }
+  
