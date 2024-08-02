@@ -6,8 +6,8 @@ import ColorCircle from "../ecommerce/colors/ColorCircle"; // Import the ColorCi
 import KeyboardArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardArrowLeftOutlined";
 import SearchBar from "../ecommerce/SearchBar/SearchBar";
 import NavbarMockup from "../ecommerce/Navbar/NavbarMockup";
-import Layout1 from "./mockups/Layout1.module.css";
-import Layout2 from "./mockups/Layout2.module.css";
+import Layout1 from "../ecommerce/layout/Layout1.module.css";
+import Layout2 from "../ecommerce/layout/Layout2.module.css";
 
 const UpdateTheme = () => {
   const { dominio } = useParams();

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Layout1 from "./mockups/Layout1.module.css";
-import Layout2 from "./mockups/Layout2.module.css";
+import Layout1 from "../ecommerce/layout/Layout2.module.css";
+import Layout2 from "../ecommerce/layout/Layout2.module.css";
 const ThemeDetail = () => {
   const { id } = useParams();
   const [theme, setTheme] = useState(null);
