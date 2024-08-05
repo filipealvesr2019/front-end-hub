@@ -302,7 +302,7 @@ const UpdateTheme = () => {
                     Detalhes do Produto
                   </span>
                   <span onClick={() => handleSwitchPage("mainText")}>
-                    Texto do Main
+                      Texto do Main
                   </span>
                   <span onClick={() => handleSwitchPage("footerBackground")}>
                     Fundo do Footer
