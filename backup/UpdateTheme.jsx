@@ -6,6 +6,8 @@ import ColorCircle from "../ecommerce/colors/ColorCircle"; // Import the ColorCi
 import KeyboardArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardArrowLeftOutlined";
 import SearchBar from "../ecommerce/SearchBar/SearchBar";
 import NavbarMockup from "../ecommerce/Navbar/NavbarMockup";
+import Cookies from "js-cookie";
+
 import Layout1 from "../ecommerce/layout/Layout1.module.css";
 import Layout2 from "../ecommerce/layout/Layout2.module.css";
 
@@ -24,6 +26,7 @@ const UpdateTheme = () => {
   const [switchIcon, setSwitchIcon] = useState(true); // Alterei para booleano
   const [logo, setLogo] = useState("");
   const [layout, setLayout] = useState("");
+  const customerID = Cookies.get('customerID'); // Obtenha o ID do cliente do cookie
   useEffect(() => {
     const fetchEcommerce = async () => {
       try {
@@ -52,7 +55,7 @@ const UpdateTheme = () => {
   const handleSave = async () => {
     try {
       await axios.post(
-        `http://localhost:3003/api/ecommerce/66a7992463ef55fe9b702bb0/update-theme`,
+        `http://localhost:3003/api/ecommerce/${customerID}/update-theme`,
         {
           theme: {
             header: {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
+import Cookies from "js-cookie";
 import Navbar from "./Navbar/Navbar";
 import Tabs from "./tabs/Tabs";
 import SearchBar from "./SearchBar/SearchBar";
@@ -20,11 +20,14 @@ const LojaPage = () => {
   const [footerColor, setFooterColor] = useState("");
   const [logo, setLogo] = useState("");
   const [layout, setLayout] = useState("");
+
+  const customerID = Cookies.get('customerID'); // Obtenha o ID do cliente do cookie
+
   useEffect(() => {
     const fetchEcommerce = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3003/api/ecommerce/user/66a6e6e84e3a81ac32025fa0`
+          `http://localhost:3003/api/ecommerce/user/${customerID}`
         );
         setEcommerce(response.data);
         setLogo(response.data.theme.header.Logo)
