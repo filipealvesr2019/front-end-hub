@@ -26,7 +26,7 @@ const UpdateTheme = () => {
   const [layout, setLayout] = useState("");
 
   const customerID = Cookies.get('customerID'); // Obtenha o ID do cliente do cookie
-
+  const [ecommerceID , setEcommerceID] = useState('')
   useEffect(() => {
     const fetchEcommerce = async () => {
       try {
@@ -44,6 +44,7 @@ const UpdateTheme = () => {
         setFooterBackgroundColor(response.data.theme.footer.backgroundColor);
         setFooterColor(response.data.theme.footer.color);
         setLayout(response.data.layout);
+        setEcommerceID(response.data._id)
       } catch (error) {
         console.error("Erro ao buscar o e-commerce:", error);
       }
@@ -55,7 +56,7 @@ const UpdateTheme = () => {
   const handleSaveTheme = async () => {
     try {
       await axios.put(
-        `http://localhost:3003/api/ecommerce/66a6e6e84e3a81ac32025fa0/update-theme`,
+        `http://localhost:3003/api/ecommerce/${ecommerceID}/update-theme`,
         {
           theme: {
             header: {
@@ -316,9 +317,7 @@ const UpdateTheme = () => {
                     style={{ width: "375px", height: "812px", border: "none" }} // Exemplo de dimensões de um iPhone X
                   />
                 </div>
-                <button onClick={() => changeHeaderColor("#ff5733")}>
-                  Mudar Cor para Laranja
-                </button>
+            
               </div>
               <div className={styles.containerDesktop}>
                 {renderSwitchToMobileContent()}
