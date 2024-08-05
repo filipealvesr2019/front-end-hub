@@ -56,6 +56,21 @@ const LojaPage = () => {
   
   const styles = layoutStyles(); // Chame a função para obter o estilo correto
   
+  const [headerColorFrame, setHeaderColorFrame] = useState(headerBackgroundColor);
+
+  useEffect(() => {
+    const handleMessage = (event) => {
+      if (event.data.type === 'CHANGE_HEADER_COLOR') {
+        setHeaderColorFrame(event.data.color);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, []);
 
 
 
@@ -72,7 +87,7 @@ const LojaPage = () => {
           >
             <header
               style={{
-                backgroundColor: headerBackgroundColor,
+                backgroundColor: headerColorFrame ? headerColorFrame : headerBackgroundColor,
                 color: headerColor,
                 cursor: headerBackgroundColor || headerColor ? "pointer" : "",
               }}

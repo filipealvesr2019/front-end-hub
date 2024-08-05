@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import ColorCircle from "./colors/ColorCircle"; // Import the ColorCircle component
-import styles from "./UpdateTheme.module.css";
+import ColorCircle from "../ecommerce/colors/ColorCircle"; // Import the ColorCircle component
+
 import KeyboardArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardArrowLeftOutlined";
-import SearchBar from "./SearchBar/SearchBar";
+import SearchBar from "../ecommerce/SearchBar/SearchBar";
+import NavbarMockup from "../ecommerce/Navbar/NavbarMockup";
+import Layout1 from "../ecommerce/layout/Layout1.module.css";
+import Layout2 from "../ecommerce/layout/Layout2.module.css";
 
 const UpdateTheme = () => {
   const { dominio } = useParams();
@@ -20,6 +23,7 @@ const UpdateTheme = () => {
   const [footerColor, setFooterColor] = useState("");
   const [switchIcon, setSwitchIcon] = useState(true); // Alterei para booleano
   const [logo, setLogo] = useState("");
+  const [layout, setLayout] = useState("");
   useEffect(() => {
     const fetchEcommerce = async () => {
       try {
@@ -36,6 +40,7 @@ const UpdateTheme = () => {
         setMainColor(response.data.theme.main.color);
         setFooterBackgroundColor(response.data.theme.footer.backgroundColor);
         setFooterColor(response.data.theme.footer.color);
+        setLayout(response.data.layout);
       } catch (error) {
         console.error("Erro ao buscar o e-commerce:", error);
       }
@@ -86,7 +91,7 @@ const UpdateTheme = () => {
     switch (editingSection) {
       case "header":
         return (
-          <div>
+          <div style={{ backgroundColor: "white" }}>
             <KeyboardArrowLeftOutlinedIcon
               onClick={() => setEditingSection(null)}
             />{" "}
@@ -152,86 +157,7 @@ const UpdateTheme = () => {
                 justifyItems: "flex-end",
                 width: "100vw",
               }}
-            >
-
-
-                
-              <div
-                onClick={() =>
-                  isEditMode && setEditingSection("mainBackground")
-                }
-                className={styles.HomeContainer}
-              >
-                <header
-                  style={{
-                    backgroundColor: headerBackgroundColor,
-                    color: headerColor,
-                    cursor:
-                      headerBackgroundColor || headerColor ? "pointer" : "",
-                  }}
-                  className={styles.header}
-                >
-                  <img style={{ color: "white", width: "5vw" }} src={logo} />
-                  <SearchBar />
-                  <div className={styles.header__icons}>
-                    <a>
-                      <img
-                        src="https://i.imgur.com/ItjKDhc.png"
-                        title="source: imgur.com"
-                        style={{ width: "2.5rem" }}
-                      />
-                    </a>
-
-                    <a>
-                      <img
-                        src="https://i.imgur.com/1XrvJJL.png"
-                        title="source: imgur.com"
-                        style={{ width: "2.5rem" }}
-                      />
-                    </a>
-                  </div>
-                </header>
-                <main className={styles.main}>
-                  <span
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (isEditMode) setEditingSection("pagina inicial");
-                    }}
-                  >
-                    Conteúdo Principal da Loja
-                  </span>
-                </main>
-                <footer
-                  style={{
-                    backgroundColor: footerBackgroundColor,
-                    color: footerColor,
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (isEditMode) setEditingSection("footerBackground");
-                  }}
-                  className={styles.footer}
-                >
-                  <span
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (isEditMode) setEditingSection("footerText");
-                    }}
-                  >
-                    Footer da Loja
-                  </span>
-                </footer>
-              </div>
-
-
-
-
-
-
-
-
-
-            </div>
+            ></div>
           </>
         );
     }
@@ -244,74 +170,21 @@ const UpdateTheme = () => {
       case "detalhes do produto":
         return <div>detalhes do produto mobile</div>;
       default:
-        return (
-          <div
-            style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
-            onClick={() => isEditMode && setEditingSection("mainBackground")}
-            className={styles.HomeContainerMobile}
-          >
-            <header
-              style={{
-                backgroundColor: headerBackgroundColor,
-                color: headerColor,
-                cursor: headerBackgroundColor || headerColor ? "pointer" : "",
-              }}
-              className={styles.headerMobile}
-            >
-              <img style={{ color: "white", width: "5vw" }} src={logo} />
-              <SearchBar />
-              <div className={styles.header__icons}>
-                <a>
-                  <img
-                    src="https://i.imgur.com/ItjKDhc.png"
-                    title="source: imgur.com"
-                    style={{ width: "2.5rem" }}
-                  />
-                </a>
-
-                <a>
-                  <img
-                    src="https://i.imgur.com/1XrvJJL.png"
-                    title="source: imgur.com"
-                    style={{ width: "2.5rem" }}
-                  />
-                </a>
-              </div>
-            </header>
-            <main className={styles.main}>
-              <span
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (isEditMode) setEditingSection("pagina inicial");
-                }}
-              >
-                Conteúdo Principal da Loja mobile
-              </span>
-            </main>
-            <footer
-              style={{
-                backgroundColor: footerBackgroundColor,
-                color: footerColor,
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (isEditMode) setEditingSection("footerBackground");
-              }}
-              className={styles.footer}
-            >
-              <span
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (isEditMode) setEditingSection("footerText");
-                }}
-              >
-                Footer da Loja mobile
-              </span>
-            </footer>
-          </div>
-        );
+        return <></>;
     }
   };
+  const layoutStyles = () => {
+    switch (layout) {
+      case "layout1":
+        return Layout1;
+      case "layout2":
+        return Layout2;
+      default:
+        return {}; // Retorna um objeto vazio se nenhum layout for encontrado
+    }
+  };
+
+  const styles = layoutStyles(); // Chame a função para obter o estilo correto
 
   return (
     <>
@@ -349,34 +222,117 @@ const UpdateTheme = () => {
         <div className={styles.screenContainer}>
           {switchIcon ? (
             <>
-              <div className={styles.containerDesktop}>
-                <div className={styles.menu}>
-                  <span onClick={() => handleSwitchPage("header")}>
-                    Cabeçalho
-                  </span>
-                  <span onClick={() => handleSwitchPage("pagina inicial")}>
-                    Página Inicial
-                  </span>
-                  <span onClick={() => handleSwitchPage("detalhes do produto")}>
-                    Detalhes do Produto
-                  </span>
-                  <span onClick={() => handleSwitchPage("mainText")}>
-                    Texto do Main
-                  </span>
-                  <span onClick={() => handleSwitchPage("footerBackground")}>
-                    Fundo do Footer
-                  </span>
-                  <span onClick={() => handleSwitchPage("footerText")}>
-                    Texto do Footer
-                  </span>
-                </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                {editingSection != "header" && (
+                  <div className={styles.menu}>
+                    <span onClick={() => handleSwitchPage("header")}>
+                      Cabeçalho
+                    </span>
+                    <span onClick={() => handleSwitchPage("pagina inicial")}>
+                      Página Inicial
+                    </span>
+                    <span
+                      onClick={() => handleSwitchPage("detalhes do produto")}
+                    >
+                      Detalhes do Produto
+                    </span>
+                    <span onClick={() => handleSwitchPage("mainText")}>
+                      Texto do Main
+                    </span>
+                    <span onClick={() => handleSwitchPage("footerBackground")}>
+                      Fundo do Footer
+                    </span>
+                    <span onClick={() => handleSwitchPage("footerText")}>
+                      Texto do Footer
+                    </span>
+                  </div>
+                )}
 
+                <div
+                  onClick={() =>
+                    isEditMode && setEditingSection("mainBackground")
+                  }
+                  className={styles.HomeContainer}
+                >
+                  <header
+                    style={{
+                      backgroundColor: headerBackgroundColor,
+                      color: headerColor,
+                      cursor:
+                        headerBackgroundColor || headerColor ? "pointer" : "",
+                    }}
+                    className={styles.header}
+                  >
+                    <img style={{ color: "white", width: "5vw" }} src={logo} />
+                    <SearchBar />
+                    <div className={styles.header__icons}>
+                      <a>
+                        <img
+                          src="https://i.imgur.com/ItjKDhc.png"
+                          title="source: imgur.com"
+                          style={{ width: "2.5rem" }}
+                        />
+                      </a>
+
+                      <a>
+                        <img
+                          src="https://i.imgur.com/1XrvJJL.png"
+                          title="source: imgur.com"
+                          style={{ width: "2.5rem" }}
+                        />
+                      </a>
+                    </div>
+                  </header>
+                  <main className={styles.main}>
+                    <span
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (isEditMode) setEditingSection("pagina inicial");
+                      }}
+                    >
+                      Conteúdo Principal da Loja
+                    </span>
+                  </main>
+                  <footer
+                    style={{
+                      backgroundColor: footerBackgroundColor,
+                      color: footerColor,
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (isEditMode) setEditingSection("footerBackground");
+                    }}
+                    className={styles.footer}
+                  >
+                    <span
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (isEditMode) setEditingSection("footerText");
+                      }}
+                    >
+                      Footer da Loja
+                    </span>
+                  </footer>
+                </div>
+              </div>
+
+              <div className={styles.containerDesktop}>
                 {renderSwitchContent()}
               </div>
             </>
           ) : (
             <>
-              <div className={styles.containerDesktop}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
                 <div className={styles.menu}>
                   <span onClick={() => handleSwitchPage("header")}>
                     Cabeçalho
@@ -397,7 +353,79 @@ const UpdateTheme = () => {
                     Texto do Footer
                   </span>
                 </div>
+                <div
+                  style={{
+                    backgroundColor: mainBackgroundColor,
+                    color: mainColor,
+                  }}
+                  onClick={() =>
+                    isEditMode && setEditingSection("mainBackground")
+                  }
+                  className={styles.HomeContainerMobile}
+                >
+                  <header
+                    style={{
+                      backgroundColor: headerBackgroundColor,
+                      color: headerColor,
+                      cursor:
+                        headerBackgroundColor || headerColor ? "pointer" : "",
+                    }}
+                    className={styles.headerMobile}
+                  >
+                    <NavbarMockup />
+                    <img style={{ color: "white", width: "5vw" }} src={logo} />
 
+                    <div className={styles.header__icons}>
+                      <a>
+                        <img
+                          src="https://i.imgur.com/ItjKDhc.png"
+                          title="source: imgur.com"
+                          style={{ width: "2.5rem" }}
+                        />
+                      </a>
+
+                      <a>
+                        <img
+                          src="https://i.imgur.com/1XrvJJL.png"
+                          title="source: imgur.com"
+                          style={{ width: "2.5rem" }}
+                        />
+                      </a>
+                    </div>
+                  </header>
+                  <main className={styles.main}>
+                    <span
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (isEditMode) setEditingSection("pagina inicial");
+                      }}
+                    >
+                      Conteúdo Principal da Loja mobile
+                    </span>
+                  </main>
+                  <footer
+                    style={{
+                      backgroundColor: footerBackgroundColor,
+                      color: footerColor,
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (isEditMode) setEditingSection("footerBackground");
+                    }}
+                    className={styles.footer}
+                  >
+                    <span
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (isEditMode) setEditingSection("footerText");
+                      }}
+                    >
+                      Footer da Loja mobile
+                    </span>
+                  </footer>
+                </div>
+              </div>
+              <div className={styles.containerDesktop}>
                 {renderSwitchToMobileContent()}
               </div>
             </>

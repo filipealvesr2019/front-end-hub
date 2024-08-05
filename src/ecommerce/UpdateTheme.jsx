@@ -49,10 +49,10 @@ const UpdateTheme = () => {
     fetchEcommerce();
   }, [dominio]);
 
-  const handleSave = async () => {
+  const handleSaveTheme = async () => {
     try {
-      await axios.post(
-        `http://localhost:3003/api/ecommerce/66a7992463ef55fe9b702bb0/update-theme`,
+      await axios.put(
+        `http://localhost:3003/api/ecommerce/66a6e6e84e3a81ac32025fa0/update-theme`,
         {
           theme: {
             header: {
@@ -99,7 +99,7 @@ const UpdateTheme = () => {
             <label>Cor de Fundo do Header:</label>
             <ColorCircle
               color={headerBackgroundColor}
-              onChange={setHeaderBackgroundColor}
+              onChange={changeHeaderColor}
             />
             <label>Cor do Texto do Header:</label>
             <ColorCircle color={headerColor} onChange={setHeaderColor} />
@@ -186,6 +186,16 @@ const UpdateTheme = () => {
 
   const styles = layoutStyles(); // Chame a função para obter o estilo correto
 
+  const changeHeaderColor = (color) => {
+    const iframe = document.getElementById("mobile-view");
+    if (iframe) {
+      // Envia uma mensagem para o iframe para alterar a cor do header
+      iframe.contentWindow.postMessage(
+        { type: "CHANGE_HEADER_COLOR", color },
+        "*"
+      );
+    }
+  };
   return (
     <>
       <div className={styles.section}>
@@ -253,71 +263,13 @@ const UpdateTheme = () => {
                   </div>
                 )}
 
-                <div
-                  onClick={() =>
-                    isEditMode && setEditingSection("mainBackground")
-                  }
-                  className={styles.HomeContainer}
-                >
-                  <header
-                    style={{
-                      backgroundColor: headerBackgroundColor,
-                      color: headerColor,
-                      cursor:
-                        headerBackgroundColor || headerColor ? "pointer" : "",
-                    }}
-                    className={styles.header}
-                  >
-                    <img style={{ color: "white", width: "5vw" }} src={logo} />
-                    <SearchBar />
-                    <div className={styles.header__icons}>
-                      <a>
-                        <img
-                          src="https://i.imgur.com/ItjKDhc.png"
-                          title="source: imgur.com"
-                          style={{ width: "2.5rem" }}
-                        />
-                      </a>
-
-                      <a>
-                        <img
-                          src="https://i.imgur.com/1XrvJJL.png"
-                          title="source: imgur.com"
-                          style={{ width: "2.5rem" }}
-                        />
-                      </a>
-                    </div>
-                  </header>
-                  <main className={styles.main}>
-                    <span
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (isEditMode) setEditingSection("pagina inicial");
-                      }}
-                    >
-                      Conteúdo Principal da Loja
-                    </span>
-                  </main>
-                  <footer
-                    style={{
-                      backgroundColor: footerBackgroundColor,
-                      color: footerColor,
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (isEditMode) setEditingSection("footerBackground");
-                    }}
-                    className={styles.footer}
-                  >
-                    <span
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (isEditMode) setEditingSection("footerText");
-                      }}
-                    >
-                      Footer da Loja
-                    </span>
-                  </footer>
+                <div className="mobile-device">
+                  <iframe
+                    id="mobile-view"
+                    src="http://localhost:3004/loja" // URL da página mobile
+                    title="Mobile View"
+                    style={{ width: "1280px", height: "700px", border: "none" }} // Exemplo de dimensões de um iPhone X
+                  />
                 </div>
               </div>
 
@@ -353,77 +305,17 @@ const UpdateTheme = () => {
                     Texto do Footer
                   </span>
                 </div>
-                <div
-                  style={{
-                    backgroundColor: mainBackgroundColor,
-                    color: mainColor,
-                  }}
-                  onClick={() =>
-                    isEditMode && setEditingSection("mainBackground")
-                  }
-                  className={styles.HomeContainerMobile}
-                >
-                  <header
-                    style={{
-                      backgroundColor: headerBackgroundColor,
-                      color: headerColor,
-                      cursor:
-                        headerBackgroundColor || headerColor ? "pointer" : "",
-                    }}
-                    className={styles.headerMobile}
-                  >
-                    <NavbarMockup />
-                    <img style={{ color: "white", width: "5vw" }} src={logo} />
-
-                    <div className={styles.header__icons}>
-                      <a>
-                        <img
-                          src="https://i.imgur.com/ItjKDhc.png"
-                          title="source: imgur.com"
-                          style={{ width: "2.5rem" }}
-                        />
-                      </a>
-
-                      <a>
-                        <img
-                          src="https://i.imgur.com/1XrvJJL.png"
-                          title="source: imgur.com"
-                          style={{ width: "2.5rem" }}
-                        />
-                      </a>
-                    </div>
-                  </header>
-                  <main className={styles.main}>
-                    <span
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (isEditMode) setEditingSection("pagina inicial");
-                      }}
-                    >
-                      Conteúdo Principal da Loja mobile
-                    </span>
-                  </main>
-                  <footer
-                    style={{
-                      backgroundColor: footerBackgroundColor,
-                      color: footerColor,
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (isEditMode) setEditingSection("footerBackground");
-                    }}
-                    className={styles.footer}
-                  >
-                    <span
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (isEditMode) setEditingSection("footerText");
-                      }}
-                    >
-                      Footer da Loja mobile
-                    </span>
-                  </footer>
+                <div className="mobile-device">
+                  <iframe
+                    id="mobile-view"
+                    src="http://localhost:3004/loja" // URL da página mobile
+                    title="Mobile View"
+                    style={{ width: "375px", height: "812px", border: "none" }} // Exemplo de dimensões de um iPhone X
+                  />
                 </div>
+                <button onClick={() => changeHeaderColor("#ff5733")}>
+                  Mudar Cor para Laranja
+                </button>
               </div>
               <div className={styles.containerDesktop}>
                 {renderSwitchToMobileContent()}
@@ -431,6 +323,8 @@ const UpdateTheme = () => {
             </>
           )}
         </div>
+        <button onClick={handleSaveTheme}>Salvar Tema</button>
+
       </div>
     </>
   );

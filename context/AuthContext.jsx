@@ -45,8 +45,9 @@ export const useAuth = () => {
 
       Cookies.set('token', response.data.token);
       Cookies.set('role', response.data.user.role);
-      Cookies.set('customerID', response.data.user._id);
-      setCustomerID(response.data.user._id); // Armazene o customerID
+      Cookies.set('customerID', response.data.user._id); // Verifique se o customerID está correto
+      setCustomerID(response.data.user._id); // Atualize o esta
+      console.log(customerID)
     } catch (error) {
       setError(error.response.data.error);
 
