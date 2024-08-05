@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 
 import Layout1 from "../ecommerce/layout/Layout1.module.css";
 import Layout2 from "../ecommerce/layout/Layout2.module.css";
-
+import styles from './UpdateTheme.module.css'
 const UpdateTheme = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
@@ -191,6 +191,8 @@ const UpdateTheme = () => {
   const styles = layoutStyles(); // Chame a função para obter o estilo correto
 
   const changeHeaderColor = (color) => {
+    setHeaderBackgroundColor(color); // Atualiza o estado com a nova cor
+
     const iframe = document.getElementById("mobile-view");
     if (iframe) {
       // Envia uma mensagem para o iframe para alterar a cor do header
@@ -309,13 +311,16 @@ const UpdateTheme = () => {
                     Texto do Footer
                   </span>
                 </div>
-                <div className="mobile-device">
+                <div>
+                <div className={styles.div} >
                   <iframe
                     id="mobile-view"
                     src="http://localhost:3004/loja" // URL da página mobile
                     title="Mobile View"
                     style={{ width: "375px", height: "812px", border: "none" }} // Exemplo de dimensões de um iPhone X
                   />
+                </div>
+
                 </div>
             
               </div>
@@ -325,9 +330,10 @@ const UpdateTheme = () => {
             </>
           )}
         </div>
-        <button onClick={handleSaveTheme}>Salvar Tema</button>
 
       </div>
+      <button onClick={handleSaveTheme}>Salvar Tema</button>
+
     </>
   );
 };
