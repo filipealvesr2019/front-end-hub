@@ -6,9 +6,9 @@ import ColorCircle from "../ecommerce/colors/ColorCircle"; // Import the ColorCi
 import KeyboardArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardArrowLeftOutlined";
 import Cookies from "js-cookie";
 
-import Layout1 from "../ecommerce/layout/Layout1.module.css";
-import Layout2 from "../ecommerce/layout/Layout2.module.css";
-import themeStyles from './UpdateTheme.module.css'
+// import Layout1 from "../ecommerce/layout/Layout1.module.css";
+// import Layout2 from "../ecommerce/layout/Layout2.module.css";
+import styles from './UpdateTheme.module.css'
 const UpdateTheme = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
@@ -177,18 +177,18 @@ const UpdateTheme = () => {
         return <></>;
     }
   };
-  const layoutStyles = () => {
-    switch (layout) {
-      case "layout1":
-        return Layout1;
-      case "layout2":
-        return Layout2;
-      default:
-        return {}; // Retorna um objeto vazio se nenhum layout for encontrado
-    }
-  };
+  // const layoutStyles = () => {
+  //   switch (layout) {
+  //     case "layout1":
+  //       return Layout1;
+  //     case "layout2":
+  //       return Layout2;
+  //     default:
+  //       return {}; // Retorna um objeto vazio se nenhum layout for encontrado
+  //   }
+  // };
 
-  const styles = layoutStyles(); // Chame a função para obter o estilo correto
+  // const styles = layoutStyles(); // Chame a função para obter o estilo correto
 
   const changeHeaderColor = (color) => {
     setHeaderBackgroundColor(color); // Atualiza o estado com a nova cor
@@ -343,7 +343,7 @@ const UpdateTheme = () => {
                     id="mobile-view"
                     src="http://localhost:3004/loja" // URL da página mobile
                     title="Mobile View"
-                    style={{ width: "1280px", height: "700px", border: "none", borderRadius:"10px" }} // Exemplo de dimensões de um iPhone X
+                    style={{ width: "1200px", height: "700px", border: "none", borderRadius:"10px" }} // Exemplo de dimensões de um iPhone X
                   />
                 </div>
               </div>
