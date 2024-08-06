@@ -24,6 +24,7 @@ const UpdateTheme = () => {
   const [switchIcon, setSwitchIcon] = useState(true); // Alterei para booleano
   const [logo, setLogo] = useState("");
   const [layout, setLayout] = useState("");
+  const [showCart, setshowCart] = useState(false);
 
   const customerID = Cookies.get("customerID"); // Obtenha o ID do cliente do cookie
   const [ecommerceID, setEcommerceID] = useState("");
@@ -129,6 +130,7 @@ const UpdateTheme = () => {
             />
             <label>Cor do Texto do Footer:</label>
             <ColorCircle color={footerColor} onChange={changeFooterTextColor} />
+            <span onClick={() => setshowCart(true)}>carrinho</span>
           </div>
         );
       case "productDetails":
@@ -265,10 +267,7 @@ const UpdateTheme = () => {
   const scrollToCarousel = () => {
     const lojaIframe = document.getElementById("mobile-view");
     if (lojaIframe) {
-      lojaIframe.contentWindow.postMessage(
-        { type: "SCROLL_TO_CAROUSEL" },
-        "*"
-      );
+      lojaIframe.contentWindow.postMessage({ type: "SCROLL_TO_CAROUSEL" }, "*");
     }
   };
 
@@ -316,7 +315,15 @@ const UpdateTheme = () => {
               >
                 {editingSection != "home" && (
                   <div className={styles.menu}>
-                    <span onClick={() => handleSwitchPage("home")}>
+                    <span
+                      onClick={() => handleSwitchPage("home")}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <img
+                        src="https://i.imgur.com/gGxXnvp.png"
+                        alt=""
+                        style={{ width: "1.32rem" }}
+                      />{" "}
                       Página Inicial
                     </span>
                     <span onClick={() => handleSwitchPage("CategoriesPage")}>
@@ -326,39 +333,64 @@ const UpdateTheme = () => {
                       Detalhes do Produto
                     </span>
                     <span onClick={() => handleSwitchPage("cartPage")}>
-                    pagina do carrinho
+                      pagina do carrinho
                     </span>
                     <span onClick={() => handleSwitchPage("paymentsPage")}>
-                    pagina de pagamento
+                      pagina de pagamento
                     </span>
                     <span onClick={() => handleSwitchPage("footerText")}>
                       Texto do Footer
                     </span>
                     <span
-        style={{
-          color: "black",
-          cursor: "pointer",
-        }}
-        onClick={scrollToCarousel}
-      >
-        Carrosel
-      </span>
+                      style={{
+                        color: "black",
+                        cursor: "pointer",
+                      }}
+                      onClick={scrollToCarousel}
+                    >
+                      Carrosel
+                    </span>
                   </div>
                 )}
-
-                <div className="mobile-device">
-                  <iframe
-                    id="mobile-view"
-                    src="http://localhost:3004/loja" // URL da página mobile
-                    title="Mobile View"
+                {showCart ? (
+                  <div
+                    className="mobile-device"
                     style={{
-                      width: "1200px",
-                      height: "700px",
-                      border: "none",
-                      borderRadius: "10px",
-                    }} // Exemplo de dimensões de um iPhone X
-                  />
-                </div>
+                      marginTop: "1rem",
+                    }}
+                  >
+                    <iframe
+                      id="mobile-view"
+                      src="http://localhost:3004/cart" // URL da página mobile
+                      title="Mobile View"
+                      style={{
+                        width: "1180px",
+                        height: "700px",
+                        border: "none",
+                        borderRadius: "10px",
+                      }} // Exemplo de dimensões de um iPhone X
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="mobile-device"
+                    style={{
+                      marginTop: "1rem",
+                    }}
+                  >
+                    <iframe
+                      id="mobile-view"
+                      src="http://localhost:3004/loja" // URL da página mobile
+                      title="Mobile View"
+                      style={{
+                        width: "1180px",
+                        height: "700px",
+                        border: "none",
+                        borderRadius: "10px",
+                      }} // Exemplo de dimensões de um iPhone X
+                    />
+                  </div>
+                )}
               </div>
 
               <div className={styles.containerDesktop}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Navbar from "./Navbar/Navbar";
@@ -29,8 +29,6 @@ const LojaPage = () => {
   const [footerColorFrame, setFooterColorFrame] = useState(mainBackgroundColor);
   const [footerTextColorFrame, setFooterTextColorFrame] = useState(mainColor);
 
-    
-    
   const customerID = Cookies.get("customerID"); // Obtenha o ID do cliente do cookie
 
   useEffect(() => {
@@ -90,7 +88,9 @@ const LojaPage = () => {
         setFooterTextColorFrame(event.data.color);
       }
       if (event.data.type === "SCROLL_TO_CAROUSEL") {
-        document.getElementById("carrosel").scrollIntoView({ behavior: "smooth" });
+        document
+          .getElementById("carrosel")
+          .scrollIntoView({ behavior: "smooth" });
       }
     };
 
@@ -136,7 +136,7 @@ const LojaPage = () => {
                     style={{ width: "2.5rem" }}
                   />
                 </a>
-
+<Link to={'/cart'}>
                 <a>
                   <img
                     src="https://i.imgur.com/1XrvJJL.png"
@@ -144,6 +144,8 @@ const LojaPage = () => {
                     style={{ width: "2.5rem" }}
                   />
                 </a>
+
+</Link>
               </div>
             </header>
             <Tabs />
@@ -157,27 +159,31 @@ const LojaPage = () => {
               }}
             >
               <span>Conteúdo Principal da Loja</span>
-        
             </main>
             <footer
-             style={{
-              backgroundColor: footerColorFrame
-                ? footerColorFrame
-                : footerBackgroundColor,
-              color: footerTextColorFrame ? footerTextColorFrame : footerColor,
-            }}
+              style={{
+                backgroundColor: footerColorFrame
+                  ? footerColorFrame
+                  : footerBackgroundColor,
+                color: footerTextColorFrame
+                  ? footerTextColorFrame
+                  : footerColor,
+              }}
               className={styles.footer}
             >
               <span>Footer da Loja</span>
             </footer>
 
-            <div id="carrosel" style={{
-              marginTop:"15rem",
-              color:"black"
-            }}>
-    {/* Carrossel content here */}
-    carrosel loja 
-  </div>
+            <div
+              id="carrosel"
+              style={{
+                marginTop: "15rem",
+                color: "black",
+              }}
+            >
+              {/* Carrossel content here */}
+              carrosel loja
+            </div>
           </div>
         </div>
       </div>

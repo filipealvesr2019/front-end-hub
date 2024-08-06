@@ -16,7 +16,7 @@ import UpdateTheme from "./ecommerce/UpdateTheme.jsx";
 
 import Sidebar from "./pages/Sidebar.jsx";
 import ThemeList from "./ecommerce/ThemeList.jsx";
-
+import CartPage from "./ecommerce/cartPage/Cart.jsx";
 const Root = () => (
   <Routes>
     <Route path="/" element={<App />} />
@@ -31,7 +31,8 @@ const Root = () => (
     <Route path="/sidebar" element={<Sidebar />} />
     <Route path="/temas" element={<ThemeList />} />
 
-    
+    <Route path="/cart" element={<CartPage />} />
+
   </Routes>
 );
 
