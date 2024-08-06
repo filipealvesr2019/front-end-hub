@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Layout1 from "../ecommerce/layout/Layout1.module.css";
 import Layout2 from "../ecommerce/layout/Layout2.module.css";
+import Layout3 from "../ecommerce/layout/Layout3.module.css";
+import Layout4 from "../ecommerce/layout/Layout4.module.css";
+import Layout5 from "../ecommerce/layout/Layout5.module.css";
+import Layout6 from "../ecommerce/layout/Layout6.module.css";
 const ThemeDetail = () => {
   const { id } = useParams();
   const [theme, setTheme] = useState(null);
@@ -39,6 +43,14 @@ const ThemeDetail = () => {
         return Layout1;
       case "layout2":
         return Layout2;
+      case "layout3":
+        return Layout3;
+      case "layout4":
+        return Layout4;
+      case "layout5":
+        return Layout5;
+      case "layout6":
+        return Layout6;
       default:
         return {}; // Retorna um objeto vazio se nenhum layout for encontrado
     }
@@ -86,34 +98,39 @@ const ThemeDetail = () => {
           <p>
             <strong>Categoria :</strong> {theme.category}
           </p>
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div style={{ display: "flex", gap: "10px", flexDirection:"column" }}>
             <div
               style={{
                 backgroundColor: theme.theme.header.backgroundColor,
                 color: theme.theme.header.color,
                 padding: "10px",
+                height:"50vh"
               }}
             >
               <p>Header</p>
             </div>
             <div
               style={{
-                backgroundColor: theme.theme.footer.backgroundColor,
-                color: theme.theme.footer.color,
-                padding: "10px",
-              }}
-            >
-              <p>Footer</p>
-            </div>
-            <div
-              style={{
                 backgroundColor: theme.theme.main.backgroundColor,
                 color: theme.theme.main.color,
                 padding: "10px",
+                    height:"50vh"
               }}
             >
               <p>Main</p>
             </div>
+            <div
+              style={{
+                backgroundColor: theme.theme.footer.backgroundColor,
+                color: theme.theme.footer.color,
+                padding: "10px",
+               
+                height:"50vh"
+              }}
+            >
+              <p>Footer</p>
+            </div>
+           
           </div>
         </>
       ) : (
