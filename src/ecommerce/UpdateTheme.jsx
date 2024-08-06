@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 
 // import Layout1 from "../ecommerce/layout/Layout1.module.css";
 // import Layout2 from "../ecommerce/layout/Layout2.module.css";
-import styles from './UpdateTheme.module.css'
+import styles from "./UpdateTheme.module.css";
 const UpdateTheme = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
@@ -25,8 +25,8 @@ const UpdateTheme = () => {
   const [logo, setLogo] = useState("");
   const [layout, setLayout] = useState("");
 
-  const customerID = Cookies.get('customerID'); // Obtenha o ID do cliente do cookie
-  const [ecommerceID , setEcommerceID] = useState('')
+  const customerID = Cookies.get("customerID"); // Obtenha o ID do cliente do cookie
+  const [ecommerceID, setEcommerceID] = useState("");
   useEffect(() => {
     const fetchEcommerce = async () => {
       try {
@@ -44,7 +44,7 @@ const UpdateTheme = () => {
         setFooterBackgroundColor(response.data.theme.footer.backgroundColor);
         setFooterColor(response.data.theme.footer.color);
         setLayout(response.data.layout);
-        setEcommerceID(response.data._id)
+        setEcommerceID(response.data._id);
       } catch (error) {
         console.error("Erro ao buscar o e-commerce:", error);
       }
@@ -93,7 +93,7 @@ const UpdateTheme = () => {
 
   const renderSwitchPage = () => {
     switch (editingSection) {
-      case "header":
+      case "home":
         return (
           <div style={{ backgroundColor: "white" }}>
             <KeyboardArrowLeftOutlinedIcon
@@ -107,11 +107,6 @@ const UpdateTheme = () => {
             />
             <label>Cor do Texto do Header:</label>
             <ColorCircle color={headerColor} onChange={changeHeaderTextColor} />
-          </div>
-        );
-      case "pagina inicial":
-        return (
-          <div>
             <KeyboardArrowLeftOutlinedIcon
               onClick={() => setEditingSection(null)}
             />
@@ -123,11 +118,6 @@ const UpdateTheme = () => {
             />
             <label>Cor do Texto do Main:</label>
             <ColorCircle color={mainColor} onChange={changeMainTextColor} />
-          </div>
-        );
-      case "rodape":
-        return (
-          <div>
             <KeyboardArrowLeftOutlinedIcon
               onClick={() => setEditingSection(null)}
             />{" "}
@@ -141,6 +131,10 @@ const UpdateTheme = () => {
             <ColorCircle color={footerColor} onChange={changeFooterTextColor} />
           </div>
         );
+      case "productDetails":
+        return <div>productDetails</div>;
+      case "cartPage":
+        return <div>cartPage</div>;
       default:
         return <></>;
     }
@@ -148,9 +142,9 @@ const UpdateTheme = () => {
 
   const renderSwitchContent = () => {
     switch (editingSection) {
-      case "pagina inicial":
+      case "home":
         return <div>pagina inicial</div>;
-      case "rodape":
+      case "productDetails":
         return <div>detalhes do produto</div>;
       default:
         return (
@@ -169,9 +163,9 @@ const UpdateTheme = () => {
 
   const renderSwitchToMobileContent = () => {
     switch (editingSection) {
-      case "pagina inicial":
+      case "home":
         return <div>pagina inicial mobile</div>;
-      case "detalhes do produto":
+      case "productDetails":
         return <div>detalhes do produto mobile</div>;
       default:
         return <></>;
@@ -242,8 +236,6 @@ const UpdateTheme = () => {
     }
   };
 
-  
-  
   const changeFooterColor = (color) => {
     setMainBackgroundColor(color); // Atualiza o estado com a nova cor
 
@@ -312,24 +304,22 @@ const UpdateTheme = () => {
                   justifyContent: "space-between",
                 }}
               >
-                {editingSection != "header" && (
+                {editingSection != "home" && (
                   <div className={styles.menu}>
-                    <span onClick={() => handleSwitchPage("header")}>
-                      Cabeçalho
-                    </span>
-                    <span onClick={() => handleSwitchPage("pagina inicial")}>
+                    <span onClick={() => handleSwitchPage("home")}>
                       Página Inicial
                     </span>
-                    <span
-                      onClick={() => handleSwitchPage("rodape")}
-                    >
+                    <span onClick={() => handleSwitchPage("CategoriesPage")}>
+                      Página de categorias
+                    </span>
+                    <span onClick={() => handleSwitchPage("productDetails")}>
                       Detalhes do Produto
                     </span>
-                    <span onClick={() => handleSwitchPage("mainText")}>
-                      Texto do Main
+                    <span onClick={() => handleSwitchPage("cartPage")}>
+                    pagina do carrinho
                     </span>
-                    <span onClick={() => handleSwitchPage("footerBackground")}>
-                      Fundo do Footer
+                    <span onClick={() => handleSwitchPage("paymentsPage")}>
+                    pagina de pagamento
                     </span>
                     <span onClick={() => handleSwitchPage("footerText")}>
                       Texto do Footer
@@ -337,13 +327,17 @@ const UpdateTheme = () => {
                   </div>
                 )}
 
-
                 <div className="mobile-device">
                   <iframe
                     id="mobile-view"
                     src="http://localhost:3004/loja" // URL da página mobile
                     title="Mobile View"
-                    style={{ width: "1200px", height: "700px", border: "none", borderRadius:"10px" }} // Exemplo de dimensões de um iPhone X
+                    style={{
+                      width: "1200px",
+                      height: "700px",
+                      border: "none",
+                      borderRadius: "10px",
+                    }} // Exemplo de dimensões de um iPhone X
                   />
                 </div>
               </div>
@@ -354,53 +348,53 @@ const UpdateTheme = () => {
             </>
           ) : (
             <>
-              <div
-                className={styles.containerMobile} 
-              >
-                {editingSection != "header" && ( <div className={styles.menu}>
-                  <span onClick={() => handleSwitchPage("header")}>
-                    Cabeçalho
-                  </span>
-                  <span onClick={() => handleSwitchPage("pagina inicial")}>
-                    Página Inicial
-                  </span>
-                  <span onClick={() => handleSwitchPage("rodape")}>
-                    Detalhes do Produto
-                  </span>
-                  <span onClick={() => handleSwitchPage("mainText")}>
-                      Texto do Main
-                  </span>
-                  <span onClick={() => handleSwitchPage("footerBackground")}>
-                    Fundo do Footer
-                  </span>
-                  <span onClick={() => handleSwitchPage("footerText")}>
-                    Texto do Footer
-                  </span>
-                </div>)}
-               
+              <div className={styles.containerMobile}>
+                {editingSection != "home" && (
+                  <div className={styles.menu}>
+                    <span onClick={() => handleSwitchPage("home")}>
+                      Página Inicial
+                    </span>
+                    <span onClick={() => handleSwitchPage("CategoriesPage")}>
+                      Página de categorias
+                    </span>
+                    <span onClick={() => handleSwitchPage("productDetails")}>
+                      Detalhes do Produto
+                    </span>
+                    <span onClick={() => handleSwitchPage("cartPage")}>
+                      pagina do carrinho
+                    </span>
+                    <span onClick={() => handleSwitchPage("paymentsPage")}>
+                      pagina de pagamento
+                    </span>
+                    <span onClick={() => handleSwitchPage("footerText")}>
+                      Texto do Footer
+                    </span>
+                  </div>
+                )}
+                <div className={styles.containerDesktop}>
+                  {renderSwitchToMobileContent()}
+                </div>
                 <div>
-                <div className={styles.div} >
-                  <iframe
-                    id="mobile-view"
-                    src="http://localhost:3004/loja" // URL da página mobile
-                    title="Mobile View"
-                    style={{ width: "375px", height: "812px", border: "none",borderRadius:"10px" }} // Exemplo de dimensões de um iPhone X
-                  />
+                  <div className={styles.div}>
+                    <iframe
+                      id="mobile-view"
+                      src="http://localhost:3004/loja" // URL da página mobile
+                      title="Mobile View"
+                      style={{
+                        width: "375px",
+                        height: "812px",
+                        border: "none",
+                        borderRadius: "10px",
+                      }} // Exemplo de dimensões de um iPhone X
+                    />
+                  </div>
                 </div>
-
-                </div>
-            
-              </div>
-              <div className={styles.containerDesktop}>
-                {renderSwitchToMobileContent()}
               </div>
             </>
           )}
         </div>
-
       </div>
       <button onClick={handleSaveTheme}>Salvar Tema</button>
-
     </>
   );
 };
