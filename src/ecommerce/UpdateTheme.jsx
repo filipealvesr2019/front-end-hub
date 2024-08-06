@@ -317,28 +317,30 @@ const UpdateTheme = () => {
                   <div className={styles.menu}>
                     <span
                       onClick={() => handleSwitchPage("home")}
-                      style={{ display: "flex", alignItems: "center" }}
+                    
+                      className={styles.span}
                     >
                       <img
                         src="https://i.imgur.com/gGxXnvp.png"
                         alt=""
                         style={{ width: "1.32rem" }}
+                        className={styles.span}
                       />{" "}
                       Página Inicial
                     </span>
-                    <span onClick={() => handleSwitchPage("CategoriesPage")}>
+                    <span onClick={() => handleSwitchPage("CategoriesPage")}   className={styles.span}>
                       Página de categorias
                     </span>
-                    <span onClick={() => handleSwitchPage("productDetails")}>
+                    <span onClick={() => handleSwitchPage("productDetails")}   className={styles.span}>
                       Detalhes do Produto
                     </span>
-                    <span onClick={() => handleSwitchPage("cartPage")}>
+                    <span onClick={() => handleSwitchPage("cartPage")}   className={styles.span}>
                       pagina do carrinho
                     </span>
-                    <span onClick={() => handleSwitchPage("paymentsPage")}>
+                    <span onClick={() => handleSwitchPage("paymentsPage")}   className={styles.span}>
                       pagina de pagamento
                     </span>
-                    <span onClick={() => handleSwitchPage("footerText")}>
+                    <span onClick={() => handleSwitchPage("footerText")}   className={styles.span}>
                       Texto do Footer
                     </span>
                     <span
