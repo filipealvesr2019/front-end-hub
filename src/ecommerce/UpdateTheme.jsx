@@ -262,6 +262,16 @@ const UpdateTheme = () => {
     }
   };
 
+  const scrollToCarousel = () => {
+    const lojaIframe = document.getElementById("mobile-view");
+    if (lojaIframe) {
+      lojaIframe.contentWindow.postMessage(
+        { type: "SCROLL_TO_CAROUSEL" },
+        "*"
+      );
+    }
+  };
+
   return (
     <>
       <div className={styles.section}>
@@ -324,6 +334,15 @@ const UpdateTheme = () => {
                     <span onClick={() => handleSwitchPage("footerText")}>
                       Texto do Footer
                     </span>
+                    <span
+        style={{
+          color: "black",
+          cursor: "pointer",
+        }}
+        onClick={scrollToCarousel}
+      >
+        Carrosel
+      </span>
                   </div>
                 )}
 

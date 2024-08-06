@@ -89,6 +89,9 @@ const LojaPage = () => {
       if (event.data.type === "CHANGE_FOOTER_TEXT_COLOR") {
         setFooterTextColorFrame(event.data.color);
       }
+      if (event.data.type === "SCROLL_TO_CAROUSEL") {
+        document.getElementById("carrosel").scrollIntoView({ behavior: "smooth" });
+      }
     };
 
     window.addEventListener("message", handleMessage);
@@ -154,6 +157,7 @@ const LojaPage = () => {
               }}
             >
               <span>Conteúdo Principal da Loja</span>
+        
             </main>
             <footer
              style={{
@@ -166,6 +170,14 @@ const LojaPage = () => {
             >
               <span>Footer da Loja</span>
             </footer>
+
+            <div id="carrosel" style={{
+              marginTop:"15rem",
+              color:"black"
+            }}>
+    {/* Carrossel content here */}
+    carrosel loja 
+  </div>
           </div>
         </div>
       </div>
