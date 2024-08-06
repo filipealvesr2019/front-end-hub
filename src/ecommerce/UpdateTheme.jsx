@@ -125,7 +125,7 @@ const UpdateTheme = () => {
             <ColorCircle color={mainColor} onChange={changeMainTextColor} />
           </div>
         );
-      case "detalhes do produto":
+      case "rodape":
         return (
           <div>
             <KeyboardArrowLeftOutlinedIcon
@@ -150,7 +150,7 @@ const UpdateTheme = () => {
     switch (editingSection) {
       case "pagina inicial":
         return <div>pagina inicial</div>;
-      case "detalhes do produto":
+      case "rodape":
         return <div>detalhes do produto</div>;
       default:
         return (
@@ -321,7 +321,7 @@ const UpdateTheme = () => {
                       Página Inicial
                     </span>
                     <span
-                      onClick={() => handleSwitchPage("detalhes do produto")}
+                      onClick={() => handleSwitchPage("rodape")}
                     >
                       Detalhes do Produto
                     </span>
@@ -342,7 +342,7 @@ const UpdateTheme = () => {
                     id="mobile-view"
                     src="http://localhost:3004/loja" // URL da página mobile
                     title="Mobile View"
-                    style={{ width: "1280px", height: "700px", border: "none" }} // Exemplo de dimensões de um iPhone X
+                    style={{ width: "1280px", height: "700px", border: "none", borderRadius:"10px" }} // Exemplo de dimensões de um iPhone X
                   />
                 </div>
               </div>
@@ -363,7 +363,7 @@ const UpdateTheme = () => {
                   <span onClick={() => handleSwitchPage("pagina inicial")}>
                     Página Inicial
                   </span>
-                  <span onClick={() => handleSwitchPage("detalhes do produto")}>
+                  <span onClick={() => handleSwitchPage("rodape")}>
                     Detalhes do Produto
                   </span>
                   <span onClick={() => handleSwitchPage("mainText")}>
@@ -383,7 +383,7 @@ const UpdateTheme = () => {
                     id="mobile-view"
                     src="http://localhost:3004/loja" // URL da página mobile
                     title="Mobile View"
-                    style={{ width: "375px", height: "812px", border: "none" }} // Exemplo de dimensões de um iPhone X
+                    style={{ width: "375px", height: "812px", border: "none",borderRadius:"10px" }} // Exemplo de dimensões de um iPhone X
                   />
                 </div>
 

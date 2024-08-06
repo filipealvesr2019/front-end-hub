@@ -61,8 +61,7 @@
     align-items: center;
     justify-content: space-around;
   
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  
   }
   .HomeContainer {
     display: flex;
