@@ -1,4 +1,43 @@
-.header {
+.div{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: .5rem;
+}
+
+.containerMobile{
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #2a2d34;
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .stylesHeader {
+    background-color: white;
+    position: absolute;
+    z-index: 5;
+    border: 1px solid #eaeaea;
+    margin-top: 5rem;
+    margin-left: 10rem;
+  }
+
+  .header {
     padding: 2rem;
     display: flex;
     align-items: center;
@@ -78,23 +117,7 @@
     justify-content: space-between;
     flex: 1;
   }
-  .HomeContainerMobile {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    margin-top: 2rem;
-    margin: 0 auto;
-    width: 25vw;
-  }
-  .headerMobile {
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
+
   .menu {
     background-color: #ffffff;
     display: flex;

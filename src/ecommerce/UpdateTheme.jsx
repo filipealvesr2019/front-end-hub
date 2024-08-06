@@ -355,7 +355,7 @@ const UpdateTheme = () => {
           ) : (
             <>
               <div
-                className={themeStyles.containerMobile} 
+                className={styles.containerMobile} 
               >
                 {editingSection != "header" && ( <div className={styles.menu}>
                   <span onClick={() => handleSwitchPage("header")}>
@@ -379,7 +379,7 @@ const UpdateTheme = () => {
                 </div>)}
                
                 <div>
-                <div className={themeStyles.div} >
+                <div className={styles.div} >
                   <iframe
                     id="mobile-view"
                     src="http://localhost:3004/loja" // URL da página mobile

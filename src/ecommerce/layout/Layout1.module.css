@@ -3,6 +3,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 7;
+    width: 100%;
   }
   .section {
     display: flex;
@@ -78,23 +82,7 @@
     justify-content: space-between;
     flex: 1;
   }
-  .HomeContainerMobile {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    margin-top: 2rem;
-    margin: 0 auto;
-    width: 25vw;
-  }
-  .headerMobile {
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
+
   .menu {
     background-color: #ffffff;
     display: flex;
