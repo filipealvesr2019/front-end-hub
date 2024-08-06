@@ -2,5 +2,12 @@
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    margin-left: 10rem;
+    margin-top: .5rem;
+}
+
+.containerMobile{
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+
 }

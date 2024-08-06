@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 
 import Layout1 from "../ecommerce/layout/Layout1.module.css";
 import Layout2 from "../ecommerce/layout/Layout2.module.css";
-import styles from './UpdateTheme.module.css'
+import themeStyles from './UpdateTheme.module.css'
 const UpdateTheme = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
@@ -106,7 +106,7 @@ const UpdateTheme = () => {
               onChange={changeHeaderColor}
             />
             <label>Cor do Texto do Header:</label>
-            <ColorCircle color={headerColor} onChange={setHeaderColor} />
+            <ColorCircle color={headerColor} onChange={changeHeaderTextColor} />
           </div>
         );
       case "pagina inicial":
@@ -119,10 +119,10 @@ const UpdateTheme = () => {
             <label>Cor de Fundo do Main:</label>
             <ColorCircle
               color={mainBackgroundColor}
-              onChange={setMainBackgroundColor}
+              onChange={changeMainColor}
             />
             <label>Cor do Texto do Main:</label>
-            <ColorCircle color={mainColor} onChange={setMainColor} />
+            <ColorCircle color={mainColor} onChange={changeMainTextColor} />
           </div>
         );
       case "detalhes do produto":
@@ -135,10 +135,10 @@ const UpdateTheme = () => {
             <label>Cor de Fundo do Footer:</label>
             <ColorCircle
               color={footerBackgroundColor}
-              onChange={setFooterBackgroundColor}
+              onChange={changeFooterColor}
             />
             <label>Cor do Texto do Footer:</label>
-            <ColorCircle color={footerColor} onChange={setFooterColor} />
+            <ColorCircle color={footerColor} onChange={changeFooterTextColor} />
           </div>
         );
       default:
@@ -202,6 +202,74 @@ const UpdateTheme = () => {
       );
     }
   };
+
+  const changeHeaderTextColor = (color) => {
+    setHeaderColor(color); // Atualiza o estado com a nova cor
+
+    const iframe = document.getElementById("mobile-view");
+    if (iframe) {
+      // Envia uma mensagem para o iframe para alterar a cor do header
+      iframe.contentWindow.postMessage(
+        { type: "CHANGE_HEADER_TEXT_COLOR", color },
+        "*"
+      );
+    }
+  };
+
+  const changeMainColor = (color) => {
+    setMainBackgroundColor(color); // Atualiza o estado com a nova cor
+
+    const iframe = document.getElementById("mobile-view");
+    if (iframe) {
+      // Envia uma mensagem para o iframe para alterar a cor do header
+      iframe.contentWindow.postMessage(
+        { type: "CHANGE_MAIN_COLOR", color },
+        "*"
+      );
+    }
+  };
+
+  const changeMainTextColor = (color) => {
+    setMainColor(color); // Atualiza o estado com a nova cor
+
+    const iframe = document.getElementById("mobile-view");
+    if (iframe) {
+      // Envia uma mensagem para o iframe para alterar a cor do header
+      iframe.contentWindow.postMessage(
+        { type: "CHANGE_MAIN_TEXT_COLOR", color },
+        "*"
+      );
+    }
+  };
+
+  
+  
+  const changeFooterColor = (color) => {
+    setMainBackgroundColor(color); // Atualiza o estado com a nova cor
+
+    const iframe = document.getElementById("mobile-view");
+    if (iframe) {
+      // Envia uma mensagem para o iframe para alterar a cor do header
+      iframe.contentWindow.postMessage(
+        { type: "CHANGE_FOOTER_COLOR", color },
+        "*"
+      );
+    }
+  };
+
+  const changeFooterTextColor = (color) => {
+    setMainColor(color); // Atualiza o estado com a nova cor
+
+    const iframe = document.getElementById("mobile-view");
+    if (iframe) {
+      // Envia uma mensagem para o iframe para alterar a cor do header
+      iframe.contentWindow.postMessage(
+        { type: "CHANGE_FOOTER_TEXT_COLOR", color },
+        "*"
+      );
+    }
+  };
+
   return (
     <>
       <div className={styles.section}>
@@ -286,12 +354,9 @@ const UpdateTheme = () => {
           ) : (
             <>
               <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
+                className={themeStyles.containerMobile} 
               >
-                <div className={styles.menu}>
+                {editingSection != "header" && ( <div className={styles.menu}>
                   <span onClick={() => handleSwitchPage("header")}>
                     Cabeçalho
                   </span>
@@ -310,9 +375,10 @@ const UpdateTheme = () => {
                   <span onClick={() => handleSwitchPage("footerText")}>
                     Texto do Footer
                   </span>
-                </div>
+                </div>)}
+               
                 <div>
-                <div className={styles.div} >
+                <div className={themeStyles.div} >
                   <iframe
                     id="mobile-view"
                     src="http://localhost:3004/loja" // URL da página mobile

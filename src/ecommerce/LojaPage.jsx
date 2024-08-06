@@ -20,8 +20,18 @@ const LojaPage = () => {
   const [footerColor, setFooterColor] = useState("");
   const [logo, setLogo] = useState("");
   const [layout, setLayout] = useState("");
+  const [headerColorFrame, setHeaderColorFrame] = useState(
+    headerBackgroundColor
+  );
+  const [headerTextColorFrame, setHeaderTextColorFrame] = useState(headerColor);
+  const [mainColorFrame, setMainColorFrame] = useState(mainBackgroundColor);
+  const [mainTextColorFrame, setMainTextColorFrame] = useState(mainColor);
+  const [footerColorFrame, setFooterColorFrame] = useState(mainBackgroundColor);
+  const [footerTextColorFrame, setFooterTextColorFrame] = useState(mainColor);
 
-  const customerID = Cookies.get('customerID'); // Obtenha o ID do cliente do cookie
+    
+    
+  const customerID = Cookies.get("customerID"); // Obtenha o ID do cliente do cookie
 
   useEffect(() => {
     const fetchEcommerce = async () => {
@@ -30,7 +40,7 @@ const LojaPage = () => {
           `http://localhost:3003/api/ecommerce/user/${customerID}`
         );
         setEcommerce(response.data);
-        setLogo(response.data.theme.header.Logo)
+        setLogo(response.data.theme.header.Logo);
         setHeaderBackgroundColor(response.data.theme.header.backgroundColor);
         setHeaderColor(response.data.theme.header.color);
         setMainBackgroundColor(response.data.theme.main.backgroundColor);
@@ -56,26 +66,37 @@ const LojaPage = () => {
         return {}; // Retorna um objeto vazio se nenhum layout for encontrado
     }
   };
-  
+
   const styles = layoutStyles(); // Chame a função para obter o estilo correto
-  
-  const [headerColorFrame, setHeaderColorFrame] = useState(headerBackgroundColor);
 
   useEffect(() => {
     const handleMessage = (event) => {
-      if (event.data.type === 'CHANGE_HEADER_COLOR') {
+      if (event.data.type === "CHANGE_HEADER_COLOR") {
         setHeaderColorFrame(event.data.color);
+      }
+      if (event.data.type === "CHANGE_HEADER_TEXT_COLOR") {
+        setHeaderTextColorFrame(event.data.color);
+      }
+      if (event.data.type === "CHANGE_MAIN_COLOR") {
+        setMainColorFrame(event.data.color);
+      }
+      if (event.data.type === "CHANGE_MAIN_TEXT_COLOR") {
+        setMainTextColorFrame(event.data.color);
+      }
+      if (event.data.type === "CHANGE_FOOTER_COLOR") {
+        setFooterColorFrame(event.data.color);
+      }
+      if (event.data.type === "CHANGE_FOOTER_TEXT_COLOR") {
+        setFooterTextColorFrame(event.data.color);
       }
     };
 
-    window.addEventListener('message', handleMessage);
+    window.addEventListener("message", handleMessage);
 
     return () => {
-      window.removeEventListener('message', handleMessage);
+      window.removeEventListener("message", handleMessage);
     };
   }, []);
-
-
 
   if (!ecommerce) {
     return <div>Carregando...</div>;
@@ -83,22 +104,26 @@ const LojaPage = () => {
 
   return (
     <>
-      <div className={styles .container}>
-        <div className={styles .screenContainer}>
+      <div className={styles.container}>
+        <div className={styles.screenContainer}>
           <div
             style={{ backgroundColor: mainBackgroundColor, color: mainColor }}
           >
             <header
               style={{
-                backgroundColor: headerColorFrame ? headerColorFrame : headerBackgroundColor,
-                color: headerColor,
+                backgroundColor: headerColorFrame
+                  ? headerColorFrame
+                  : headerBackgroundColor,
+                color: headerTextColorFrame
+                  ? headerTextColorFrame
+                  : headerColor,
                 cursor: headerBackgroundColor || headerColor ? "pointer" : "",
               }}
               className={styles.header}
             >
               <Navbar />
 
-              <img style={{ color: "white", width:"5vw" }} src={logo} />
+              <img style={{ color: "white", width: "5vw" }} src={logo} />
               <SearchBar />
               <div className={styles.header__icons}>
                 <a>
@@ -119,21 +144,29 @@ const LojaPage = () => {
               </div>
             </header>
             <Tabs />
-            <main className={styles.main}>
+            <main
+              className={styles.main}
+              style={{
+                backgroundColor: mainColorFrame
+                  ? mainColorFrame
+                  : mainBackgroundColor,
+                color: mainTextColorFrame ? mainTextColorFrame : mainColor,
+              }}
+            >
               <span>Conteúdo Principal da Loja</span>
-       
             </main>
             <footer
-              style={{
-                backgroundColor: footerBackgroundColor,
-                color: footerColor,
-              }}
+             style={{
+              backgroundColor: footerColorFrame
+                ? footerColorFrame
+                : footerBackgroundColor,
+              color: footerTextColorFrame ? footerTextColorFrame : footerColor,
+            }}
               className={styles.footer}
             >
               <span>Footer da Loja</span>
             </footer>
           </div>
-       
         </div>
       </div>
     </>
