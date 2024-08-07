@@ -98,6 +98,7 @@ const UpdateTheme = () => {
       case "home":
         return (
           <div style={{ backgroundColor: "white" }}>
+     <div style={{ backgroundColor: "white" }}>
             <KeyboardArrowLeftOutlinedIcon
               onClick={() => setEditingSection(null)}
             />{" "}
@@ -105,21 +106,22 @@ const UpdateTheme = () => {
             <label>Cor de Fundo do Header:</label>
             <ColorCircle
               color={headerBackgroundColor}
-              onChange={changeHeaderColor}
+              onChange={setHeaderBackgroundColor}
             />
             <label>Cor do Texto do Header:</label>
-            <ColorCircle color={headerColor} onChange={changeHeaderTextColor} />
-            <KeyboardArrowLeftOutlinedIcon
+            <ColorCircle color={headerColor} onChange={setHeaderColor} />
+          </div>
+          <KeyboardArrowLeftOutlinedIcon
               onClick={() => setEditingSection(null)}
             />
             <span>Sair</span>
             <label>Cor de Fundo do Main:</label>
             <ColorCircle
               color={mainBackgroundColor}
-              onChange={changeMainColor}
+              onChange={setMainBackgroundColor}
             />
             <label>Cor do Texto do Main:</label>
-            <ColorCircle color={mainColor} onChange={changeMainTextColor} />
+            <ColorCircle color={mainColor} onChange={setMainColor} />
             <KeyboardArrowLeftOutlinedIcon
               onClick={() => setEditingSection(null)}
             />{" "}
@@ -127,11 +129,10 @@ const UpdateTheme = () => {
             <label>Cor de Fundo do Footer:</label>
             <ColorCircle
               color={footerBackgroundColor}
-              onChange={changeFooterColor}
+              onChange={setFooterBackgroundColor}
             />
             <label>Cor do Texto do Footer:</label>
-            <ColorCircle color={footerColor} onChange={changeFooterTextColor} />
-            <span onClick={() => setshowCart(true)}>carrinho</span>
+            <ColorCircle color={footerColor} onChange={setFooterColor} />
           </div>
         );
       case "productDetails":
@@ -187,90 +188,6 @@ const UpdateTheme = () => {
 
   // const styles = layoutStyles(); // Chame a função para obter o estilo correto
 
-  const changeHeaderColor = (color) => {
-    setHeaderBackgroundColor(color); // Atualiza o estado com a nova cor
-
-    const iframe = document.getElementById("mobile-view");
-    if (iframe) {
-      // Envia uma mensagem para o iframe para alterar a cor do header
-      iframe.contentWindow.postMessage(
-        { type: "CHANGE_HEADER_COLOR", color },
-        "*"
-      );
-    }
-  };
-
-  const changeHeaderTextColor = (color) => {
-    setHeaderColor(color); // Atualiza o estado com a nova cor
-
-    const iframe = document.getElementById("mobile-view");
-    if (iframe) {
-      // Envia uma mensagem para o iframe para alterar a cor do header
-      iframe.contentWindow.postMessage(
-        { type: "CHANGE_HEADER_TEXT_COLOR", color },
-        "*"
-      );
-    }
-  };
-
-  const changeMainColor = (color) => {
-    setMainBackgroundColor(color); // Atualiza o estado com a nova cor
-
-    const iframe = document.getElementById("mobile-view");
-    if (iframe) {
-      // Envia uma mensagem para o iframe para alterar a cor do header
-      iframe.contentWindow.postMessage(
-        { type: "CHANGE_MAIN_COLOR", color },
-        "*"
-      );
-    }
-  };
-
-  const changeMainTextColor = (color) => {
-    setMainColor(color); // Atualiza o estado com a nova cor
-
-    const iframe = document.getElementById("mobile-view");
-    if (iframe) {
-      // Envia uma mensagem para o iframe para alterar a cor do header
-      iframe.contentWindow.postMessage(
-        { type: "CHANGE_MAIN_TEXT_COLOR", color },
-        "*"
-      );
-    }
-  };
-
-  const changeFooterColor = (color) => {
-    setMainBackgroundColor(color); // Atualiza o estado com a nova cor
-
-    const iframe = document.getElementById("mobile-view");
-    if (iframe) {
-      // Envia uma mensagem para o iframe para alterar a cor do header
-      iframe.contentWindow.postMessage(
-        { type: "CHANGE_FOOTER_COLOR", color },
-        "*"
-      );
-    }
-  };
-
-  const changeFooterTextColor = (color) => {
-    setMainColor(color); // Atualiza o estado com a nova cor
-
-    const iframe = document.getElementById("mobile-view");
-    if (iframe) {
-      // Envia uma mensagem para o iframe para alterar a cor do header
-      iframe.contentWindow.postMessage(
-        { type: "CHANGE_FOOTER_TEXT_COLOR", color },
-        "*"
-      );
-    }
-  };
-
-  const scrollToCarousel = () => {
-    const lojaIframe = document.getElementById("mobile-view");
-    if (lojaIframe) {
-      lojaIframe.contentWindow.postMessage({ type: "SCROLL_TO_CAROUSEL" }, "*");
-    }
-  };
 
   return (
     <>
@@ -344,15 +261,7 @@ const UpdateTheme = () => {
                     <span onClick={() => handleSwitchPage("footerText")}   className={styles.span}>
                       Texto do Footer
                     </span>
-                    <span
-                      style={{
-                        color: "black",
-                        cursor: "pointer",
-                      }}
-                      onClick={scrollToCarousel}
-                    >
-                      Carrosel
-                    </span>
+              
                   </div>
                 )}
                  <div
