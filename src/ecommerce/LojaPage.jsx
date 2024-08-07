@@ -136,16 +136,15 @@ const LojaPage = () => {
                     style={{ width: "2.5rem" }}
                   />
                 </a>
-<Link to={'/cart'}>
-                <a>
-                  <img
-                    src="https://i.imgur.com/1XrvJJL.png"
-                    title="source: imgur.com"
-                    style={{ width: "2.5rem" }}
-                  />
-                </a>
-
-</Link>
+                <Link to={"/cart"}>
+                  <a>
+                    <img
+                      src="https://i.imgur.com/1XrvJJL.png"
+                      title="source: imgur.com"
+                      style={{ width: "2.5rem" }}
+                    />
+                  </a>
+                </Link>
               </div>
             </header>
             <Tabs />
@@ -159,6 +158,8 @@ const LojaPage = () => {
               }}
             >
               <span>Conteúdo Principal da Loja</span>
+              <a href="http://localhost:3003/download/66b3ca91d73f4be501dcfcef" download>Baixar Arquivo</a>
+
             </main>
             <footer
               style={{
