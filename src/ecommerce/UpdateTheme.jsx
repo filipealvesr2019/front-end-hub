@@ -14,7 +14,7 @@ import Layout3 from "../ecommerce/mockup/Layout3.module.css";
 import Layout4 from "../ecommerce/mockup/Layout4.module.css";
 import Layout5 from "../ecommerce/mockup/Layout5.module.css";
 import Layout6 from "../ecommerce/mockup/Layout6.module.css";
-// import styles from "./UpdateTheme.module.css";
+
 const UpdateTheme = () => {
   const { dominio } = useParams();
   const [ecommerce, setEcommerce] = useState(null);
@@ -387,12 +387,10 @@ const UpdateTheme = () => {
                     <span onClick={() => handleSwitchPage("footerText")}>
                       Texto do Footer
                     </span>
+                   
                   </div>
                 )}
-                <div className={styles.containerDesktop}>
-                  {renderSwitchToMobileContent()}
-                </div>
-                <div
+                 <div
                   style={{
                     backgroundColor: mainBackgroundColor,
                     color: mainColor,
@@ -463,6 +461,10 @@ const UpdateTheme = () => {
                     </span>
                   </footer>
                 </div>
+                <div className={styles.containerDesktop}>
+                  {renderSwitchToMobileContent()}
+                </div>
+           
               </div>
             </>
           )}
