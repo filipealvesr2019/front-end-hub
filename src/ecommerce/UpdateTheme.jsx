@@ -98,20 +98,20 @@ const UpdateTheme = () => {
       case "home":
         return (
           <div style={{ backgroundColor: "white" }}>
-     <div style={{ backgroundColor: "white" }}>
+            <div style={{ backgroundColor: "white" }}>
+              <KeyboardArrowLeftOutlinedIcon
+                onClick={() => setEditingSection(null)}
+              />{" "}
+              <span>Sair</span>
+              <label>Cor de Fundo do Header:</label>
+              <ColorCircle
+                color={headerBackgroundColor}
+                onChange={setHeaderBackgroundColor}
+              />
+              <label>Cor do Texto do Header:</label>
+              <ColorCircle color={headerColor} onChange={setHeaderColor} />
+            </div>
             <KeyboardArrowLeftOutlinedIcon
-              onClick={() => setEditingSection(null)}
-            />{" "}
-            <span>Sair</span>
-            <label>Cor de Fundo do Header:</label>
-            <ColorCircle
-              color={headerBackgroundColor}
-              onChange={setHeaderBackgroundColor}
-            />
-            <label>Cor do Texto do Header:</label>
-            <ColorCircle color={headerColor} onChange={setHeaderColor} />
-          </div>
-          <KeyboardArrowLeftOutlinedIcon
               onClick={() => setEditingSection(null)}
             />
             <span>Sair</span>
@@ -188,7 +188,6 @@ const UpdateTheme = () => {
 
   // const styles = layoutStyles(); // Chame a função para obter o estilo correto
 
-
   return (
     <>
       <div className={styles.section}>
@@ -235,7 +234,6 @@ const UpdateTheme = () => {
                   <div className={styles.menu}>
                     <span
                       onClick={() => handleSwitchPage("home")}
-                    
                       className={styles.span}
                     >
                       <img
@@ -246,25 +244,39 @@ const UpdateTheme = () => {
                       />{" "}
                       Página Inicial
                     </span>
-                    <span onClick={() => handleSwitchPage("CategoriesPage")}   className={styles.span}>
+                    <span
+                      onClick={() => handleSwitchPage("CategoriesPage")}
+                      className={styles.span}
+                    >
                       Página de categorias
                     </span>
-                    <span onClick={() => handleSwitchPage("productDetails")}   className={styles.span}>
+                    <span
+                      onClick={() => handleSwitchPage("productDetails")}
+                      className={styles.span}
+                    >
                       Detalhes do Produto
                     </span>
-                    <span onClick={() => handleSwitchPage("cartPage")}   className={styles.span}>
+                    <span
+                      onClick={() => handleSwitchPage("cartPage")}
+                      className={styles.span}
+                    >
                       pagina do carrinho
                     </span>
-                    <span onClick={() => handleSwitchPage("paymentsPage")}   className={styles.span}>
+                    <span
+                      onClick={() => handleSwitchPage("paymentsPage")}
+                      className={styles.span}
+                    >
                       pagina de pagamento
                     </span>
-                    <span onClick={() => handleSwitchPage("footerText")}   className={styles.span}>
+                    <span
+                      onClick={() => handleSwitchPage("footerText")}
+                      className={styles.span}
+                    >
                       Texto do Footer
                     </span>
-              
                   </div>
                 )}
-                 <div
+                <div
                   onClick={() =>
                     isEditMode && setEditingSection("mainBackground")
                   }
