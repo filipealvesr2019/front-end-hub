@@ -35,7 +35,7 @@ const ThemeDetail = () => {
     const fetchEcommerce = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3003/api/ecommerce/user/${customerID}`
+          `http://localhost:5003/api/ecommerce/user/${customerID}`
         );
         
         setEcommerceID(response.data._id);
@@ -52,7 +52,7 @@ const ThemeDetail = () => {
     const fetchTheme = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3003/api/theme/${id}`
+          `http://localhost:5003/api/theme/${id}`
         );
         setTheme(response.data);
         setLayout(response.data.layout);

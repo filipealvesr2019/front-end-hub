@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const PasswordResetRequest = () => {
   const [email, setEmail] = useState('');
-
+  const [message, setMessage] = useState('');
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
