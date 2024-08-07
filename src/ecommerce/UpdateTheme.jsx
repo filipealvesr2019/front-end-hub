@@ -5,6 +5,7 @@ import ColorCircle from "../ecommerce/colors/ColorCircle"; // Import the ColorCi
 
 import KeyboardArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardArrowLeftOutlined";
 import Cookies from "js-cookie";
+import SearchBar from "../ecommerce/SearchBar/SearchBar";
 
 // import Layout1 from "../ecommerce/layout/Layout1.module.css";
 // import Layout2 from "../ecommerce/layout/Layout2.module.css";
@@ -354,45 +355,72 @@ const UpdateTheme = () => {
                     </span>
                   </div>
                 )}
-                {showCart ? (
-                  <div
-                    className="mobile-device"
+                 <div
+                  onClick={() =>
+                    isEditMode && setEditingSection("mainBackground")
+                  }
+                  className={styles.HomeContainer}
+                >
+                  <header
                     style={{
-                      marginTop: "1rem",
+                      backgroundColor: headerBackgroundColor,
+                      color: headerColor,
+                      cursor:
+                        headerBackgroundColor || headerColor ? "pointer" : "",
                     }}
+                    className={styles.header}
                   >
-                    <iframe
-                      id="mobile-view"
-                      src="http://localhost:5003/cart" // URL da página mobile
-                      title="Mobile View"
-                      style={{
-                        width: "1180px",
-                        height: "700px",
-                        border: "none",
-                        borderRadius: "10px",
-                      }} // Exemplo de dimensões de um iPhone X
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className="mobile-device"
+                    <img style={{ color: "white", width: "5vw" }} src={logo} />
+                    <SearchBar />
+                    <div className={styles.header__icons}>
+                      <a>
+                        <img
+                          src="https://i.imgur.com/ItjKDhc.png"
+                          title="source: imgur.com"
+                          style={{ width: "2.5rem" }}
+                        />
+                      </a>
+
+                      <a>
+                        <img
+                          src="https://i.imgur.com/1XrvJJL.png"
+                          title="source: imgur.com"
+                          style={{ width: "2.5rem" }}
+                        />
+                      </a>
+                    </div>
+                  </header>
+                  <main className={styles.main}>
+                    <span
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (isEditMode) setEditingSection("pagina inicial");
+                      }}
+                    >
+                      Conteúdo Principal da Loja
+                    </span>
+                  </main>
+                  <footer
                     style={{
-                      marginTop: "1rem",
+                      backgroundColor: footerBackgroundColor,
+                      color: footerColor,
                     }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (isEditMode) setEditingSection("footerBackground");
+                    }}
+                    className={styles.footer}
                   >
-                    <iframe
-                      id="mobile-view"
-                      src="http://localhost:5003/loja" // URL da página mobile
-                      title="Mobile View"
-                      style={{
-                        width: "1180px",
-                        height: "700px",
-                        border: "none",
-                        borderRadius: "10px",
-                      }} // Exemplo de dimensões de um iPhone X
-                    />
-                  </div>
-                )}
+                    <span
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (isEditMode) setEditingSection("footerText");
+                      }}
+                    >
+                      Footer da Loja
+                    </span>
+                  </footer>
+                </div>
               </div>
 
               <div className={styles.containerDesktop}>
@@ -427,20 +455,76 @@ const UpdateTheme = () => {
                 <div className={styles.containerDesktop}>
                   {renderSwitchToMobileContent()}
                 </div>
-                <div>
-                  <div className={styles.div}>
-                    <iframe
-                      id="mobile-view"
-                      src="http://localhost:5003/loja" // URL da página mobile
-                      title="Mobile View"
-                      style={{
-                        width: "375px",
-                        height: "812px",
-                        border: "none",
-                        borderRadius: "10px",
-                      }} // Exemplo de dimensões de um iPhone X
-                    />
-                  </div>
+                <div
+                  style={{
+                    backgroundColor: mainBackgroundColor,
+                    color: mainColor,
+                  }}
+                  onClick={() =>
+                    isEditMode && setEditingSection("mainBackground")
+                  }
+                  className={styles.HomeContainerMobile}
+                >
+                  <header
+                    style={{
+                      backgroundColor: headerBackgroundColor,
+                      color: headerColor,
+                      cursor:
+                        headerBackgroundColor || headerColor ? "pointer" : "",
+                    }}
+                    className={styles.headerMobile}
+                  >
+                    {/* <NavbarMockup /> */}
+                    <img style={{ color: "white", width: "5vw" }} src={logo} />
+
+                    <div className={styles.header__icons}>
+                      <a>
+                        <img
+                          src="https://i.imgur.com/ItjKDhc.png"
+                          title="source: imgur.com"
+                          style={{ width: "2.5rem" }}
+                        />
+                      </a>
+
+                      <a>
+                        <img
+                          src="https://i.imgur.com/1XrvJJL.png"
+                          title="source: imgur.com"
+                          style={{ width: "2.5rem" }}
+                        />
+                      </a>
+                    </div>
+                  </header>
+                  <main className={styles.main}>
+                    <span
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (isEditMode) setEditingSection("pagina inicial");
+                      }}
+                    >
+                      Conteúdo Principal da Loja mobile
+                    </span>
+                  </main>
+                  <footer
+                    style={{
+                      backgroundColor: footerBackgroundColor,
+                      color: footerColor,
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (isEditMode) setEditingSection("footerBackground");
+                    }}
+                    className={styles.footer}
+                  >
+                    <span
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (isEditMode) setEditingSection("footerText");
+                      }}
+                    >
+                      Footer da Loja mobile
+                    </span>
+                  </footer>
                 </div>
               </div>
             </>
