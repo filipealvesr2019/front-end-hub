@@ -136,7 +136,7 @@ const Sidebar = () => {
                 <span className={styles.span}>Temas</span>
                 </Link>
                 
-                <span className={styles.span}>option 2</span>
+                <span className={styles.span}>Configurar Pagamento</span>
               </div>
             </div>
           )}
