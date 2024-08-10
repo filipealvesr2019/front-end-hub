@@ -17,6 +17,12 @@ import UpdateTheme from "./ecommerce/UpdateTheme.jsx";
 import Sidebar from "./pages/Sidebar.jsx";
 import ThemeList from "./ecommerce/ThemeList.jsx";
 import CartPage from "./ecommerce/cartPage/Cart.jsx";
+import LoginForm from '../src/ecommerce/login/LoginForm.jsx'
+import Profile from "./ecommerce/Profile/Profile.jsx";
+import RegisterLinkUser from "../src/ecommerce/login/RegisterLinkUser.jsx";
+import RegisterUser from "../src/ecommerce/login/RegisterUser.jsx";
+import PasswordResetRequestUser from "../src/ecommerce/login/PasswordResetRequestUser.jsx";
+import ResetPasswordPageUser from "../src/ecommerce/login/ResetPasswordPageUser.jsx";
 const Root = () => (
   <Routes>
     <Route path="/" element={<App />} />
@@ -32,7 +38,12 @@ const Root = () => (
     <Route path="/temas" element={<ThemeList />} />
 
     <Route path="/cart" element={<CartPage />} />
-
+    <Route path="/signin" element={<LoginForm />} />
+    <Route path="/profile" element={<Profile />} />
+    <Route path="/user/register" element={<RegisterLinkUser />} />
+    <Route path="/user/register/:token" element={<RegisterUser />} />
+    <Route path="/user/forgotPassword" element={<PasswordResetRequestUser  />} />
+    <Route path="/user/reset-password/:token" element={<ResetPasswordPageUser  />} />
   </Routes>
 );
 
