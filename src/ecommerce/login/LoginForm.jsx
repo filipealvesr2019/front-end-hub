@@ -47,6 +47,16 @@ const Login = () => {
     );
   }
 
+
+  const { loginWithGoogle } = useAuth();
+
+  const handleGoogleLogin = (response) => {
+    if (response.credential) {
+      loginWithGoogle(response.credential);
+    } else {
+      console.error('Erro ao obter credenciais do Google');
+    }
+  };
   return (
     <div className="body">
       <div className="container">
@@ -111,6 +121,7 @@ const Login = () => {
                 </span>
               </Link>
             </div>
+   
           </div>
           <br />
           <button className="loginButton" onClick={handleLogin}>

@@ -59,6 +59,7 @@ export const useAuth = () => {
     }
   };
 
+
   const logout = () => {
     Cookies.remove('UserToken');
     Cookies.remove('role');

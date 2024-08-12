@@ -23,6 +23,9 @@ import RegisterLinkUser from "../src/ecommerce/login/RegisterLinkUser.jsx";
 import RegisterUser from "../src/ecommerce/login/RegisterUser.jsx";
 import PasswordResetRequestUser from "../src/ecommerce/login/PasswordResetRequestUser.jsx";
 import ResetPasswordPageUser from "../src/ecommerce/login/ResetPasswordPageUser.jsx";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
+
 const Root = () => (
   <Routes>
     <Route path="/" element={<App />} />
@@ -49,6 +52,7 @@ const Root = () => (
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+  <GoogleOAuthProvider >
 
       <AuthProvider>
         <ChakraProvider>
@@ -57,6 +61,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           </Router>
         </ChakraProvider>
       </AuthProvider>
+    
+  </GoogleOAuthProvider>
+
 
   </React.StrictMode>
 );
