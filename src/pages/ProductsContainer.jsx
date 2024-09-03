@@ -24,7 +24,7 @@ export default function Products() {
     const newVariations = [...formData.variations];
     newVariations[index] = {
       ...newVariations[index],
-      [name]: name === 'urls' ? value.split(',').map(url => url.trim()) : value
+      [name]: value
     };
     setFormData({
       ...formData,
@@ -80,6 +80,34 @@ export default function Products() {
     });
   };
 
+  const handleAddUrl = (variationIndex) => {
+    const newVariations = [...formData.variations];
+    newVariations[variationIndex].urls.push('');
+    setFormData({
+      ...formData,
+      variations: newVariations
+    });
+  };
+
+  const handleRemoveUrl = (variationIndex, urlIndex) => {
+    const newVariations = [...formData.variations];
+    newVariations[variationIndex].urls = newVariations[variationIndex].urls.filter((_, i) => i !== urlIndex);
+    setFormData({
+      ...formData,
+      variations: newVariations
+    });
+  };
+
+  const handleUrlChange = (variationIndex, urlIndex, e) => {
+    const { value } = e.target;
+    const newVariations = [...formData.variations];
+    newVariations[variationIndex].urls[urlIndex] = value;
+    setFormData({
+      ...formData,
+      variations: newVariations
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Dados a serem enviados:", formData);
@@ -91,7 +119,6 @@ export default function Products() {
       alert('Erro ao criar produto.');
     }
   };
-  
 
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: '5rem', display: "flex", flexDirection: "column" }}>
@@ -141,14 +168,41 @@ export default function Products() {
             onChange={(e) => handleVariationChange(index, e)}
             required
           />
-          <input
-            type="text"
-            name="urls"
-            placeholder="URLs de Imagens (separadas por vírgula)"
-            value={variation.urls.join(',')}
-            onChange={(e) => handleVariationChange(index, e)}
-            required
-          />
+
+          <button type="button" onClick={() => handleAddUrl(index)} style={{ marginTop: '10px' }}>
+            Adicionar URL de Imagem
+          </button>
+
+          {variation.urls.map((url, urlIndex) => (
+            <div key={urlIndex} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+              <input
+                type="text"
+                placeholder="URL da Imagem"
+                value={url}
+                onChange={(e) => handleUrlChange(index, urlIndex, e)}
+                style={{ marginRight: '10px' }}
+                required
+              />
+              <button
+                type="button"
+                onClick={() => handleRemoveUrl(index, urlIndex)}
+                style={{
+                  backgroundColor: '#DC143C',
+                  color: 'white',
+                  border: 'none',
+                  padding: '.5rem',
+                  borderRadius: '1rem',
+                  fontFamily: 'poppins',
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                  fontSize: '.8rem',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                Remover URL
+              </button>
+            </div>
+          ))}
 
           <button type="button" onClick={() => handleAddSize(index)} style={{ marginTop: '10px' }}>
             Adicionar Tamanho
@@ -204,8 +258,7 @@ export default function Products() {
                   fontWeight: 500,
                   cursor: 'pointer',
                   fontSize: '.8rem',
-                  whiteSpace: 'nowrap',
-                  marginTop: '10px'
+                  whiteSpace: 'nowrap'
                 }}
               >
                 Remover Tamanho
