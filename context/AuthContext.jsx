@@ -5,6 +5,7 @@ import { useAtom } from 'jotai';
 import { isAdminAtom, loggedInAtom, authErrorAtom, customerIDAtom } from '../store/store'; // Adicione o customerIDAtom
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useConfig } from './ConfigContext';
 
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useAtom(loggedInAtom);
@@ -31,10 +32,10 @@ export const useAuth = () => {
   const [isAdmin, setIsAdmin] = useAtom(isAdminAtom);
   const [customerID, setCustomerID] = useAtom(customerIDAtom); // Adicione o estado para customerID
   const [error, setError] = useAtom(authErrorAtom);
-
+  const { apiUrl } = useConfig();
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3003/api/login', { email, password });
+      const response = await axios.post(`${apiUrl}/api/login`, { email, password });
 
       if (response.data.user.role === 'administrador') {
         setLoggedIn(true);

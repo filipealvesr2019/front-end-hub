@@ -5,7 +5,7 @@ import ThemeList from "../ecommerce/ThemeList";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import { Link, useParams } from "react-router-dom";
 import HeaderSidebar from "../components/HeaderSidebar";
-import Products from "../components/Products";
+import Products from "./Products";
 import NavBarFromSidebar from "../components/NavBarFromSidebar";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";

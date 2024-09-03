@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 
-import Signup from '../pages/Signup'
+import Signup from './Signup'
 import axios from "axios";
+import ProductsContainer from './ProductsContainer'
 export default function Products(){
 
   const customerID = Cookies.get('customerID'); // Obtenha o ID do cliente do cookie
@@ -39,7 +40,7 @@ export default function Products(){
     return (
         <>
     
-        <p>{!isRegistered ? <p style={{marginTop:"15rem"}}>Produtos</p> :  <Signup />}</p>
+        <p>{!isRegistered ? <ProductsContainer />:  <Signup />}</p>
        
         </>
     )
